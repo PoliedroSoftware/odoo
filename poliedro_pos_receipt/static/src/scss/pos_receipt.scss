@@ -1,0 +1,206 @@
+.pos-receipt {
+    box-sizing: border-box;
+    color: #111;
+    // Thermal printers render the browser pixels smaller than a normal screen
+    // preview. Keep the base size readable on an 80 mm roll.
+    font-size: 22px;
+    line-height: 1.2;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+
+    .pos-receipt-logo {
+        display: block;
+        margin: 0 auto 0.35rem;
+        max-height: 62px;
+        max-width: 180px;
+        object-fit: contain;
+    }
+
+    .pos-receipt-contact {
+        line-height: 1.2;
+    }
+
+    // The Poliedro row is the source of truth for unit price, tax rate and
+    // line subtotal. Hide the duplicate values rendered by the core row.
+    .orderline .product-price,
+    .orderline .info-list .price-per-unit {
+        display: none !important;
+    }
+
+    // Keep one fiscal summary: the standard POS summary remains visible.
+    .poliedro-tax-summary {
+        display: none;
+    }
+
+    .pos-receipt-taxes {
+        margin-top: 0.35rem;
+        padding-top: 0.35rem !important;
+    }
+
+    .poliedro-tax-heading {
+        border-bottom: 1px solid #777;
+        font-size: 88%;
+        font-weight: 700;
+        margin-top: 0.55rem;
+        padding-bottom: 0.2rem;
+    }
+
+    .poliedro-receipt-brand {
+        color: #5b2a86;
+        margin-bottom: 0.35rem;
+        padding-bottom: 0.35rem;
+    }
+
+    .poliedro-receipt-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+    }
+
+    .poliedro-receipt-subtitle,
+    .poliedro-receipt-footer,
+    .poliedro-receipt-powered {
+        font-size: 90%;
+    }
+
+    .poliedro-fiscal-heading,
+    .poliedro-invoice-meta,
+    .poliedro-customer-box,
+    .poliedro-tax-summary {
+        font-size: 90%;
+        margin-top: 0.35rem;
+    }
+
+    .poliedro-fiscal-heading,
+    .poliedro-invoice-meta,
+    .poliedro-customer-box {
+        text-align: center;
+    }
+
+    .poliedro-document-title,
+    .poliedro-company-name {
+        font-weight: 700;
+    }
+
+    .poliedro-line-header,
+    .poliedro-line-values {
+        align-items: center;
+        display: grid;
+        column-gap: 4px;
+        grid-template-columns: 10% minmax(0, 1fr) 20% 14% 28%;
+        text-align: right;
+        width: 100%;
+    }
+
+    .poliedro-line-header {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .poliedro-line-header {
+        border-bottom: 1px solid #333;
+        font-size: 82%;
+        font-weight: 700;
+        margin-top: 0.65rem;
+        padding: 0.25rem 0;
+        white-space: nowrap;
+    }
+
+    .poliedro-line-values {
+        font-size: 100%;
+        padding: 0.1rem 0 0.25rem;
+    }
+
+    .poliedro-col-qty {
+        text-align: left;
+    }
+
+    .poliedro-line-values .poliedro-col-qty {
+        visibility: hidden;
+    }
+
+    .poliedro-col-detail {
+        overflow: hidden;
+        text-align: left;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .poliedro-col-tax,
+    .poliedro-col-unit,
+    .poliedro-col-subtotal {
+        font-family: monospace;
+        white-space: nowrap;
+    }
+
+    .poliedro-tax-amount {
+        color: #444;
+        font-size: 108%;
+    }
+
+    .poliedro-document-title {
+        font-size: 108%;
+        margin-bottom: 0.25rem;
+        padding-bottom: 0.2rem;
+    }
+
+    .poliedro-section-label {
+        font-size: 96%;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+        padding-bottom: 0.15rem;
+    }
+
+    .poliedro-customer-box {
+        padding: 0.35rem 0;
+    }
+
+    .poliedro-summary-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.1rem 0;
+    }
+
+    .poliedro-total-row {
+        border-top: 1px solid #333;
+        font-weight: 700;
+        margin-top: 0.25rem;
+        padding-top: 0.3rem;
+    }
+
+    .poliedro-payment-label {
+        margin-top: 0.5rem;
+    }
+
+    .receipt-total {
+        border-top: 1px solid #222;
+        margin-top: 0.25rem;
+        padding-top: 0.3rem;
+    }
+
+    .paymentlines {
+        margin-top: 0.35rem;
+        padding-top: 0.2rem !important;
+    }
+
+    @media print {
+        width: 266px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    .poliedro-receipt-footer {
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        white-space: pre-line;
+    }
+
+    .footer-powered-by {
+        margin-top: 0.45rem;
+    }
+}
