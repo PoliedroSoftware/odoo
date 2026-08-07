@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="poliedro_pos_receipt.OrderReceipt"
+       t-inherit="point_of_sale.OrderReceipt"
+       t-inherit-mode="extension">
+        <xpath expr="//ReceiptHeader" position="before">
+            <div class="poliedro-receipt-brand text-center">
+                <div class="poliedro-receipt-title" t-out="order.config.poliedro_receipt_title or 'POLIEDRO SOFTWARE'"/>
+                <div class="poliedro-receipt-subtitle" t-out="order.config.poliedro_receipt_subtitle or 'Comprobante de venta'"/>
+            </div>
+        </xpath>
+        <xpath expr="//ReceiptHeader" position="after">
+            <t t-set="company" t-value="order.company"/>
+            <div class="poliedro-fiscal-heading">
+                <div class="poliedro-document-title">FACTURA DE VENTA POS</div>
+                <div t-if="company.name" class="poliedro-company-name" t-out="company.name"/>
+                <div t-if="company.vat"><b>NIT:</b> <t t-out="company.vat"/></div>
+                <div t-if="company.company_registry"><b>Registro:</b> <t t-out="company.company_registry"/></div>
+                <div t-if="company.street or company.city">
+                    <t t-if="company.street" t-out="company.street"/>
+                    <t t-if="company.city" t-out="', ' + company.city"/>
+                    <t t-if="company.state_id?.code" t-out="', ' + company.state_id.code"/>
+                </div>
+                <div t-if="company.phone or company.email">
+                    <t t-if="company.phone">Tel: <t t-out="company.phone"/></t>
+                    <t t-if="company.phone and company.email"> · </t>
+                    <t t-if="company.email" t-out="company.email"/>
+                </div>
+            </div>
+            <div class="poliedro-invoice-meta">
+                <div><b>Documento:</b> <t t-out="order.pos_reference"/></div>
+                <div t-if="order.date_order"><b>Fecha:</b> <t t-out="order.formatDateOrTime('date_order')"/></div>
+                <div><b>Punto de venta:</b> <t t-out="order.config.name"/></div>
+            </div>
+            <div class="poliedro-customer-box">
+                <div class="poliedro-section-label">DATOS DEL CLIENTE</div>
+                <t t-if="order.partner_id">
+                    <div><b>Nombre:</b> <t t-out="order.partner_id.name"/></div>
+                    <div t-if="order.partner_id.vat"><b>Documento:</b> <t t-out="order.partner_id.vat"/></div>
+                    <div t-if="order.partner_id.email"><b>Email:</b> <t t-out="order.partner_id.email"/></div>
+                    <div t-if="order.partner_id.pos_contact_address"><b>Dirección:</b> <t t-out="order.partner_id.pos_contact_address"/></div>
+                </t>
+                <div t-else=""><b>Consumidor final</b></div>
+            </div>
+            <div class="poliedro-line-header">
+                <span class="poliedro-col-qty">Cant.</span>
+                <span class="poliedro-col-detail">Detalle</span>
+                <span class="poliedro-col-unit">Vlr. unit.</span>
+                <span class="poliedro-col-tax">IVA</span>
+                <span class="poliedro-col-subtotal">Subtotal</span>
+            </div>
+        </xpath>
+        <!-- The core total uses a preformatted value, so route it through the
+             receipt formatter to keep the printed amount without decimals. -->
+        <xpath expr="//span[@t-out='order.currencyDisplayPriceIncl']" position="attributes">
+            <attribute name="t-out">formatCurrency(order.priceIncl)</attribute>
+        </xpath>
+        <xpath expr="//div[contains(@class, 'pos-receipt-amount receipt-total')]" position="before">
+            <div class="poliedro-tax-summary">
+                <div class="poliedro-section-label">RESUMEN DE IMPUESTOS</div>
+                <div class="poliedro-summary-row">
+                    <span>Subtotal</span>
+                    <span t-out="formatCurrency(order.priceExcl)"/>
+                </div>
+                <t t-if="taxTotals and taxTotals.has_tax_groups">
+                    <t t-foreach="taxTotals.subtotals" t-as="subtotal" t-key="subtotal.name">
+                        <t t-foreach="subtotal.tax_groups" t-as="tax_group" t-key="tax_group.id">
+                            <div class="poliedro-summary-row">
+                                <span>
+                                    <t t-out="tax_group.group_name"/>
+                                    <t t-if="tax_group.group_label"> (<t t-out="tax_group.group_label"/>)</t>
+                                </span>
+                                <span t-out="formatCurrency(tax_group.tax_amount_currency)"/>
+                            </div>
+                        </t>
+                    </t>
+                </t>
+                <div class="poliedro-summary-row poliedro-total-row">
+                    <span>TOTAL</span>
+                    <span t-out="order.currencyDisplayPriceIncl"/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[contains(@class, 'pos-receipt-taxes')]" position="before">
+            <div class="poliedro-tax-heading">INFORMACIÓN TRIBUTARIA</div>
+        </xpath>
+        <xpath expr="//div[contains(@class, 'paymentlines')]" position="before">
+            <div class="poliedro-payment-label poliedro-section-label">FORMA DE PAGO</div>
+        </xpath>
+        <xpath expr="//div[contains(@class, 'after-footer')]" position="after">
+            <div t-if="order.config.poliedro_receipt_footer" class="poliedro-receipt-footer text-center">
+                <t t-esc="order.config.poliedro_receipt_footer"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[contains(@class, 'footer-powered-by')]" position="replace">
+            <div class="pos-receipt-order-data text-center pt-3 footer-powered-by poliedro-receipt-powered">
+                <span>Desarrollado por <b>Poliedro Software</b></span>
+            </div>
+        </xpath>
+    </t>
+</templates>
