@@ -1,17 +1,20 @@
-# Custom addons de Poliedro
+# Addons personalizados de Poliedro Software
 
-Este es el único lugar del checkout donde se agrega código propio. Cada
-funcionalidad debe ser un addon independiente dentro de esta carpeta y debe
-extender Odoo u OCA mediante los mecanismos oficiales de herencia, registries,
-assets y vistas heredadas.
+Este repositorio contiene exclusivamente módulos desarrollados por Poliedro
+Software para extender Odoo mediante herencia y extensión.
 
-No copiar archivos del core para editarlos. Mantener cada addon autocontenido,
-con manifiesto, dependencias, seguridad, datos, vistas, frontend y pruebas
-declarados explícitamente.
+## Reglas
 
-El `addons_path` de desarrollo debe incluir esta carpeta después de `addons` y
-`oca-custom`, por ejemplo:
+- Crear un módulo instalable independiente por funcionalidad.
+- No copiar ni modificar código original de Odoo Community, Odoo Enterprise,
+  OCA, Marketplace o proveedores.
+- Declarar las dependencias externas en `__manifest__.py`.
+- Mantener aquí únicamente código que Poliedro pueda publicar en su repositorio.
+- Probar cada cambio en una base de datos de desarrollo antes de desplegarlo.
 
-```ini
-addons_path = /ruta/al/odoo/addons,/ruta/al/odoo/oca-custom,/ruta/al/odoo/custom-addons
-```
+Las demás fuentes se mantienen separadas en el nivel superior:
+
+- `../oca-addons`: módulos oficiales de OCA.
+- `../marketplace-addons`: módulos descargados o comprados en Odoo Apps.
+- `../vendor-addons`: código de proveedores específicos.
+- `../enterprise`: código oficial de Odoo Enterprise con licencia válida.

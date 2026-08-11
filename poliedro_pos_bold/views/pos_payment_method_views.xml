@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_payment_method_view_form_inherit_poliedro_bold" model="ir.ui.view">
+        <field name="name">pos.payment.method.form.inherit.poliedro.bold</field>
+        <field name="model">pos.payment.method</field>
+        <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='use_payment_terminal']" position="after">
+                <field
+                    name="bold_merchant_id"
+                    placeholder="Ej. CKKA859CGE"
+                    invisible="use_payment_terminal != 'bold'"
+                    required="use_payment_terminal == 'bold'"
+                />
+                <div class="text-muted" invisible="use_payment_terminal != 'bold'">
+                    El pago se abre en la app Bold para Android y se procesa con el datáfono NEO enlazado por Bluetooth.
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

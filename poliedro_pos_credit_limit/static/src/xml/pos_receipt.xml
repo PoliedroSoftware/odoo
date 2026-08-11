@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="poliedro_pos_credit_limit.OrderReceipt"
+       t-inherit="point_of_sale.OrderReceipt"
+       t-inherit-mode="extension">
+        <xpath expr="//div[contains(@class, 'before-footer')]" position="before">
+            <div t-if="order.poliedro_credit_payment_snapshot &gt; 0"
+                 class="poliedro-receipt-credit">
+                <div class="poliedro-section-label">CRÉDITO DEL CLIENTE</div>
+                <div class="poliedro-credit-row">
+                    <span>Compra a crédito</span>
+                    <span t-out="formatCurrency(order.poliedro_credit_payment_snapshot)"/>
+                </div>
+                <t t-if="order.poliedro_credit_limit_snapshot &gt; 0">
+                    <div class="poliedro-credit-row">
+                        <span>Cupo asignado</span>
+                        <span t-out="formatCurrency(order.poliedro_credit_limit_snapshot)"/>
+                    </div>
+                    <div class="poliedro-credit-row poliedro-credit-row--available">
+                        <span>Disponible después de la compra</span>
+                        <span t-out="formatCurrency(order.poliedro_credit_available_after_snapshot)"/>
+                    </div>
+                </t>
+                <div t-else="" class="poliedro-credit-unlimited">Crédito sin límite configurado</div>
+            </div>
+        </xpath>
+    </t>
+</templates>

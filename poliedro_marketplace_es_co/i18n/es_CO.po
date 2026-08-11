@@ -1,0 +1,785 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* login_pos_direct
+# 	* advanced_pos_reports
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-11 22:30+0000\n"
+"PO-Revision-Date: 2026-08-11 22:30+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: login_pos_direct
+#. odoo-python
+#: code:addons/login_pos_direct/models/res_users.py:0
+msgid "Access Denied"
+msgstr "Acceso denegado"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceipt_templates.xml:0
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_customers
+msgid "Amount"
+msgstr "Importe"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceiptPopup_templates.xml:0
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.pos_sale_ongoing_view_form
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.pos_sale_top_selling_view_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/OrderPopup_templates.xml:0
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields.selection,name:advanced_pos_reports.selection__pos_sale_top_selling__top_selling__category
+msgid "Categories"
+msgstr "Categorías"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceipt_templates.xml:0
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_categories
+msgid "Category"
+msgstr "Categoría"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/Category_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceiptPopup_templates.xml:0
+msgid "Category Summary"
+msgstr "Resumen por categoría"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductPopup_templates.xml:0
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductPopup_templates.xml:0
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_ongoing__create_uid
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_top_selling__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_ongoing__create_date
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_top_selling__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductPopup_templates.xml:0
+msgid "Current Session"
+msgstr "Sesión actual"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields,help:advanced_pos_reports.field_pos_sale_ongoing__session_ids
+msgid "Currently ongoing sessions"
+msgstr "Sesiones actualmente abiertas"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_customers
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields.selection,name:advanced_pos_reports.selection__pos_sale_top_selling__top_selling__customers
+msgid "Customers"
+msgstr "Clientes"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceipt_templates.xml:0
+msgid "Date"
+msgstr "Fecha"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_ongoing_session
+msgid "Department Sales"
+msgstr "Ventas por categoría"
+
+#. modules: advanced_pos_reports, login_pos_direct
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_config__display_name
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_order__display_name
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_payment__display_name
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_ongoing__display_name
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_top_selling__display_name
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_session__display_name
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_report_advanced_pos_reports_report_pos_ongoing_session__display_name
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_report_advanced_pos_reports_report_pos_top_selling_categories__display_name
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_report_advanced_pos_reports_report_pos_top_selling_customers__display_name
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_report_advanced_pos_reports_report_pos_top_selling_products__display_name
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_stock_location__display_name
+#: model:ir.model.fields,field_description:login_pos_direct.field_res_users__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/OrderPopup_templates.xml:0
+msgid "Done"
+msgstr "Finalizado"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductPopup_templates.xml:0
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_top_selling__end_date
+msgid "End Date"
+msgstr "Fecha final"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceipt_templates.xml:0
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_categories
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_customers
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_products
+msgid "End Date:"
+msgstr "Fecha final:"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields,help:advanced_pos_reports.field_pos_sale_top_selling__end_date
+msgid "Ending date"
+msgstr "Fecha de finalización"
+
+#. modules: advanced_pos_reports, login_pos_direct
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_config__id
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_order__id
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_payment__id
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_ongoing__id
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_top_selling__id
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_session__id
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_report_advanced_pos_reports_report_pos_ongoing_session__id
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_report_advanced_pos_reports_report_pos_top_selling_categories__id
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_report_advanced_pos_reports_report_pos_top_selling_customers__id
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_report_advanced_pos_reports_report_pos_top_selling_products__id
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_stock_location__id
+#: model:ir.model.fields,field_description:login_pos_direct.field_res_users__id
+msgid "ID"
+msgstr "ID"
+
+#. module: advanced_pos_reports
+#: model:ir.model,name:advanced_pos_reports.model_stock_location
+msgid "Inventory Locations"
+msgstr "Ubicaciones de inventario"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/OrderPopup_templates.xml:0
+msgid "Invoiced"
+msgstr "Facturado"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_ongoing__write_uid
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_top_selling__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_ongoing__write_date
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_top_selling__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/Location_templates.xml:0
+msgid "Location Summary"
+msgstr "Resumen por ubicación"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/LocationPopup_templates.xml:0
+msgid "Locations"
+msgstr "Ubicaciones"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceipt_templates.xml:0
+msgid "Logo"
+msgstr "Logotipo"
+
+#. module: advanced_pos_reports
+#. odoo-python
+#: code:addons/advanced_pos_reports/wizard/pos_sale_top_selling.py:0
+msgid "No POS orders found in the selected date range."
+msgstr "No se encontraron pedidos del POS en el rango de fechas seleccionado."
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_top_selling__no_of_categories
+msgid "No of Categories"
+msgstr "Número de categorías"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/LocationPopup_templates.xml:0
+msgid "None"
+msgstr "Ninguno"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_top_selling__no_of_customers
+msgid "Number of Customers"
+msgstr "Número de clientes"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_top_selling__no_of_products
+msgid "Number of Products"
+msgstr "Número de productos"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields,help:advanced_pos_reports.field_pos_sale_top_selling__no_of_categories
+msgid "Number of categories"
+msgstr "Número de categorías"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields,help:advanced_pos_reports.field_pos_sale_top_selling__no_of_customers
+msgid "Number of customers"
+msgstr "Número de clientes"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields,help:advanced_pos_reports.field_pos_sale_top_selling__no_of_products
+msgid "Number of products"
+msgstr "Número de productos"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/OrderPopup_templates.xml:0
+msgid "Ongoing"
+msgstr "En curso"
+
+#. module: advanced_pos_reports
+#: model:ir.model,name:advanced_pos_reports.model_report_advanced_pos_reports_report_pos_ongoing_session
+msgid "Ongoing POS Session Report"
+msgstr "Informe de sesiones de POS abiertas"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.pos_sale_ongoing_view_form
+msgid "Ongoing Session Report"
+msgstr "Informe de sesiones abiertas"
+
+#. module: advanced_pos_reports
+#: model:ir.actions.report,name:advanced_pos_reports.pos_ongoing_session_report
+#: model:ir.ui.menu,name:advanced_pos_reports.pos_sale_ongoing_menu
+msgid "Ongoing Sessions"
+msgstr "Sesiones abiertas"
+
+#. module: advanced_pos_reports
+#: model:ir.actions.act_window,name:advanced_pos_reports.pos_sale_ongoing_action
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_ongoing_session
+msgid "Ongoing Sessions Report"
+msgstr "Informe de sesiones abiertas"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_ongoing_session
+msgid "Opened"
+msgstr "Abierta"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_ongoing_session
+msgid "Opening Balance:"
+msgstr "Saldo de apertura:"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceipt_templates.xml:0
+msgid "Order Ref"
+msgstr "Referencia"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/Order_templates.xml:0
+msgid "Order Summary"
+msgstr "Resumen de pedidos"
+
+#. module: login_pos_direct
+#: model:ir.model.fields,field_description:login_pos_direct.field_res_users__pos_conf_id
+msgid "POS Configuration"
+msgstr "Configuración del POS"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_ongoing__session_ids
+msgid "POS Ongoing Sessions"
+msgstr "Sesiones de POS abiertas"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/OrderPopup_templates.xml:0
+msgid "Paid"
+msgstr "Pagado"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceipt_templates.xml:0
+msgid "Payment Method"
+msgstr "Método de pago"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/Payment_templates.xml:0
+msgid "Payment Summary"
+msgstr "Resumen de pagos"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_ongoing_session
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: login_pos_direct
+#: model_terms:ir.ui.view,arch_db:login_pos_direct.view_users_form
+msgid "Point Of Sale"
+msgstr "Punto de venta"
+
+#. module: advanced_pos_reports
+#: model:ir.model,name:advanced_pos_reports.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "Configuración del punto de venta"
+
+#. module: advanced_pos_reports
+#: model:ir.model,name:advanced_pos_reports.model_pos_sale_ongoing
+msgid "Point of Sale Ongoing Session Report"
+msgstr "Informe de sesiones abiertas del punto de venta"
+
+#. module: advanced_pos_reports
+#: model:ir.model,name:advanced_pos_reports.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "Órdenes del punto de venta"
+
+#. module: advanced_pos_reports
+#: model:ir.model,name:advanced_pos_reports.model_pos_payment
+msgid "Point of Sale Payments"
+msgstr "Pagos en punto de venta"
+
+#. module: advanced_pos_reports
+#: model:ir.model,name:advanced_pos_reports.model_pos_session
+msgid "Point of Sale Session"
+msgstr "Sesión del punto de venta"
+
+#. module: advanced_pos_reports
+#: model:ir.model,name:advanced_pos_reports.model_pos_sale_top_selling
+msgid "Point of Sale Top Selling Product/Category/Customer Report"
+msgstr "Informe de productos, categorías y clientes más vendidos del punto de venta"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.pos_sale_ongoing_view_form
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.pos_sale_top_selling_view_form
+msgid "Print"
+msgstr "Imprimir"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceiptPopup_templates.xml:0
+msgid "Print Category Summary"
+msgstr "Imprimir resumen por categoría"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceiptPopup_templates.xml:0
+msgid "Print Location Summary"
+msgstr "Imprimir resumen por ubicación"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceiptPopup_templates.xml:0
+msgid "Print Order Summary"
+msgstr "Imprimir resumen de pedidos"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceiptPopup_templates.xml:0
+msgid "Print Payment Summary"
+msgstr "Imprimir resumen de pagos"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceiptPopup_templates.xml:0
+msgid "Print Product Summary"
+msgstr "Imprimir resumen de productos"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceipt_templates.xml:0
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_products
+msgid "Product"
+msgstr "Producto"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/Product_templates.xml:0
+msgid "Product Summary"
+msgstr "Resumen de productos"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields.selection,name:advanced_pos_reports.selection__pos_sale_top_selling__top_selling__products
+msgid "Products"
+msgstr "Productos"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceipt_templates.xml:0
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_products
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_ongoing_session
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_categories
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_customers
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_products
+msgid "Report Date:"
+msgstr "Fecha del informe:"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_ongoing_session
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_categories
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_customers
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_products
+msgid "Report Time:"
+msgstr "Hora del informe:"
+
+#. module: advanced_pos_reports
+#: model:ir.model,name:advanced_pos_reports.model_report_advanced_pos_reports_report_pos_top_selling_products
+msgid "Report for POS Top Selling Products"
+msgstr "Informe de productos más vendidos del POS"
+
+#. module: advanced_pos_reports
+#: model:ir.model,name:advanced_pos_reports.model_report_advanced_pos_reports_report_pos_top_selling_categories
+msgid "Report for Top Selling POS Categories"
+msgstr "Informe de categorías más vendidas del POS"
+
+#. module: advanced_pos_reports
+#: model:ir.model,name:advanced_pos_reports.model_report_advanced_pos_reports_report_pos_top_selling_customers
+msgid "Report for Top Selling POS Customers"
+msgstr "Informe de clientes con mayores ventas del POS"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_ongoing_session
+msgid "Returns:"
+msgstr "Devoluciones:"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_ongoing_session
+msgid "Sales Without Tax:"
+msgstr "Ventas sin impuestos:"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentPopup_templates.xml:0
+msgid "Salesperson"
+msgstr "Vendedor"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceipt_templates.xml:0
+msgid "Salesperson:"
+msgstr "Vendedor:"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields,help:advanced_pos_reports.field_pos_sale_top_selling__top_selling
+msgid "Select Top selling categories, products and customers"
+msgstr "Seleccione categorías, productos o clientes más vendidos"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/OrderPopup_templates.xml:0
+msgid "Select status"
+msgstr "Seleccione un estado"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceipt_templates.xml:0
+msgid "Served by"
+msgstr "Atendido por"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_ongoing_session
+msgid "Session(s):"
+msgstr "Sesión(es):"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductPopup_templates.xml:0
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_top_selling__start_date
+msgid "Start Date"
+msgstr "Fecha inicial"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceipt_templates.xml:0
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_categories
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_customers
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_products
+msgid "Start Date:"
+msgstr "Fecha inicial:"
+
+#. module: advanced_pos_reports
+#: model:ir.model.fields,help:advanced_pos_reports.field_pos_sale_top_selling__start_date
+msgid "Starting date"
+msgstr "Fecha de inicio"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/OrderPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceipt_templates.xml:0
+msgid "Status"
+msgstr "Estado"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_ongoing_session
+msgid "Status:"
+msgstr "Estado:"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentPopup_templates.xml:0
+msgid "Summary"
+msgstr "Resumen"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceipt_templates.xml:0
+msgid "Tel:"
+msgstr "Tel:"
+
+#. module: advanced_pos_reports
+#. odoo-python
+#: code:addons/advanced_pos_reports/wizard/pos_sale_top_selling.py:0
+msgid "The End Date must be greater than the Start Date"
+msgstr "La fecha final debe ser posterior a la fecha inicial"
+
+#. module: login_pos_direct
+#. odoo-python
+#: code:addons/login_pos_direct/models/res_users.py:0
+msgid "This user must be in the POS User group to set a POS configuration."
+msgstr "Este usuario debe pertenecer al grupo Usuario del POS para asignarle una configuración de punto de venta."
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_customers
+msgid "Top Customers"
+msgstr "Mejores clientes"
+
+#. module: advanced_pos_reports
+#: model:ir.actions.act_window,name:advanced_pos_reports.pos_sale_top_selling_action
+#: model:ir.model.fields,field_description:advanced_pos_reports.field_pos_sale_top_selling__top_selling
+#: model:ir.ui.menu,name:advanced_pos_reports.pos_sale_top_selling_menu
+msgid "Top Selling"
+msgstr "Más vendidos"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_categories
+msgid "Top Selling Categories"
+msgstr "Categorías más vendidas"
+
+#. module: advanced_pos_reports
+#: model:ir.actions.report,name:advanced_pos_reports.pos_top_selling_category_report
+msgid "Top Selling Categories Report"
+msgstr "Informe de categorías más vendidas"
+
+#. module: advanced_pos_reports
+#: model:ir.actions.report,name:advanced_pos_reports.pos_top_selling_customer_report
+msgid "Top Selling Customers Report"
+msgstr "Informe de clientes con mayores ventas"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_products
+msgid "Top Selling Products"
+msgstr "Productos más vendidos"
+
+#. module: advanced_pos_reports
+#: model:ir.actions.report,name:advanced_pos_reports.pos_top_selling_products_report
+msgid "Top Selling Products Report"
+msgstr "Informe de productos más vendidos"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.pos_sale_top_selling_view_form
+msgid "Top Selling Products/Categories/Customers"
+msgstr "Productos, categorías y clientes más vendidos"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceipt_templates.xml:0
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_ongoing_session
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_categories
+msgid "Total"
+msgstr "Total"
+
+#. module: advanced_pos_reports
+#. odoo-javascript
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/CategoryReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/LocationReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/OrderReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/PaymentReceipt_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceiptPopup_templates.xml:0
+#: code:addons/advanced_pos_reports/static/src/xml/ProductReceipt_templates.xml:0
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_ongoing_session
+msgid "Total:"
+msgstr "Total:"
+
+#. module: advanced_pos_reports
+#. odoo-python
+#: code:addons/advanced_pos_reports/wizard/pos_sale_top_selling.py:0
+msgid "Uncategorized"
+msgstr "Sin categoría"
+
+#. module: advanced_pos_reports
+#: model_terms:ir.ui.view,arch_db:advanced_pos_reports.report_pos_top_selling_products
+msgid "Unit"
+msgstr "Unidad"
+
+#. module: login_pos_direct
+#: model:ir.model,name:login_pos_direct.model_res_users
+msgid "User"
+msgstr "Usuario"
+
+#. module: login_pos_direct
+#: model:ir.model.fields,help:login_pos_direct.field_res_users__pos_conf_id
+msgid "select POS for the user"
+msgstr "Seleccione el punto de venta para el usuario"
+
+#. module: poliedro_marketplace_es_co
+#. odoo-javascript
+#: code:addons/poliedro_marketplace_es_co/static/src/js/advanced_pos_reports_es_co.js:0
+msgid "Error"
+msgstr "Error"
+
+#. module: poliedro_marketplace_es_co
+#. odoo-javascript
+#: code:addons/poliedro_marketplace_es_co/static/src/js/advanced_pos_reports_es_co.js:0
+msgid "Location Receipt"
+msgstr "Informe por ubicación"
+
+#. module: poliedro_marketplace_es_co
+#. odoo-javascript
+#: code:addons/poliedro_marketplace_es_co/static/src/js/advanced_pos_reports_es_co.js:0
+msgid "No Data"
+msgstr "Sin datos"
+
+#. module: poliedro_marketplace_es_co
+#. odoo-javascript
+#: code:addons/poliedro_marketplace_es_co/static/src/js/advanced_pos_reports_es_co.js:0
+msgid "No Data Available ."
+msgstr "No hay datos disponibles."
+
+#. module: poliedro_marketplace_es_co
+#. odoo-javascript
+#: code:addons/poliedro_marketplace_es_co/static/src/js/advanced_pos_reports_es_co.js:0
+msgid "No Data Available."
+msgstr "No hay datos disponibles."
+
+#. module: poliedro_marketplace_es_co
+#. odoo-javascript
+#: code:addons/poliedro_marketplace_es_co/static/src/js/advanced_pos_reports_es_co.js:0
+msgid "Start Date Greater than End Date ."
+msgstr "La fecha inicial no puede ser posterior a la fecha final."

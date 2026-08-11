@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="poliedro_pos_bold.BoldPaymentDialog" t-inherit="web.ConfirmationDialog" t-inherit-mode="primary">
+        <xpath expr="//p" position="replace">
+            <div class="o_bold_payment d-flex flex-column align-items-center text-center">
+                <div class="o_bold_payment_icon mb-2">B</div>
+                <h4 class="mb-1">Escanea para cobrar con Bold</h4>
+                <p class="text-muted mb-3">
+                    Escanea el código desde el Android que tiene abierta la app Bold y el NEO conectado por Bluetooth.
+                </p>
+                <img t-att-src="props.qrCode" alt="Código QR de pago Bold" class="o_bold_payment_qr"/>
+                <div class="o_bold_payment_amount mt-3" t-out="props.amount"/>
+                <div class="small text-muted mt-1">
+                    Referencia: <span class="font-monospace" t-out="props.reference"/>
+                </div>
+                <a t-att-href="props.applink" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary mt-3">
+                    Abrir Bold en este dispositivo
+                </a>
+                <div class="alert alert-warning mt-3 mb-0 text-start" role="alert">
+                    Confirma únicamente después de comprobar en la app Bold que la venta aparece como aprobada.
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>

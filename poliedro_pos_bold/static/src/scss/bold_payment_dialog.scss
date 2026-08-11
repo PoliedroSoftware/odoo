@@ -1,0 +1,29 @@
+.o_bold_payment {
+    .o_bold_payment_icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: #121212;
+        color: #fff;
+        font-size: 28px;
+        font-weight: 800;
+    }
+
+    .o_bold_payment_qr {
+        width: 280px;
+        height: 280px;
+        max-width: 100%;
+        padding: 10px;
+        border: 1px solid #d8dadd;
+        border-radius: 16px;
+        background: #fff;
+    }
+
+    .o_bold_payment_amount {
+        font-size: 1.75rem;
+        font-weight: 800;
+    }
+}

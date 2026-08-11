@@ -1,0 +1,49 @@
+.poliedro-credit-card {
+    border: 1px solid #d6cce4;
+    border-radius: 0.5rem;
+    background: #f7f3fb;
+    padding: 0.55rem 0.75rem;
+    color: #33263f;
+}
+
+.poliedro-credit-card__title {
+    margin-bottom: 0.3rem;
+    font-weight: 700;
+}
+
+.poliedro-credit-card__values {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.35rem;
+    font-size: 0.82rem;
+}
+
+.poliedro-credit-card__available {
+    color: #4c2a69;
+}
+
+.poliedro-receipt-credit {
+    margin-top: 8px;
+    padding-top: 5px;
+    border-top: 1px dashed #555;
+}
+
+.poliedro-credit-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.poliedro-credit-row--available {
+    font-weight: 700;
+}
+
+.poliedro-credit-unlimited {
+    font-size: 90%;
+}
+
+@media (max-width: 576px) {
+    .poliedro-credit-card__values {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="poliedro_pos_credit_limit.PaymentScreenButtons"
+       t-inherit="point_of_sale.PaymentScreenButtons"
+       t-inherit-mode="extension">
+        <xpath expr="//div[contains(@class, 'payment-buttons')]/div[1]" position="after">
+            <div t-if="hasPayLaterPaymentMethod and currentOrder.getPartner() and poliedroCreditInfo"
+                 class="poliedro-credit-card">
+                <div class="poliedro-credit-card__title">
+                    <i class="fa fa-credit-card me-1"/> Crédito del cliente
+                </div>
+                <t t-if="poliedroCreditInfo.is_limited">
+                    <div class="poliedro-credit-card__values">
+                        <span>Cupo: <b t-out="env.utils.formatCurrency(poliedroCreditInfo.credit_limit)"/></span>
+                        <span>Usado: <b t-out="env.utils.formatCurrency(poliedroCreditInfo.used_credit)"/></span>
+                        <span class="poliedro-credit-card__available">
+                            Disponible: <b t-out="env.utils.formatCurrency(poliedroCreditInfo.available_credit)"/>
+                        </span>
+                    </div>
+                </t>
+                <div t-else="" class="text-muted">Sin límite de crédito configurado</div>
+            </div>
+        </xpath>
+    </t>
+</templates>

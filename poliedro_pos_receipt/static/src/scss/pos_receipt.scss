@@ -187,7 +187,8 @@
     }
 
     @media print {
-        width: 266px !important;
+        // The THERMAL Receipt Printer exposes 512 printable dots at 180 DPI.
+        width: 512px !important;
         margin-left: auto !important;
         margin-right: auto !important;
         padding-left: 12px !important;
