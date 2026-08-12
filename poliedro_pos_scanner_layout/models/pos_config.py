@@ -6,6 +6,7 @@ class PosConfig(models.Model):
 
     poliedro_scanner_layout_default = fields.Boolean(
         string="Scanner layout by default",
+        default=True,
         help="Open the Point of Sale with the full-screen scanner-oriented order view.",
     )
 

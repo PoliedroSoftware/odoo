@@ -1,7 +1,11 @@
 /** @odoo-module **/
 
 import { ProductScreen } from "@point_of_sale/app/screens/product_screen/product_screen";
+import { PaymentScreen } from "@point_of_sale/app/screens/payment_screen/payment_screen";
+import { AlertDialog } from "@web/core/confirmation_dialog/confirmation_dialog";
 import { formatCurrency } from "@web/core/currency";
+import { _t } from "@web/core/l10n/translation";
+import { ask } from "@point_of_sale/app/utils/make_awaitable_dialog";
 import { patch } from "@web/core/utils/patch";
 import { useEffect, useRef, useState } from "@odoo/owl";
 
@@ -9,18 +13,20 @@ import { useEffect, useRef, useState } from "@odoo/owl";
 const scannerCurrency = (amount, currencyId) =>
     formatCurrency(amount || 0, currencyId, { digits: [1, 0], minDigits: 0 });
 
+ProductScreen.components = {
+    ...ProductScreen.components,
+    PaymentScreen,
+};
+
 
 patch(ProductScreen.prototype, {
     setup() {
         super.setup(...arguments);
         this.poliedroScannerTable = useRef("poliedroScannerTable");
-        const storageKey = `poliedro_pos_scanner_layout_${this.pos.config.id}`;
-        const storedMode = window.localStorage.getItem(storageKey);
-        const defaultMode = Boolean(this.pos.config.poliedro_scanner_layout_default);
         this.poliedroScannerState = useState({
-            active: storedMode === null ? defaultMode : storedMode === "scanner",
+            active: this.pos.config.poliedro_scanner_layout_default !== false,
             showNumpad: false,
-            storageKey,
+            payment: false,
         });
 
         useEffect(
@@ -52,6 +58,10 @@ patch(ProductScreen.prototype, {
         return this.currentOrder?.getSelectedOrderline();
     },
 
+    get isPoliedroScannerPayment() {
+        return Boolean(this.poliedroScannerState?.payment);
+    },
+
     get poliedroScannerItems() {
         return this.currentOrder?.totalQuantity || 0;
     },
@@ -76,6 +86,28 @@ patch(ProductScreen.prototype, {
         return this._poliedroScannerCurrency(this.currentOrder?.priceIncl);
     },
 
+    get poliedroScannerCustomer() {
+        return this.currentOrder?.getPartner();
+    },
+
+    get poliedroScannerCreditInfo() {
+        const partner = this.poliedroScannerCustomer;
+        if (!partner || !partner.pos_credit_limit_enabled) {
+            return false;
+        }
+        return {
+            credit_limit: partner.pos_credit_limit_amount || 0,
+            used_credit: partner.pos_credit_used_amount || 0,
+            available_credit: partner.pos_credit_available_amount || 0,
+        };
+    },
+
+    togglePoliedroScannerInvoice() {
+        if (this.currentOrder?.isToInvoice && this.currentOrder?.setToInvoice) {
+            this.currentOrder.setToInvoice(!this.currentOrder.isToInvoice());
+        }
+    },
+
     _poliedroScannerCurrency(amount) {
         const currencyId = this.currentOrder?.currency?.id || this.pos.currency.id;
         return scannerCurrency(amount, currencyId);
@@ -84,10 +116,41 @@ patch(ProductScreen.prototype, {
     togglePoliedroScannerLayout() {
         this.poliedroScannerState.active = !this.poliedroScannerState.active;
         this.poliedroScannerState.showNumpad = false;
-        window.localStorage.setItem(
-            this.poliedroScannerState.storageKey,
-            this.poliedroScannerState.active ? "scanner" : "classic"
+        this.poliedroScannerState.payment = false;
+        this.numberBuffer.reset();
+    },
+
+    async openPoliedroScannerPayment() {
+        const order = this.currentOrder;
+        if (!order.canPay()) {
+            return;
+        }
+
+        const missingTrackedLots = order.lines.some(
+            (line) => line.getProduct().tracking !== "none" && !line.hasValidProductLot()
         );
+        if (
+            missingTrackedLots &&
+            (this.pos.pickingType.use_create_lots || this.pos.pickingType.use_existing_lots)
+        ) {
+            const confirmed = await ask(this.env.services.dialog, {
+                title: _t("Some Serial/Lot Numbers are missing"),
+                body: _t(
+                    "You are trying to sell products with serial/lot numbers, but some are missing. Would you like to proceed anyway?"
+                ),
+            });
+            if (!confirmed) {
+                return;
+            }
+        }
+
+        this.numberBuffer.reset();
+        this.poliedroScannerState.showNumpad = false;
+        this.poliedroScannerState.payment = true;
+    },
+
+    closePoliedroScannerPayment() {
+        this.poliedroScannerState.payment = false;
         this.numberBuffer.reset();
     },
 
@@ -99,6 +162,52 @@ patch(ProductScreen.prototype, {
         this.numberBuffer.reset();
     },
 
+    selectPoliedroScannerQtyLine(event, line) {
+        // Clicking the quantity input selects the line without toggling it off.
+        event.stopPropagation();
+        if (line.combo_parent_id) {
+            line = line.combo_parent_id;
+        }
+        this.pos.selectOrderLine(this.currentOrder, line);
+    },
+
+    onPoliedroScannerQtyKeydown(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            event.target.blur();
+        }
+    },
+
+    updatePoliedroScannerLineQty(event, line) {
+        event.stopPropagation();
+        if (line.combo_parent_id) {
+            line = line.combo_parent_id;
+        }
+        this.pos.selectOrderLine(this.currentOrder, line);
+
+        const rawValue = event.target.value;
+        const newQuantity = parseFloat(rawValue);
+
+        if (!rawValue || Number.isNaN(newQuantity)) {
+            event.target.value = line.getQuantity();
+            return;
+        }
+
+        this.numberBuffer.reset();
+        if (newQuantity <= 0) {
+            this.currentOrder.removeOrderline(line);
+            this.poliedroScannerState.showNumpad = false;
+            return;
+        }
+
+        // setQuantity recomputes unit price (pricelist), taxes and totals.
+        const result = line.setQuantity(newQuantity, Boolean(line.combo_line_ids?.length));
+        if (result !== true) {
+            this.dialog.add(AlertDialog, result);
+            event.target.value = line.getQuantity();
+        }
+    },
+
     selectPoliedroScannerLine(event, line) {
         event.stopPropagation();
         this.numberBuffer.reset();
@@ -108,6 +217,16 @@ patch(ProductScreen.prototype, {
         } else {
             this.pos.selectOrderLine(this.currentOrder, line);
         }
+    },
+
+    removePoliedroScannerLineFromRow(event, line) {
+        event.stopPropagation();
+        if (line.combo_parent_id) {
+            line = line.combo_parent_id;
+        }
+        this.numberBuffer.reset();
+        this.currentOrder.removeOrderline(line);
+        this.poliedroScannerState.showNumpad = false;
     },
 
     removePoliedroScannerLine() {

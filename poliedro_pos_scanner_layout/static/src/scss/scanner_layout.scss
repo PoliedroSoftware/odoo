@@ -10,8 +10,8 @@
 }
 
 .poliedro-scanner-header {
-    min-height: 72px;
-    padding: 10px 16px;
+    min-height: 56px;
+    padding: 6px 16px;
     border-bottom: 1px solid var(--poliedro-border);
     background: #fff;
 }
@@ -52,8 +52,43 @@
     flex-direction: column;
 }
 
-.poliedro-layout-toggle,
-.poliedro-classic-layout-toggle {
+.poliedro-scanner-invoice-toggle {
+    min-height: 40px;
+    padding: 7px 10px;
+    border: 1px solid #dfe3e8;
+    border-radius: 8px;
+    background: #fff;
+    color: #4f5863;
+    font-weight: 700;
+}
+
+.poliedro-scanner-invoice-toggle.is-active {
+    border-color: #bfa7cd;
+    background: #f2ebf7;
+    color: var(--poliedro-accent-dark);
+}
+
+.poliedro-scanner-credit-inline {
+    padding: 4px 12px;
+    border: 1px solid #dfd3e7;
+    border-radius: 999px;
+    background: #faf7fc;
+    color: #52336c;
+    font-size: 0.78rem;
+    white-space: nowrap;
+}
+
+.poliedro-scanner-credit-title {
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.poliedro-scanner-credit-inline .is-available {
+    color: #24723a;
+    font-weight: 700;
+}
+
+.poliedro-layout-toggle {
     border: 1px solid #d6c9df;
     border-radius: 10px;
     background: #f7f3fa;
@@ -63,19 +98,6 @@
 
 .poliedro-layout-toggle {
     padding: 10px 14px;
-}
-
-.poliedro-classic-layout-toggle {
-    position: absolute;
-    z-index: 30;
-    top: 8px;
-    right: 10px;
-    padding: 8px 12px;
-    box-shadow: 0 2px 8px rgba(31, 35, 40, 0.08);
-}
-
-.product-screen:has(.poliedro-classic-layout-toggle) {
-    position: relative;
 }
 
 .poliedro-scanner-native-engine {
@@ -110,13 +132,14 @@
         minmax(110px, 1fr)
         minmax(115px, 1fr)
         minmax(78px, 0.7fr)
-        minmax(125px, 1.1fr);
+        minmax(125px, 1.1fr)
+        minmax(44px, 0.35fr);
     align-items: center;
     column-gap: 10px;
 }
 
 .poliedro-scanner-table-header {
-    min-height: 46px;
+    min-height: 40px;
     padding: 0 14px;
     border-bottom: 1px solid var(--poliedro-border);
     background: #f7f8fa;
@@ -132,11 +155,11 @@
 }
 
 .poliedro-scanner-row {
-    min-height: 68px;
-    padding: 9px 14px;
+    min-height: 40px;
+    padding: 4px 14px;
     border-bottom: 1px solid #edf0f3;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: background-color 120ms ease, box-shadow 120ms ease;
 }
 
@@ -155,14 +178,57 @@
 
 .poliedro-scanner-qty {
     color: var(--poliedro-accent-dark);
-    font-size: 1.15rem;
+    font-size: 1rem;
     font-weight: 800;
+}
+
+.poliedro-scanner-qty-input {
+    width: 100%;
+    min-width: 0;
+    padding: 2px 4px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--poliedro-accent-dark);
+    font-size: 1rem;
+    font-weight: 800;
+    text-align: center;
+    transition: border-color 120ms ease, background-color 120ms ease;
+}
+
+.poliedro-scanner-qty-input:hover,
+.poliedro-scanner-qty-input:focus {
+    border-color: #bfa7cd;
+    background: #fff;
+    outline: none;
+}
+
+.poliedro-scanner-qty-input:focus {
+    border-color: var(--poliedro-accent);
+    box-shadow: 0 0 0 2px rgba(111, 74, 142, 0.18);
+}
+
+.poliedro-scanner-qty-input:disabled {
+    border-color: transparent;
+    background: transparent;
+    cursor: default;
+}
+
+.poliedro-scanner-qty-input::-webkit-outer-spin-button,
+.poliedro-scanner-qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.poliedro-scanner-qty-input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 .poliedro-scanner-barcode {
     color: #3d444d;
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 0.82rem;
+    font-size: 0.76rem;
     overflow-wrap: anywhere;
 }
 
@@ -170,12 +236,12 @@
     display: flex;
     min-width: 0;
     flex-direction: column;
-    gap: 3px;
+    gap: 1px;
 }
 
 .poliedro-scanner-product strong {
     overflow: hidden;
-    font-size: 1.02rem;
+    font-size: 0.92rem;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -183,7 +249,8 @@
 .poliedro-scanner-product small,
 .poliedro-scanner-tax small {
     color: var(--poliedro-muted);
-    font-size: 0.75rem;
+    font-size: 0.68rem;
+    line-height: 1.1;
 }
 
 .poliedro-scanner-note {
@@ -198,8 +265,31 @@
 }
 
 .poliedro-scanner-line-total {
-    font-size: 1.08rem;
+    font-size: 0.95rem;
     font-weight: 800;
+}
+
+.poliedro-scanner-line-delete {
+    display: inline-grid;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    place-items: center;
+    border: 1px solid #f0c8cd;
+    border-radius: 8px;
+    background: #fff7f7;
+    color: #b4232f;
+    cursor: pointer;
+    opacity: 0.72;
+    transition: background-color 120ms ease, border-color 120ms ease, opacity 120ms ease;
+}
+
+.poliedro-scanner-line-delete:hover,
+.poliedro-scanner-line-delete:focus-visible {
+    border-color: #b4232f;
+    background: #fdebec;
+    opacity: 1;
+    outline: none;
 }
 
 .poliedro-scanner-tax {
@@ -215,7 +305,8 @@
 
 .poliedro-scanner-discount small {
     color: var(--poliedro-muted);
-    font-size: 0.72rem;
+    font-size: 0.68rem;
+    line-height: 1.1;
 }
 
 .poliedro-scanner-discount.has-discount {
@@ -346,9 +437,78 @@
     border-color: var(--poliedro-accent-dark);
 }
 
+.poliedro-scanner-payment-stage {
+    min-height: 0;
+    padding: 12px;
+    gap: 10px;
+}
+
+.poliedro-scanner-payment-toolbar {
+    flex: 0 0 auto;
+    min-height: 54px;
+    padding: 7px 10px;
+    border: 1px solid var(--poliedro-border);
+    border-radius: 10px;
+    background: #fff;
+}
+
+.poliedro-scanner-payment-reference {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.poliedro-scanner-payment-reference small {
+    color: var(--poliedro-muted);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.poliedro-scanner-payment-reference strong {
+    color: var(--poliedro-accent-dark);
+    font-size: 1.55rem;
+    line-height: 1;
+}
+
+.poliedro-scanner-payment-native {
+    min-height: 0;
+    border: 1px solid var(--poliedro-border);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(31, 35, 40, 0.05);
+}
+
+.poliedro-scanner-payment-native > .payment-screen {
+    border-radius: inherit;
+    overflow: hidden;
+}
+
+/* The scanner layout already renders the customer credit summary above the
+   payment stage; hide the duplicate card injected by poliedro_pos_credit_limit. */
+.poliedro-scanner-payment-native .payment-screen .poliedro-credit-card {
+    display: none !important;
+}
+
+.poliedro-scanner-payment-native .payment-screen .main-content {
+    background: #f7f8fa !important;
+}
+
+.poliedro-scanner-payment-native .payment-screen .total {
+    font-size: clamp(3.5rem, 8vw, 7rem) !important;
+}
+
+.poliedro-scanner-payment-native .payment-screen .back-button {
+    display: none !important;
+}
+
+.poliedro-scanner-payment-native .payment-screen .validation-button.next {
+    width: 100% !important;
+}
+
 @media (max-width: 1100px) {
     .poliedro-scanner-grid {
-        grid-template-columns: 58px 115px minmax(200px, 2fr) 100px 105px 70px 115px;
+        grid-template-columns: 58px 115px minmax(200px, 2fr) 100px 105px 70px 115px 44px;
         column-gap: 7px;
     }
 
@@ -362,8 +522,9 @@
     }
 }
 
-@media (max-width: 850px) {
-    .poliedro-classic-layout-toggle {
-        display: none;
+@media (max-width: 1100px) {
+    .poliedro-scanner-credit-inline {
+        gap: 8px !important;
+        font-size: 0.72rem;
     }
 }

@@ -9,21 +9,49 @@
                 <header class="poliedro-scanner-header d-flex align-items-center justify-content-between gap-3">
                     <div class="d-flex align-items-center gap-3 min-w-0">
                         <div class="poliedro-scanner-heading">
-                            <div class="poliedro-scanner-title">Venta por escáner</div>
+                            <div class="poliedro-scanner-title">
+                                <t t-if="isPoliedroScannerPayment">Cobro de la venta</t>
+                                <t t-else="">Venta por escáner</t>
+                            </div>
                             <div class="poliedro-scanner-subtitle">
-                                <i class="fa fa-barcode me-1"/> Escanee los productos para agregarlos
+                                <t t-if="isPoliedroScannerPayment">
+                                    <i class="fa fa-credit-card me-1"/> Seleccione el método de pago y valide la venta
+                                </t>
+                                <t t-else="">
+                                    <i class="fa fa-barcode me-1"/> Escanee los productos para agregarlos
+                                </t>
                             </div>
                         </div>
                         <div class="poliedro-scanner-status">
                             <span class="poliedro-scanner-status-dot"/> Lector listo
                         </div>
+                        <div t-if="poliedroScannerCreditInfo"
+                             class="poliedro-scanner-credit-inline d-flex align-items-center gap-3">
+                            <span class="poliedro-scanner-credit-title">
+                                <i class="fa fa-credit-card" aria-hidden="true"/> Crédito
+                            </span>
+                            <span>Cupo <b t-out="env.utils.formatCurrency(poliedroScannerCreditInfo.credit_limit)"/></span>
+                            <span>Usado <b t-out="env.utils.formatCurrency(poliedroScannerCreditInfo.used_credit)"/></span>
+                            <span class="is-available">Disponible <b t-out="env.utils.formatCurrency(poliedroScannerCreditInfo.available_credit)"/></span>
+                        </div>
                     </div>
                     <div class="d-flex align-items-center gap-3">
                         <div class="poliedro-scanner-customer text-end">
                             <small>Cliente</small>
-                            <strong t-esc="currentOrder.getPartner()?.name || 'Consumidor final'"/>
+                            <strong t-esc="poliedroScannerCustomer?.name || 'Consumidor final'"/>
                         </div>
-                        <button class="poliedro-layout-toggle is-scanner"
+                        <button t-if="poliedroScannerCustomer"
+                                class="poliedro-scanner-invoice-toggle"
+                                type="button"
+                                t-att-class="{'is-active': currentOrder.isToInvoice()}"
+                                t-on-click="togglePoliedroScannerInvoice"
+                                title="Marcar para factura">
+                            <i class="fa fa-file-text-o me-1" aria-hidden="true"/>
+                            <span>Recibo/Factura</span>
+                            <i class="fa ms-1" t-att-class="currentOrder.isToInvoice() ? 'fa-check-square' : 'fa-square-o'" aria-hidden="true"/>
+                        </button>
+                        <button t-if="!isPoliedroScannerPayment"
+                                class="poliedro-layout-toggle is-scanner"
                                 t-on-click="togglePoliedroScannerLayout"
                                 aria-label="Cambiar a vista clásica">
                             <i class="fa fa-th me-2"/> Vista clásica
@@ -38,7 +66,8 @@
                     <OrderSummary/>
                 </div>
 
-                <main class="poliedro-scanner-main d-flex flex-grow-1 overflow-hidden">
+                <main t-if="!isPoliedroScannerPayment"
+                      class="poliedro-scanner-main d-flex flex-grow-1 overflow-hidden">
                     <section class="poliedro-scanner-table-card d-flex flex-column flex-grow-1 overflow-hidden">
                         <div class="poliedro-scanner-table-header poliedro-scanner-grid">
                             <span>Cant.</span>
@@ -48,6 +77,7 @@
                             <span class="text-end">IVA</span>
                             <span class="text-center">Desc.</span>
                             <span class="text-end">Subtotal</span>
+                            <span class="text-center" aria-label="Acciones"/>
                         </div>
                         <div t-ref="poliedroScannerTable"
                              class="poliedro-scanner-table-body flex-grow-1 overflow-y-auto">
@@ -65,7 +95,16 @@
                                      'is-combo-child': line.combo_parent_id,
                                  }"
                                  t-on-click="(event) => this.selectPoliedroScannerLine(event, line)">
-                                <div class="poliedro-scanner-qty" t-out="line.getQuantityStr().unitPart + (line.getQuantityStr().decimalPart ? line.getQuantityStr().decimalPoint + line.getQuantityStr().decimalPart : '')"/>
+                                <input class="poliedro-scanner-qty-input"
+                                       type="number"
+                                       step="any"
+                                       min="0"
+                                       t-att-value="line.getQuantity()"
+                                       t-att-disabled="line.combo_parent_id"
+                                       aria-label="Cantidad"
+                                       t-on-click.stop="(event) => this.selectPoliedroScannerQtyLine(event, line)"
+                                       t-on-keydown="(event) => this.onPoliedroScannerQtyKeydown(event)"
+                                       t-on-change="(event) => this.updatePoliedroScannerLineQty(event, line)"/>
                                 <div class="poliedro-scanner-barcode" t-out="line.poliedroScannerBarcode"/>
                                 <div class="poliedro-scanner-product">
                                     <strong t-out="line.full_product_name"/>
@@ -87,6 +126,13 @@
                                     <small t-if="line.getDiscount()" t-out="line.poliedroScannerDiscountAmount"/>
                                 </div>
                                 <div class="poliedro-scanner-line-total" t-out="line.poliedroScannerLineSubtotal"/>
+                                <button class="poliedro-scanner-line-delete"
+                                        type="button"
+                                        title="Eliminar línea"
+                                        aria-label="Eliminar línea"
+                                        t-on-click="(event) => this.removePoliedroScannerLineFromRow(event, line)">
+                                    <i class="fa fa-trash" aria-hidden="true"/>
+                                </button>
                             </div>
                         </div>
                     </section>
@@ -105,7 +151,24 @@
                     </aside>
                 </main>
 
-                <footer class="poliedro-scanner-footer">
+                <section t-else="" class="poliedro-scanner-payment-stage d-flex flex-column flex-grow-1 overflow-hidden">
+                    <div class="poliedro-scanner-payment-toolbar d-flex align-items-center justify-content-between">
+                        <button class="btn btn-secondary"
+                                type="button"
+                                t-on-click="closePoliedroScannerPayment">
+                            <i class="fa fa-arrow-left me-2"/> Volver al detalle
+                        </button>
+                        <div class="poliedro-scanner-payment-reference">
+                            <small>Total de la venta</small>
+                            <strong t-out="poliedroScannerTotal"/>
+                        </div>
+                    </div>
+                    <div class="poliedro-scanner-payment-native flex-grow-1 overflow-hidden">
+                        <PaymentScreen orderUuid="currentOrder.uuid"/>
+                    </div>
+                </section>
+
+                <footer t-if="!isPoliedroScannerPayment" class="poliedro-scanner-footer">
                     <div class="poliedro-scanner-summary d-flex align-items-center justify-content-between gap-4">
                         <div class="poliedro-scanner-counters d-flex align-items-center gap-4">
                             <div><small>Artículos</small><strong t-out="poliedroScannerItems"/></div>
@@ -135,7 +198,7 @@
                         </button>
                         <button class="poliedro-scanner-pay btn btn-primary btn-lg"
                                 t-att-disabled="currentOrder.isEmpty()"
-                                t-on-click="() => this.pos.pay()">
+                                t-on-click="openPoliedroScannerPayment">
                             <span>Pagar</span>
                             <strong t-out="poliedroScannerTotal"/>
                             <i class="fa fa-arrow-right ms-2"/>
@@ -149,12 +212,5 @@
             <attribute name="t-if">!isPoliedroScannerLayout</attribute>
         </xpath>
 
-        <xpath expr="//div[contains(@class, 'product-screen')]" position="inside">
-            <button class="poliedro-classic-layout-toggle"
-                    t-on-click="togglePoliedroScannerLayout"
-                    aria-label="Cambiar a vista escáner">
-                <i class="fa fa-barcode me-2"/> Modo escáner
-            </button>
-        </xpath>
     </t>
 </templates>
