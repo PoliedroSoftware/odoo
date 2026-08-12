@@ -7,7 +7,7 @@
             <div t-if="vals.isReceipt" class="poliedro-line-values">
                 <span class="poliedro-col-qty"><t t-out="vals.unitPart"/></span>
                 <span class="poliedro-col-detail"/>
-                <span class="poliedro-col-unit" t-out="line.currencyDisplayPriceUnitExcl"/>
+                <span class="poliedro-col-unit" t-out="line.poliedroCurrencyDisplayUnitPrice"/>
                 <span class="poliedro-col-tax">
                     <t t-if="line.tax_ids?.length">
                         <t t-foreach="line.tax_ids" t-as="tax" t-key="tax.id">

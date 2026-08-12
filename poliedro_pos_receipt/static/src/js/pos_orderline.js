@@ -7,6 +7,10 @@ const receiptCurrency = (amount, currencyId) =>
     formatCurrency(amount, currencyId, { digits: [1, 0], minDigits: 0 });
 
 patch(PosOrderline.prototype, {
+    get poliedroCurrencyDisplayUnitPrice() {
+        return receiptCurrency(this.displayPriceUnitExcl, this.currency.id);
+    },
+
     get poliedroCurrencyDisplaySubtotal() {
         // The line subtotal on the thermal invoice represents the amount
         // charged to the customer, including the line taxes.

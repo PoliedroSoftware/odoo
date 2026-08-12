@@ -1,7 +1,7 @@
 {
     "name": "Poliedro POS Receipt",
     "summary": "Recibo POS personalizado de Poliedro",
-    "version": "19.0.1.0.1",
+    "version": "19.0.1.0.2",
     "category": "Point of Sale",
     "author": "Poliedro Software",
     "license": "LGPL-3",
