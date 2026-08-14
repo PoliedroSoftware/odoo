@@ -11,6 +11,11 @@
                          help="Inicia el punto de venta con el detalle de la compra a pantalla completa y sin mostrar el catálogo de productos.">
                     <field name="pos_poliedro_scanner_layout_default"/>
                 </setting>
+                <setting id="poliedro_scanner_show_stock"
+                         string="Inventario en el detalle del escáner"
+                         help="Muestra la cantidad disponible de cada producto en el detalle de la venta del modo escáner.">
+                    <field name="pos_poliedro_scanner_show_stock"/>
+                </setting>
             </xpath>
         </field>
     </record>

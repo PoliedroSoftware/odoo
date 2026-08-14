@@ -2,12 +2,13 @@
 
 import { ProductScreen } from "@point_of_sale/app/screens/product_screen/product_screen";
 import { PaymentScreen } from "@point_of_sale/app/screens/payment_screen/payment_screen";
+import { Navbar } from "@point_of_sale/app/components/navbar/navbar";
 import { AlertDialog } from "@web/core/confirmation_dialog/confirmation_dialog";
 import { formatCurrency } from "@web/core/currency";
 import { _t } from "@web/core/l10n/translation";
 import { ask } from "@point_of_sale/app/utils/make_awaitable_dialog";
 import { patch } from "@web/core/utils/patch";
-import { useEffect, useRef, useState } from "@odoo/owl";
+import { useEffect, useExternalListener, useRef, useState } from "@odoo/owl";
 
 
 const scannerCurrency = (amount, currencyId) =>
@@ -28,6 +29,42 @@ patch(ProductScreen.prototype, {
             showNumpad: false,
             payment: false,
         });
+        this.poliedroScannerLastKeyboardInputAt = 0;
+        useExternalListener(
+            document,
+            "keydown",
+            (event) => this.onPoliedroScannerGlobalKeydown(event),
+            { capture: true }
+        );
+        useExternalListener(window, "poliedro-scanner-show-classic", () => {
+            if (this.isPoliedroScannerLayout) {
+                this.togglePoliedroScannerLayout();
+            }
+        });
+        useExternalListener(window, "poliedro-scanner-close-payment", () => {
+            if (this.isPoliedroScannerPayment) {
+                this.closePoliedroScannerPayment();
+            }
+        });
+
+        useEffect(
+            () => {
+                const posRoot = document.querySelector(".pos");
+                posRoot?.classList.toggle(
+                    "poliedro-scanner-active",
+                    this.isPoliedroScannerLayout
+                );
+                posRoot?.classList.toggle(
+                    "poliedro-scanner-payment-active",
+                    this.isPoliedroScannerLayout && this.isPoliedroScannerPayment
+                );
+                return () => {
+                    posRoot?.classList.remove("poliedro-scanner-active");
+                    posRoot?.classList.remove("poliedro-scanner-payment-active");
+                };
+            },
+            () => [this.isPoliedroScannerLayout, this.isPoliedroScannerPayment]
+        );
 
         useEffect(
             () => {
@@ -60,6 +97,13 @@ patch(ProductScreen.prototype, {
 
     get isPoliedroScannerPayment() {
         return Boolean(this.poliedroScannerState?.payment);
+    },
+
+    get poliedroScannerSearchResults() {
+        if (!this.searchWord) {
+            return [];
+        }
+        return this.pos.productsToDisplay.slice(0, 10);
     },
 
     get poliedroScannerItems() {
@@ -102,6 +146,10 @@ patch(ProductScreen.prototype, {
         };
     },
 
+    get showPoliedroScannerStock() {
+        return this.pos.config.poliedro_scanner_show_stock !== false;
+    },
+
     togglePoliedroScannerInvoice() {
         if (this.currentOrder?.isToInvoice && this.currentOrder?.setToInvoice) {
             this.currentOrder.setToInvoice(!this.currentOrder.isToInvoice());
@@ -113,11 +161,65 @@ patch(ProductScreen.prototype, {
         return scannerCurrency(amount, currencyId);
     },
 
+    poliedroScannerSearchPrice(product) {
+        const pricelist = this.currentOrder?.pricelist_id || this.pos.config.pricelist_id;
+        return this._poliedroScannerCurrency(product.getPrice(pricelist, 1));
+    },
+
+    async addPoliedroScannerSearchProduct(product) {
+        await this.addProductToOrder(product);
+        this.pos.searchProductWord = "";
+    },
+
+    clearPoliedroScannerSearch() {
+        this.pos.searchProductWord = "";
+    },
+
     togglePoliedroScannerLayout() {
+        if (this.currentOrder?.uiState) {
+            this.currentOrder.uiState.poliedro_scanner_payment_active = false;
+        }
         this.poliedroScannerState.active = !this.poliedroScannerState.active;
         this.poliedroScannerState.showNumpad = false;
         this.poliedroScannerState.payment = false;
         this.numberBuffer.reset();
+    },
+
+    onPoliedroScannerGlobalKeydown(event) {
+        if (!this.isPoliedroScannerLayout || this.isPoliedroScannerPayment) {
+            return;
+        }
+
+        const target = event.target;
+        const isEditable =
+            target instanceof HTMLInputElement ||
+            target instanceof HTMLTextAreaElement ||
+            target?.isContentEditable;
+        if (isEditable) {
+            return;
+        }
+
+        const now = performance.now();
+        if (event.key !== "Enter") {
+            if (!event.ctrlKey && !event.altKey && !event.metaKey && event.key.length === 1) {
+                this.poliedroScannerLastKeyboardInputAt = now;
+            }
+            return;
+        }
+
+        // Barcode readers usually emit Enter immediately after the last character.
+        // Only a deliberate Enter opens payment, so a scan never advances by accident.
+        if (
+            event.repeat ||
+            now - this.poliedroScannerLastKeyboardInputAt < 150 ||
+            this.currentOrder?.isEmpty()
+        ) {
+            return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+        this.openPoliedroScannerPayment();
     },
 
     async openPoliedroScannerPayment() {
@@ -146,10 +248,16 @@ patch(ProductScreen.prototype, {
 
         this.numberBuffer.reset();
         this.poliedroScannerState.showNumpad = false;
+        order.uiState.poliedro_scanner_payment_active = true;
         this.poliedroScannerState.payment = true;
+        this.pos.searchProductWord = "";
+        document.querySelector(".pos-rightheader .input-container input")?.blur();
     },
 
     closePoliedroScannerPayment() {
+        if (this.currentOrder?.uiState) {
+            this.currentOrder.uiState.poliedro_scanner_payment_active = false;
+        }
         this.poliedroScannerState.payment = false;
         this.numberBuffer.reset();
     },
@@ -219,6 +327,17 @@ patch(ProductScreen.prototype, {
         }
     },
 
+    editPoliedroScannerLineFromRow(event, line) {
+        // Select the row line and open the side numpad to edit it.
+        event.stopPropagation();
+        if (line.combo_parent_id) {
+            line = line.combo_parent_id;
+        }
+        this.numberBuffer.reset();
+        this.pos.selectOrderLine(this.currentOrder, line);
+        this.poliedroScannerState.showNumpad = true;
+    },
+
     removePoliedroScannerLineFromRow(event, line) {
         event.stopPropagation();
         if (line.combo_parent_id) {
@@ -240,5 +359,78 @@ patch(ProductScreen.prototype, {
         this.numberBuffer.reset();
         this.currentOrder.removeOrderline(line);
         this.poliedroScannerState.showNumpad = false;
+    },
+});
+
+
+patch(PaymentScreen.prototype, {
+    get _getNumberBufferConfig() {
+        return {
+            ...super._getNumberBufferConfig,
+            triggerAtEnter: () => this.validatePoliedroScannerOrderWithEnter(),
+        };
+    },
+
+    validatePoliedroScannerOrderWithEnter() {
+        if (
+            !this.currentOrder?.uiState?.poliedro_scanner_payment_active ||
+            !this.currentOrder.canBeValidated() ||
+            this.currentOrder.isRefundInProcess() ||
+            this.pos.paymentTerminalInProgress
+        ) {
+            return;
+        }
+        return this.validateOrder();
+    },
+});
+
+
+patch(Navbar.prototype, {
+    handleKeydown(event) {
+        // The embedded payment screen shares ProductScreen's navbar. During
+        // payment, numeric keys belong exclusively to PaymentScreen's buffer.
+        if (this.pos.getOrder()?.uiState?.poliedro_scanner_payment_active) {
+            this.bufferedInput = "";
+            clearTimeout(this.timeout);
+            return;
+        }
+        return super.handleKeydown(...arguments);
+    },
+
+    get poliedroScannerNavbarCustomer() {
+        return this.pos.getOrder()?.getPartner();
+    },
+
+    get poliedroScannerNavbarCreditInfo() {
+        const partner = this.poliedroScannerNavbarCustomer;
+        if (!partner?.pos_credit_limit_enabled) {
+            return false;
+        }
+        return {
+            credit_limit: partner.pos_credit_limit_amount || 0,
+            used_credit: partner.pos_credit_used_amount || 0,
+            available_credit: partner.pos_credit_available_amount || 0,
+        };
+    },
+
+    get poliedroScannerNavbarTotal() {
+        const order = this.pos.getOrder();
+        const currencyId = order?.currency?.id || this.pos.currency.id;
+        return scannerCurrency(order?.priceIncl, currencyId);
+    },
+
+    togglePoliedroScannerNavbarInvoice() {
+        const order = this.pos.getOrder();
+        if (order?.isToInvoice && order?.setToInvoice) {
+            order.setToInvoice(!order.isToInvoice());
+        }
+    },
+
+    showPoliedroClassicLayout() {
+        window.dispatchEvent(new CustomEvent("poliedro-scanner-show-classic"));
+    },
+
+    closePoliedroScannerNavbarPayment() {
+        window.dispatchEvent(new CustomEvent("poliedro-scanner-close-payment"));
     },
 });

@@ -59,4 +59,24 @@ patch(PosOrderline.prototype, {
     get poliedroScannerLineSubtotal() {
         return scannerCurrency(this.priceIncl, this.currency.id);
     },
+
+    get poliedroScannerStockInfo() {
+        // pos_stock_available_online (OCA) adds warehouse_info to the product
+        // template payload. Odoo 19 may keep it in `raw` when the field is not
+        // declared in the POS model schema.
+        const template = this.product_id?.product_tmpl_id;
+        const infos = template?.warehouse_info ?? template?.raw?.warehouse_info ?? [];
+        const matching = infos.filter(
+            (info) => !info.product_id || info.product_id === this.product_id.id
+        );
+        if (!matching.length) {
+            return false;
+        }
+        const quantity = matching.reduce((total, info) => total + (info.quantity || 0), 0);
+        const uomName = this.product_id?.uom_id?.name || "";
+        return {
+            quantity: Math.round(quantity * 100) / 100,
+            uom: uomName,
+        };
+    },
 });

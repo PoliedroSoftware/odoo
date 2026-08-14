@@ -1,7 +1,7 @@
 {
     "name": "Poliedro POS Scanner Layout",
     "summary": "Vista de caja profesional orientada a lectores de códigos de barras",
-    "version": "19.0.1.1.0",
+    "version": "19.0.1.5.0",
     "category": "Point of Sale",
     "author": "Poliedro Software",
     "license": "LGPL-3",

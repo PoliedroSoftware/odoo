@@ -7,20 +7,20 @@
             <div t-if="isPoliedroScannerLayout"
                  class="poliedro-scanner-layout d-flex flex-column h-100 w-100">
                 <header class="poliedro-scanner-header d-flex align-items-center justify-content-between gap-3">
-                    <div class="d-flex align-items-center gap-3 min-w-0">
+                    <div class="poliedro-scanner-header-main d-flex align-items-center gap-3 min-w-0">
                         <div class="poliedro-scanner-heading">
-                            <div class="poliedro-scanner-title">
+                            <strong class="poliedro-scanner-title">
                                 <t t-if="isPoliedroScannerPayment">Cobro de la venta</t>
                                 <t t-else="">Venta por escáner</t>
-                            </div>
-                            <div class="poliedro-scanner-subtitle">
+                            </strong>
+                            <span class="poliedro-scanner-subtitle">
                                 <t t-if="isPoliedroScannerPayment">
                                     <i class="fa fa-credit-card me-1"/> Seleccione el método de pago y valide la venta
                                 </t>
                                 <t t-else="">
                                     <i class="fa fa-barcode me-1"/> Escanee los productos para agregarlos
                                 </t>
-                            </div>
+                            </span>
                         </div>
                         <div class="poliedro-scanner-status">
                             <span class="poliedro-scanner-status-dot"/> Lector listo
@@ -35,9 +35,9 @@
                             <span class="is-available">Disponible <b t-out="env.utils.formatCurrency(poliedroScannerCreditInfo.available_credit)"/></span>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center gap-3">
+                    <div class="poliedro-scanner-header-actions d-flex align-items-center gap-3">
                         <div class="poliedro-scanner-customer text-end">
-                            <small>Cliente</small>
+                            <small>Cliente:</small>
                             <strong t-esc="poliedroScannerCustomer?.name || 'Consumidor final'"/>
                         </div>
                         <button t-if="poliedroScannerCustomer"
@@ -58,6 +58,54 @@
                         </button>
                     </div>
                 </header>
+
+                <section t-if="!isPoliedroScannerPayment and searchWord"
+                         class="poliedro-scanner-search-results">
+                    <div class="poliedro-scanner-search-heading d-flex align-items-center justify-content-between">
+                        <div>
+                            <i class="fa fa-search me-1" aria-hidden="true"/>
+                            Resultados para <strong>“<t t-out="searchWord"/>”</strong>
+                        </div>
+                        <button class="btn btn-sm btn-light"
+                                type="button"
+                                t-on-click="clearPoliedroScannerSearch"
+                                aria-label="Cerrar búsqueda">
+                            <i class="fa fa-times" aria-hidden="true"/>
+                        </button>
+                    </div>
+                    <div t-if="poliedroScannerSearchResults.length"
+                         class="poliedro-scanner-search-list">
+                        <button t-foreach="poliedroScannerSearchResults"
+                                t-as="product"
+                                t-key="product.id"
+                                type="button"
+                                class="poliedro-scanner-search-item"
+                                t-on-click="() => this.addPoliedroScannerSearchProduct(product)">
+                            <div class="poliedro-scanner-search-product">
+                                <strong t-out="getProductName(product)"/>
+                                <small>
+                                    <t t-if="product.default_code">Ref. <t t-out="product.default_code"/></t>
+                                    <t t-if="product.default_code and product.barcode"> · </t>
+                                    <t t-if="product.barcode">Código <t t-out="product.barcode"/></t>
+                                    <t t-if="!product.default_code and !product.barcode">Producto sin código</t>
+                                </small>
+                            </div>
+                            <span class="poliedro-scanner-search-price"
+                                  t-out="poliedroScannerSearchPrice(product)"/>
+                            <span class="poliedro-scanner-search-add">
+                                <i class="fa fa-plus me-1" aria-hidden="true"/> Agregar
+                            </span>
+                        </button>
+                    </div>
+                    <div t-else="" class="poliedro-scanner-search-empty">
+                        No hay coincidencias cargadas para “<t t-out="searchWord"/>”.
+                    </div>
+                    <button class="poliedro-scanner-search-more btn btn-light btn-sm"
+                            type="button"
+                            t-on-click="onPressEnterKey">
+                        Buscar más productos en Odoo
+                    </button>
+                </section>
 
                 <!-- Keep the native OrderSummary mounted as the number-buffer
                      controller. It remains invisible; all business behavior is
@@ -111,6 +159,10 @@
                                     <small t-if="line.product_id?.default_code and line.product_id.default_code !== line.poliedroScannerBarcode">
                                         Ref. <t t-out="line.product_id.default_code"/>
                                     </small>
+                                    <small t-if="showPoliedroScannerStock and line.poliedroScannerStockInfo"
+                                           t-att-class="line.poliedroScannerStockInfo.quantity > 0 ? 'poliedro-scanner-stock' : 'poliedro-scanner-stock is-empty'">
+                                        <i class="fa fa-cubes me-1"/>Stock: <b t-out="line.poliedroScannerStockInfo.quantity"/> <t t-out="line.poliedroScannerStockInfo.uom"/>
+                                    </small>
                                     <small t-if="line.customer_note" class="poliedro-scanner-note">
                                         <i class="fa fa-sticky-note me-1"/><t t-out="line.customer_note"/>
                                     </small>
@@ -126,13 +178,22 @@
                                     <small t-if="line.getDiscount()" t-out="line.poliedroScannerDiscountAmount"/>
                                 </div>
                                 <div class="poliedro-scanner-line-total" t-out="line.poliedroScannerLineSubtotal"/>
-                                <button class="poliedro-scanner-line-delete"
-                                        type="button"
-                                        title="Eliminar línea"
-                                        aria-label="Eliminar línea"
-                                        t-on-click="(event) => this.removePoliedroScannerLineFromRow(event, line)">
-                                    <i class="fa fa-trash" aria-hidden="true"/>
-                                </button>
+                                <div class="poliedro-scanner-row-actions">
+                                    <button class="poliedro-scanner-line-edit"
+                                            type="button"
+                                            title="Editar línea"
+                                            aria-label="Editar línea"
+                                            t-on-click="(event) => this.editPoliedroScannerLineFromRow(event, line)">
+                                        <i class="fa fa-pencil" aria-hidden="true"/>
+                                    </button>
+                                    <button class="poliedro-scanner-line-delete"
+                                            type="button"
+                                            title="Eliminar línea"
+                                            aria-label="Eliminar línea"
+                                            t-on-click="(event) => this.removePoliedroScannerLineFromRow(event, line)">
+                                        <i class="fa fa-trash" aria-hidden="true"/>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -158,6 +219,10 @@
                                 t-on-click="closePoliedroScannerPayment">
                             <i class="fa fa-arrow-left me-2"/> Volver al detalle
                         </button>
+                        <div class="poliedro-scanner-enter-hint">
+                            <kbd>Enter</kbd>
+                            <span>Confirmar venta pagada</span>
+                        </div>
                         <div class="poliedro-scanner-payment-reference">
                             <small>Total de la venta</small>
                             <strong t-out="poliedroScannerTotal"/>
@@ -186,21 +251,11 @@
                         <div class="poliedro-scanner-native-actions d-flex flex-grow-1 gap-2">
                             <ControlButtons onClickMore.bind="displayAllControlPopup"/>
                         </div>
-                        <button class="btn btn-secondary btn-lg"
-                                t-att-disabled="!poliedroScannerSelectedLine"
-                                t-on-click="togglePoliedroScannerNumpad">
-                            <i class="fa fa-pencil me-2"/> Editar línea
-                        </button>
-                        <button class="btn btn-outline-danger btn-lg"
-                                t-att-disabled="!poliedroScannerSelectedLine"
-                                t-on-click="removePoliedroScannerLine">
-                            <i class="fa fa-trash me-2"/> Eliminar
-                        </button>
                         <button class="poliedro-scanner-pay btn btn-primary btn-lg"
                                 t-att-disabled="currentOrder.isEmpty()"
                                 t-on-click="openPoliedroScannerPayment">
                             <span>Pagar</span>
-                            <strong t-out="poliedroScannerTotal"/>
+                            <kbd class="ms-2">Enter</kbd>
                             <i class="fa fa-arrow-right ms-2"/>
                         </button>
                     </div>
@@ -212,5 +267,69 @@
             <attribute name="t-if">!isPoliedroScannerLayout</attribute>
         </xpath>
 
+    </t>
+
+    <t t-name="poliedro_pos_scanner_layout.Navbar"
+       t-inherit="point_of_sale.Navbar"
+       t-inherit-mode="extension">
+        <xpath expr="//div[contains(@class, 'pos-rightheader')]" position="before">
+            <div class="poliedro-scanner-navbar-summary align-items-center gap-2 min-w-0">
+                <div class="poliedro-scanner-navbar-sale align-items-center gap-2 min-w-0">
+                    <strong class="poliedro-scanner-navbar-title">Venta por escáner</strong>
+                    <span class="poliedro-scanner-navbar-subtitle text-truncate">
+                        <i class="fa fa-barcode me-1" aria-hidden="true"/>
+                        Escanee productos para agregarlos
+                    </span>
+                    <span class="poliedro-scanner-status">
+                        <span class="poliedro-scanner-status-dot"/> Lector listo
+                    </span>
+                    <span t-if="poliedroScannerNavbarCreditInfo"
+                          class="poliedro-scanner-navbar-credit">
+                        Disponible
+                        <b t-out="env.utils.formatCurrency(poliedroScannerNavbarCreditInfo.available_credit)"/>
+                    </span>
+                    <span class="poliedro-scanner-navbar-customer text-truncate">
+                        Cliente: <strong t-esc="poliedroScannerNavbarCustomer?.name || 'Consumidor final'"/>
+                    </span>
+                    <button t-if="poliedroScannerNavbarCustomer"
+                            class="poliedro-scanner-invoice-toggle"
+                            type="button"
+                            t-att-class="{'is-active': pos.getOrder().isToInvoice()}"
+                            t-on-click="togglePoliedroScannerNavbarInvoice"
+                            title="Marcar para factura">
+                        <i class="fa fa-file-text-o" aria-hidden="true"/>
+                        <span>Factura</span>
+                        <i class="fa ms-1"
+                           t-att-class="pos.getOrder().isToInvoice() ? 'fa-check-square' : 'fa-square-o'"
+                           aria-hidden="true"/>
+                    </button>
+                    <button class="poliedro-layout-toggle is-scanner"
+                            type="button"
+                            t-on-click="showPoliedroClassicLayout"
+                            aria-label="Cambiar a vista clásica">
+                        <i class="fa fa-th me-1" aria-hidden="true"/> Vista clásica
+                    </button>
+                </div>
+                <div class="poliedro-scanner-navbar-payment align-items-center gap-3 min-w-0">
+                    <button class="btn btn-light poliedro-scanner-navbar-back"
+                            type="button"
+                            t-on-click="closePoliedroScannerNavbarPayment">
+                        <i class="fa fa-arrow-left me-1" aria-hidden="true"/> Volver al detalle
+                    </button>
+                    <strong class="poliedro-scanner-navbar-title">Cobro de la venta</strong>
+                    <span class="poliedro-scanner-enter-hint">
+                        <kbd>Enter</kbd>
+                        <span>Confirmar venta pagada</span>
+                    </span>
+                    <span class="poliedro-scanner-navbar-customer text-truncate">
+                        Cliente: <strong t-esc="poliedroScannerNavbarCustomer?.name || 'Consumidor final'"/>
+                    </span>
+                    <span class="poliedro-scanner-navbar-payment-total">
+                        <small>Total</small>
+                        <strong t-out="poliedroScannerNavbarTotal"/>
+                    </span>
+                </div>
+            </div>
+        </xpath>
     </t>
 </templates>
