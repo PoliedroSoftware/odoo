@@ -2,7 +2,11 @@
 
 import { ProductScreen } from "@point_of_sale/app/screens/product_screen/product_screen";
 import { PaymentScreen } from "@point_of_sale/app/screens/payment_screen/payment_screen";
+import { PosOrder } from "@point_of_sale/app/models/pos_order";
+import { barcodeService } from "@barcodes/barcode_service";
 import { Navbar } from "@point_of_sale/app/components/navbar/navbar";
+import { SelectPartnerButton } from "@point_of_sale/app/screens/product_screen/control_buttons/select_partner_button/select_partner_button";
+import { InternalNoteButton } from "@point_of_sale/app/screens/product_screen/control_buttons/orderline_note_button/orderline_note_button";
 import { AlertDialog } from "@web/core/confirmation_dialog/confirmation_dialog";
 import { formatCurrency } from "@web/core/currency";
 import { _t } from "@web/core/l10n/translation";
@@ -14,21 +18,69 @@ import { useEffect, useExternalListener, useRef, useState } from "@odoo/owl";
 const scannerCurrency = (amount, currencyId) =>
     formatCurrency(amount || 0, currencyId, { digits: [1, 0], minDigits: 0 });
 
+const POLIEDRO_FAST_SCAN_INTERVAL_MS = 50;
+
 ProductScreen.components = {
     ...ProductScreen.components,
     PaymentScreen,
+    SelectPartnerButton,
+    InternalNoteButton,
 };
+
+PaymentScreen.props = {
+    ...PaymentScreen.props,
+    poliedroEmbedded: { type: Boolean, optional: true },
+};
+
+
+patch(PosOrder.prototype, {
+    setPartner(partner) {
+        const isScannerLayout = Boolean(this.uiState?.poliedro_scanner_layout_active);
+        super.setPartner(...arguments);
+
+        // Odoo marks company contacts for invoicing automatically. In the
+        // scanner workflow invoicing is an explicit cashier decision, so a
+        // newly selected customer always starts with the switch turned off.
+        if (isScannerLayout) {
+            this.uiState.poliedro_scanner_invoice_explicit = false;
+            if (this.isToInvoice()) {
+                this.setToInvoice(false);
+            }
+        }
+    },
+});
 
 
 patch(ProductScreen.prototype, {
     setup() {
         super.setup(...arguments);
+        // Odoo waits up to 150 ms when a scanner does not send Enter. Retail
+        // scanners normally stay below 50 ms between characters, so this keeps
+        // the safe barcode buffer while removing the perceptible fallback wait.
+        barcodeService.maxTimeBetweenKeysInMs = Math.min(
+            barcodeService.maxTimeBetweenKeysInMs,
+            POLIEDRO_FAST_SCAN_INTERVAL_MS
+        );
         this.poliedroScannerTable = useRef("poliedroScannerTable");
         this.poliedroScannerState = useState({
             active: this.pos.config.poliedro_scanner_layout_default !== false,
             showNumpad: false,
             payment: false,
+            paymentOrderUuid: null,
         });
+        if (this.currentOrder?.uiState) {
+            this.currentOrder.uiState.poliedro_scanner_layout_active =
+                this.poliedroScannerState.active;
+            if (
+                this.poliedroScannerState.active &&
+                this.currentOrder.getPartner() &&
+                this.currentOrder.isToInvoice() &&
+                !this.currentOrder.uiState.poliedro_scanner_invoice_explicit &&
+                !this.currentOrder.getHasRefundLines()
+            ) {
+                this.currentOrder.setToInvoice(false);
+            }
+        }
         this.poliedroScannerLastKeyboardInputAt = 0;
         useExternalListener(
             document,
@@ -45,6 +97,21 @@ patch(ProductScreen.prototype, {
             if (this.isPoliedroScannerPayment) {
                 this.closePoliedroScannerPayment();
             }
+        });
+        useExternalListener(window, "poliedro-scanner-payment-started", (event) => {
+            if (
+                !this.isPoliedroScannerLayout ||
+                event.detail?.orderUuid !== this.currentOrder?.uuid
+            ) {
+                return;
+            }
+            this.numberBuffer.reset();
+            this.poliedroScannerState.showNumpad = false;
+            this.poliedroScannerState.payment = true;
+            this.poliedroScannerState.paymentOrderUuid = this.currentOrder.uuid;
+            this.currentOrder.uiState.poliedro_scanner_payment_active = true;
+            this.pos.searchProductWord = "";
+            document.querySelector(".pos-rightheader .input-container input")?.blur();
         });
 
         useEffect(
@@ -68,19 +135,69 @@ patch(ProductScreen.prototype, {
 
         useEffect(
             () => {
+                const order = this.currentOrder;
+                if (order?.uiState) {
+                    order.uiState.poliedro_scanner_layout_active =
+                        this.isPoliedroScannerLayout;
+                    if (
+                        this.isPoliedroScannerLayout &&
+                        order.getPartner() &&
+                        order.isToInvoice() &&
+                        !order.uiState.poliedro_scanner_invoice_explicit &&
+                        !order.getHasRefundLines()
+                    ) {
+                        order.setToInvoice(false);
+                    }
+                }
+            },
+            () => [this.currentOrder?.uuid, this.isPoliedroScannerLayout]
+        );
+
+        useEffect(
+            () => {
                 if (!this.poliedroScannerState.active) {
                     return;
                 }
-                window.requestAnimationFrame(() => {
-                    const container = this.poliedroScannerTable.el;
-                    const selectedRow = container?.querySelector(".poliedro-scanner-row.is-selected");
-                    selectedRow?.scrollIntoView({ block: "nearest", behavior: "smooth" });
-                });
+                const container = this.poliedroScannerTable.el;
+                const selectedRow = container?.querySelector(".poliedro-scanner-row.is-selected");
+                selectedRow?.scrollIntoView({ block: "nearest", behavior: "auto" });
             },
             () => [
                 this.poliedroScannerState.active,
                 this.currentOrder?.uiState?.selected_orderline_uuid,
                 this.currentOrder?.lines?.length,
+            ]
+        );
+
+        useEffect(
+            () => {
+                if (
+                    this.poliedroScannerState.payment &&
+                    this.currentOrder?.uuid !== this.poliedroScannerState.paymentOrderUuid
+                ) {
+                    if (this.currentOrder?.uiState) {
+                        this.currentOrder.uiState.poliedro_scanner_payment_active = false;
+                    }
+                    this.poliedroScannerState.payment = false;
+                    this.poliedroScannerState.paymentOrderUuid = null;
+                    this.poliedroScannerState.showNumpad = false;
+                    this.numberBuffer.reset();
+                }
+            },
+            () => [this.currentOrder?.uuid]
+        );
+
+        useEffect(
+            () => {
+                if (this.isPoliedroScannerLayout) {
+                    this._clearPoliedroEmptyOrderPayments();
+                }
+            },
+            () => [
+                this.isPoliedroScannerLayout,
+                this.currentOrder?.uuid,
+                this.currentOrder?.lines?.length,
+                this.currentOrder?.payment_ids?.length,
             ]
         );
     },
@@ -130,6 +247,10 @@ patch(ProductScreen.prototype, {
         return this._poliedroScannerCurrency(this.currentOrder?.priceIncl);
     },
 
+    get poliedroScannerChange() {
+        return this._poliedroScannerCurrency(Math.abs(this.currentOrder?.change || 0));
+    },
+
     get poliedroScannerCustomer() {
         return this.currentOrder?.getPartner();
     },
@@ -153,6 +274,7 @@ patch(ProductScreen.prototype, {
     togglePoliedroScannerInvoice() {
         if (this.currentOrder?.isToInvoice && this.currentOrder?.setToInvoice) {
             this.currentOrder.setToInvoice(!this.currentOrder.isToInvoice());
+            this.currentOrder.uiState.poliedro_scanner_invoice_explicit = true;
         }
     },
 
@@ -171,8 +293,78 @@ patch(ProductScreen.prototype, {
         this.pos.searchProductWord = "";
     },
 
+    async addProductToOrder(product) {
+        if (!this._preparePoliedroContinuousScan()) {
+            return;
+        }
+        return super.addProductToOrder(...arguments);
+    },
+
+    async _barcodeProductAction(code) {
+        if (!this._preparePoliedroContinuousScan()) {
+            return;
+        }
+        return super._barcodeProductAction(...arguments);
+    },
+
+    async _barcodeGS1Action(parsedResults) {
+        if (!this._preparePoliedroContinuousScan()) {
+            return;
+        }
+        return super._barcodeGS1Action(...arguments);
+    },
+
+    _preparePoliedroContinuousScan() {
+        if (!this.isPoliedroScannerPayment) {
+            return true;
+        }
+        // Do not alter an electronic transaction that is already talking to a
+        // terminal. Draft cash/card lines remain valid and are recalculated as
+        // more products are scanned.
+        if (this.pos.paymentTerminalInProgress) {
+            return false;
+        }
+        this.closePoliedroScannerPayment();
+        return true;
+    },
+
     clearPoliedroScannerSearch() {
         this.pos.searchProductWord = "";
+    },
+
+    savePoliedroScannerOrder() {
+        return this.pos.clickSaveOrder();
+    },
+
+    _clearPoliedroEmptyOrderPayments() {
+        const order = this.currentOrder;
+        if (!order?.isEmpty() || !order.payment_ids?.length) {
+            return false;
+        }
+
+        const protectedStatuses = new Set([
+            "waiting",
+            "waitingCard",
+            "waitingCapture",
+            "waitingCancel",
+            "done",
+            "reversed",
+        ]);
+        const removableLines = [...order.payment_ids].filter((line) => {
+            const status = line.getPaymentStatus?.() || line.payment_status;
+            return !protectedStatuses.has(status);
+        });
+
+        for (const line of removableLines) {
+            order.removePaymentline(line);
+        }
+        if (removableLines.length) {
+            order.uiState.poliedro_scanner_payment_active = false;
+            this.poliedroScannerState.payment = false;
+            this.poliedroScannerState.paymentOrderUuid = null;
+            this.numberBuffer.reset();
+        }
+        return Boolean(removableLines.length);
     },
 
     togglePoliedroScannerLayout() {
@@ -182,6 +374,7 @@ patch(ProductScreen.prototype, {
         this.poliedroScannerState.active = !this.poliedroScannerState.active;
         this.poliedroScannerState.showNumpad = false;
         this.poliedroScannerState.payment = false;
+        this.poliedroScannerState.paymentOrderUuid = null;
         this.numberBuffer.reset();
     },
 
@@ -250,6 +443,7 @@ patch(ProductScreen.prototype, {
         this.poliedroScannerState.showNumpad = false;
         order.uiState.poliedro_scanner_payment_active = true;
         this.poliedroScannerState.payment = true;
+        this.poliedroScannerState.paymentOrderUuid = order.uuid;
         this.pos.searchProductWord = "";
         document.querySelector(".pos-rightheader .input-container input")?.blur();
     },
@@ -259,6 +453,7 @@ patch(ProductScreen.prototype, {
             this.currentOrder.uiState.poliedro_scanner_payment_active = false;
         }
         this.poliedroScannerState.payment = false;
+        this.poliedroScannerState.paymentOrderUuid = null;
         this.numberBuffer.reset();
     },
 
@@ -364,10 +559,81 @@ patch(ProductScreen.prototype, {
 
 
 patch(PaymentScreen.prototype, {
+    onMounted() {
+        super.onMounted(...arguments);
+        if (!this.props.poliedroEmbedded) {
+            return;
+        }
+
+        // Recover orders affected by the previous embedded-buffer setting:
+        // a numeric EAN could have become the cash amount verbatim. Only
+        // remove a line when it exactly matches a product barcode in this
+        // order and is vastly greater than the sale total.
+        const barcodeAmounts = new Set(
+            this.currentOrder.lines
+                .map((line) => Number(line.getProduct()?.barcode))
+                .filter((value) => Number.isFinite(value) && value >= 1_000_000)
+        );
+        const suspiciousThreshold = Math.max(Math.abs(this.currentOrder.priceIncl || 0) * 100, 1_000_000);
+        const protectedStatuses = new Set([
+            "waiting",
+            "waitingCard",
+            "waitingCapture",
+            "waitingCancel",
+            "done",
+            "reversed",
+        ]);
+        const scannerPaymentLines = this.paymentLines.filter((line) => {
+            const status = line.getPaymentStatus?.() || line.payment_status;
+            if (protectedStatuses.has(status)) {
+                return false;
+            }
+            const amount = Math.abs(line.getAmount());
+            return (
+                this.currentOrder.isEmpty() ||
+                (amount > suspiciousThreshold && barcodeAmounts.has(amount))
+            );
+        });
+
+        for (const line of scannerPaymentLines) {
+            this.currentOrder.removePaymentline(line);
+        }
+        if (scannerPaymentLines.length) {
+            this.numberBuffer.reset();
+            window.dispatchEvent(new CustomEvent("poliedro-scanner-close-payment"));
+            this.notification.add(_t("A barcode captured as a payment amount was removed."), 4000);
+        }
+    },
+
+    async addNewPaymentLine(paymentMethod) {
+        const isUnifiedScannerView = Boolean(this.props.poliedroEmbedded);
+        if (isUnifiedScannerView && this.currentOrder?.isEmpty()) {
+            this.notification.add(_t("Add products before registering a payment."), 3000);
+            return false;
+        }
+
+        const result = await super.addNewPaymentLine(...arguments);
+        if (isUnifiedScannerView && result === true) {
+            window.dispatchEvent(
+                new CustomEvent("poliedro-scanner-payment-started", {
+                    detail: { orderUuid: this.currentOrder.uuid },
+                })
+            );
+        }
+        return result;
+    },
+
     get _getNumberBufferConfig() {
         return {
             ...super._getNumberBufferConfig,
+            // Keep Odoo's barcode timing enabled. With it disabled, every
+            // scanner digit is processed immediately as a payment amount.
+            // Barcode bursts are discarded by NumberBuffer while deliberately
+            // typed amounts continue to update the selected payment line.
+            useWithBarcode: true,
             triggerAtEnter: () => this.validatePoliedroScannerOrderWithEnter(),
+            triggerAtEsc: () =>
+                window.dispatchEvent(new CustomEvent("poliedro-scanner-close-payment")),
         };
     },
 
@@ -423,6 +689,7 @@ patch(Navbar.prototype, {
         const order = this.pos.getOrder();
         if (order?.isToInvoice && order?.setToInvoice) {
             order.setToInvoice(!order.isToInvoice());
+            order.uiState.poliedro_scanner_invoice_explicit = true;
         }
     },
 

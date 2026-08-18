@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_pos_order_list_poliedro_einvoice_webhook" model="ir.ui.view">
+        <field name="name">pos.order.list.poliedro.einvoice.webhook</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list/header" position="inside">
+                <button name="action_poliedro_send_einvoice_webhook"
+                        type="object"
+                        string="Enviar a facturación electrónica"
+                        class="btn-primary"
+                        groups="point_of_sale.group_pos_manager"/>
+            </xpath>
+            <xpath expr="//field[@name='invoice_status']" position="after">
+                <field name="poliedro_einvoice_state"
+                       string="Cola FE"
+                       widget="badge"
+                       decoration-info="poliedro_einvoice_state == 'pending'"
+                       decoration-success="poliedro_einvoice_state == 'queued'"
+                       decoration-danger="poliedro_einvoice_state == 'error'"/>
+                <field name="poliedro_einvoice_requested_at" optional="hide"/>
+                <field name="poliedro_einvoice_attempts" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_pos_order_form_poliedro_einvoice_webhook" model="ir.ui.view">
+        <field name="name">pos.order.form.poliedro.einvoice.webhook</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/header" position="inside">
+                <button name="action_poliedro_send_einvoice_webhook"
+                        type="object"
+                        string="Enviar a facturación electrónica"
+                        class="btn-primary"
+                        invisible="state in ['draft', 'cancel'] or poliedro_einvoice_state == 'queued'"
+                        groups="point_of_sale.group_pos_manager"/>
+                <field name="poliedro_einvoice_state" invisible="1"/>
+            </xpath>
+            <xpath expr="//group[@name='other_information']" position="after">
+                <group string="Facturación electrónica">
+                    <field name="poliedro_einvoice_state" widget="badge"/>
+                    <field name="poliedro_einvoice_requested_at"/>
+                    <field name="poliedro_einvoice_attempts"/>
+                    <field name="poliedro_einvoice_request_id"/>
+                    <field name="poliedro_einvoice_last_response"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_pos_order_search_poliedro_einvoice_webhook" model="ir.ui.view">
+        <field name="name">pos.order.search.poliedro.einvoice.webhook</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_order_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <filter name="poliedro_einvoice_pending"
+                        string="FE pendiente"
+                        domain="[('poliedro_einvoice_state', '=', 'pending')]"/>
+                <filter name="poliedro_einvoice_queued"
+                        string="FE enviada a cola"
+                        domain="[('poliedro_einvoice_state', '=', 'queued')]"/>
+                <filter name="poliedro_einvoice_error"
+                        string="FE con error"
+                        domain="[('poliedro_einvoice_state', '=', 'error')]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,214 @@
+.pos-receipt.poliedro-cash-closing-receipt,
+.pos-receipt-print.poliedro-cash-closing-receipt {
+    width: 512px !important;
+    min-width: 512px !important;
+    max-width: 512px !important;
+    box-sizing: border-box;
+    padding: 18px 22px 24px !important;
+    overflow: hidden;
+    color: #111 !important;
+    background: #fff !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+}
+
+.poliedro-cash-closing-receipt {
+    .poliedro-closing-header {
+        margin-bottom: 16px;
+        text-align: center;
+    }
+
+    .poliedro-closing-brand {
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+    }
+
+    .poliedro-closing-document-title {
+        margin-top: 7px;
+        padding: 7px 0;
+        border-top: 2px solid #111;
+        border-bottom: 2px solid #111;
+        font-size: 25px;
+        font-weight: 900;
+        letter-spacing: 0.8px;
+    }
+
+    .poliedro-closing-muted {
+        margin-top: 6px;
+        font-size: 17px;
+    }
+
+    .poliedro-closing-meta,
+    .poliedro-closing-section {
+        margin-bottom: 15px;
+    }
+
+    .poliedro-closing-section {
+        padding-top: 10px;
+        border-top: 2px dashed #111;
+    }
+
+    .poliedro-closing-section-title {
+        margin-bottom: 8px;
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: 0.4px;
+    }
+
+    .poliedro-closing-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+        margin: 4px 0;
+
+        > :first-child {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        > :last-child {
+            flex: 0 0 auto;
+            max-width: 58%;
+            text-align: right;
+            overflow-wrap: anywhere;
+        }
+    }
+
+    .poliedro-closing-prominent,
+    .poliedro-closing-difference {
+        margin-top: 8px;
+        padding-top: 7px;
+        border-top: 1px solid #111;
+        font-size: 23px;
+        font-weight: 900;
+    }
+
+    .poliedro-closing-subtitle {
+        margin-top: 9px;
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+    .poliedro-closing-detail {
+        padding-left: 10px;
+        font-size: 18px;
+    }
+
+    .poliedro-closing-detail-total {
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+    .poliedro-closing-divider {
+        margin: 8px 0;
+        border-top: 1px solid #111;
+    }
+
+    .poliedro-closing-payment-header,
+    .poliedro-closing-payment-row,
+    .poliedro-closing-denomination-header,
+    .poliedro-closing-denomination-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) repeat(3, minmax(0, 1fr));
+        column-gap: 6px;
+        align-items: end;
+    }
+
+    .poliedro-closing-payment-header {
+        padding: 5px 0;
+        border-bottom: 1px solid #111;
+        font-size: 15px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .poliedro-closing-denomination-header,
+    .poliedro-closing-denomination-row {
+        grid-template-columns: 0.55fr 1.2fr 1.2fr;
+        column-gap: 8px;
+
+        > :not(:first-child) {
+            text-align: right;
+        }
+    }
+
+    .poliedro-closing-denomination-header {
+        padding: 4px 0;
+        border-bottom: 1px solid #111;
+        font-size: 15px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .poliedro-closing-denomination-row {
+        padding: 4px 0;
+        border-bottom: 1px dotted #777;
+        font-size: 18px;
+    }
+
+    .poliedro-closing-payment-row {
+        padding: 7px 0;
+        border-bottom: 1px dotted #777;
+        font-size: 16px;
+
+        > :not(:first-child) {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        > :first-child {
+            overflow-wrap: anywhere;
+        }
+    }
+
+    .poliedro-closing-payment-total {
+        border-top: 2px solid #111;
+        border-bottom: 2px solid #111;
+        font-size: 17px;
+        font-weight: 900;
+    }
+
+    .poliedro-closing-note {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        margin-bottom: 7px;
+        overflow-wrap: anywhere;
+    }
+
+    .poliedro-closing-signatures {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 26px;
+        margin: 42px 0 18px;
+        font-size: 16px;
+        text-align: center;
+
+        > div {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+    }
+
+    .poliedro-closing-signature-line {
+        display: block;
+        border-top: 1px solid #111;
+    }
+
+    .poliedro-closing-footer {
+        padding-top: 10px;
+        border-top: 2px dashed #111;
+        font-size: 16px;
+        text-align: center;
+        white-space: pre-line;
+    }
+}
+
+.close-pos-popup .poliedro-print-closing-button {
+    white-space: nowrap;
+}

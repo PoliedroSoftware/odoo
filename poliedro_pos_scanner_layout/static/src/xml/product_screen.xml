@@ -44,11 +44,21 @@
                                 class="poliedro-scanner-invoice-toggle"
                                 type="button"
                                 t-att-class="{'is-active': currentOrder.isToInvoice()}"
+                                t-att-aria-checked="currentOrder.isToInvoice() ? 'true' : 'false'"
+                                role="switch"
                                 t-on-click="togglePoliedroScannerInvoice"
-                                title="Marcar para factura">
-                            <i class="fa fa-file-text-o me-1" aria-hidden="true"/>
-                            <span>Recibo/Factura</span>
-                            <i class="fa ms-1" t-att-class="currentOrder.isToInvoice() ? 'fa-check-square' : 'fa-square-o'" aria-hidden="true"/>
+                                title="Emitir factura electrónica">
+                            <span class="poliedro-scanner-invoice-label">
+                                <i class="fa fa-file-text-o" aria-hidden="true"/>
+                                Factura electrónica
+                            </span>
+                            <span class="poliedro-scanner-switch" aria-hidden="true">
+                                <span class="poliedro-scanner-switch-thumb"/>
+                            </span>
+                            <span class="poliedro-scanner-invoice-state">
+                                <t t-if="currentOrder.isToInvoice()">Sí</t>
+                                <t t-else="">No</t>
+                            </span>
                         </button>
                         <button t-if="!isPoliedroScannerPayment"
                                 class="poliedro-layout-toggle is-scanner"
@@ -114,9 +124,15 @@
                     <OrderSummary/>
                 </div>
 
-                <main t-if="!isPoliedroScannerPayment"
-                      class="poliedro-scanner-main d-flex flex-grow-1 overflow-hidden">
+                <main class="poliedro-scanner-main d-flex flex-grow-1 overflow-hidden"
+                      t-att-class="{'is-payment-locked': isPoliedroScannerPayment}">
                     <section class="poliedro-scanner-table-card d-flex flex-column flex-grow-1 overflow-hidden">
+                        <div t-if="isPoliedroScannerPayment" class="poliedro-scanner-sale-lockbar">
+                            <span>
+                                <i class="fa fa-lock me-1" aria-hidden="true"/>
+                                Venta bloqueada mientras se registra el pago
+                            </span>
+                        </div>
                         <div class="poliedro-scanner-table-header poliedro-scanner-grid">
                             <span>Cant.</span>
                             <span>Código</span>
@@ -148,7 +164,7 @@
                                        step="any"
                                        min="0"
                                        t-att-value="line.getQuantity()"
-                                       t-att-disabled="line.combo_parent_id"
+                                       t-att-disabled="line.combo_parent_id or isPoliedroScannerPayment"
                                        aria-label="Cantidad"
                                        t-on-click.stop="(event) => this.selectPoliedroScannerQtyLine(event, line)"
                                        t-on-keydown="(event) => this.onPoliedroScannerQtyKeydown(event)"
@@ -198,7 +214,7 @@
                         </div>
                     </section>
 
-                    <aside t-if="poliedroScannerState.showNumpad"
+                    <aside t-if="poliedroScannerState.showNumpad and !isPoliedroScannerPayment"
                            class="poliedro-scanner-numpad d-flex flex-column">
                         <div class="poliedro-scanner-numpad-title d-flex justify-content-between align-items-center">
                             <span>Editar línea</span>
@@ -212,28 +228,52 @@
                     </aside>
                 </main>
 
-                <section t-else="" class="poliedro-scanner-payment-stage d-flex flex-column flex-grow-1 overflow-hidden">
-                    <div class="poliedro-scanner-payment-toolbar d-flex align-items-center justify-content-between">
-                        <button class="btn btn-secondary"
-                                type="button"
-                                t-on-click="closePoliedroScannerPayment">
-                            <i class="fa fa-arrow-left me-2"/> Volver al detalle
-                        </button>
-                        <div class="poliedro-scanner-enter-hint">
-                            <kbd>Enter</kbd>
-                            <span>Confirmar venta pagada</span>
+                <aside t-if="isPoliedroScannerPayment"
+                       class="poliedro-scanner-payment-drawer">
+                    <div class="poliedro-payment-drawer-header">
+                        <div>
+                            <span class="poliedro-payment-drawer-kicker">Cobro</span>
+                            <h2>Registrar pago</h2>
+                            <p>Seleccione el método e ingrese el valor recibido.</p>
                         </div>
-                        <div class="poliedro-scanner-payment-reference">
-                            <small>Total de la venta</small>
+                        <button class="poliedro-payment-drawer-close btn btn-light"
+                                type="button"
+                                t-on-click="closePoliedroScannerPayment"
+                                aria-label="Cerrar cobro"
+                                title="Cerrar cobro">
+                            <i class="fa fa-times" aria-hidden="true"/>
+                        </button>
+                    </div>
+
+                    <div class="poliedro-payment-drawer-totals">
+                        <div class="poliedro-payment-drawer-total">
+                            <small>Total a pagar</small>
                             <strong t-out="poliedroScannerTotal"/>
                         </div>
+                        <div class="poliedro-payment-drawer-change"
+                             t-att-class="{'has-change': Math.abs(currentOrder?.change || 0) &gt; 0}">
+                            <small>Cambio</small>
+                            <strong t-out="poliedroScannerChange"/>
+                        </div>
                     </div>
-                    <div class="poliedro-scanner-payment-native flex-grow-1 overflow-hidden">
-                        <PaymentScreen orderUuid="currentOrder.uuid"/>
-                    </div>
-                </section>
 
-                <footer t-if="!isPoliedroScannerPayment" class="poliedro-scanner-footer">
+                    <div class="poliedro-payment-drawer-label">
+                        <i class="fa fa-credit-card" aria-hidden="true"/>
+                        Métodos de pago
+                    </div>
+                    <div class="poliedro-scanner-payment-drawer-body">
+                        <PaymentScreen
+                            orderUuid="currentOrder.uuid"
+                            poliedroEmbedded="true"/>
+                    </div>
+
+                    <div class="poliedro-payment-drawer-help">
+                        <kbd>Enter</kbd>
+                        <span>Confirma la venta cuando el pago esté completo</span>
+                    </div>
+                </aside>
+
+                <footer class="poliedro-scanner-footer">
                     <div class="poliedro-scanner-summary d-flex align-items-center justify-content-between gap-4">
                         <div class="poliedro-scanner-counters d-flex align-items-center gap-4">
                             <div><small>Artículos</small><strong t-out="poliedroScannerItems"/></div>
@@ -242,21 +282,53 @@
                             <div><small>Descuentos</small><strong t-out="poliedroScannerDiscounts"/></div>
                             <div><small>IVA</small><strong t-out="poliedroScannerTaxes"/></div>
                         </div>
-                        <div class="poliedro-scanner-grand-total">
-                            <span>TOTAL</span>
-                            <strong t-out="poliedroScannerTotal"/>
+                        <div class="poliedro-payment-totals">
+                            <div class="poliedro-payment-total">
+                                <small>Total</small>
+                                <strong t-out="poliedroScannerTotal"/>
+                            </div>
+                            <div class="poliedro-payment-change"
+                                 t-att-class="{'has-change': Math.abs(currentOrder?.change || 0) &gt; 0}">
+                                <small>Cambio</small>
+                                <strong t-out="poliedroScannerChange"/>
+                            </div>
                         </div>
                     </div>
                     <div class="poliedro-scanner-actions d-flex align-items-center gap-2">
-                        <div class="poliedro-scanner-native-actions d-flex flex-grow-1 gap-2">
-                            <ControlButtons onClickMore.bind="displayAllControlPopup"/>
+                        <div class="poliedro-scanner-native-actions d-flex align-items-center gap-2">
+                            <SelectPartnerButton partner="currentOrder.getPartner()"/>
+                            <InternalNoteButton label.translate="Nota" class="'btn btn-secondary btn-lg'"/>
                         </div>
-                        <button class="poliedro-scanner-pay btn btn-primary btn-lg"
+                        <div class="poliedro-payment-utilities d-flex align-items-center gap-2 ms-auto">
+                            <button class="btn btn-light poliedro-payment-utility"
+                                    type="button"
+                                    t-att-disabled="currentOrder.isEmpty()"
+                                    t-on-click="savePoliedroScannerOrder"
+                                    title="Guardar orden">
+                                <i class="fa fa-upload" aria-hidden="true"/>
+                            </button>
+                            <button class="btn btn-light poliedro-payment-utility"
+                                    type="button"
+                                    t-on-click="displayAllControlPopup"
+                                    title="Más acciones">
+                                <i class="oi oi-fw oi-ellipsis-v" aria-hidden="true"/>
+                            </button>
+                        </div>
+                        <button t-if="!isPoliedroScannerPayment"
+                                class="poliedro-scanner-open-payment btn btn-primary"
+                                type="button"
                                 t-att-disabled="currentOrder.isEmpty()"
                                 t-on-click="openPoliedroScannerPayment">
-                            <span>Pagar</span>
-                            <kbd class="ms-2">Enter</kbd>
-                            <i class="fa fa-arrow-right ms-2"/>
+                            <i class="fa fa-credit-card" aria-hidden="true"/>
+                            <span>Cobrar</span>
+                            <kbd>Enter</kbd>
+                        </button>
+                        <button t-else=""
+                                class="poliedro-scanner-close-payment btn btn-light"
+                                type="button"
+                                t-on-click="closePoliedroScannerPayment">
+                            <i class="fa fa-arrow-left" aria-hidden="true"/>
+                            <span>Seguir escaneando</span>
                         </button>
                     </div>
                 </footer>
@@ -295,13 +367,21 @@
                             class="poliedro-scanner-invoice-toggle"
                             type="button"
                             t-att-class="{'is-active': pos.getOrder().isToInvoice()}"
+                            t-att-aria-checked="pos.getOrder().isToInvoice() ? 'true' : 'false'"
+                            role="switch"
                             t-on-click="togglePoliedroScannerNavbarInvoice"
-                            title="Marcar para factura">
-                        <i class="fa fa-file-text-o" aria-hidden="true"/>
-                        <span>Factura</span>
-                        <i class="fa ms-1"
-                           t-att-class="pos.getOrder().isToInvoice() ? 'fa-check-square' : 'fa-square-o'"
-                           aria-hidden="true"/>
+                            title="Emitir factura electrónica">
+                        <span class="poliedro-scanner-invoice-label">
+                            <i class="fa fa-file-text-o" aria-hidden="true"/>
+                            Factura electrónica
+                        </span>
+                        <span class="poliedro-scanner-switch" aria-hidden="true">
+                            <span class="poliedro-scanner-switch-thumb"/>
+                        </span>
+                        <span class="poliedro-scanner-invoice-state">
+                            <t t-if="pos.getOrder().isToInvoice()">Sí</t>
+                            <t t-else="">No</t>
+                        </span>
                     </button>
                     <button class="poliedro-layout-toggle is-scanner"
                             type="button"
@@ -332,4 +412,5 @@
             </div>
         </xpath>
     </t>
+
 </templates>

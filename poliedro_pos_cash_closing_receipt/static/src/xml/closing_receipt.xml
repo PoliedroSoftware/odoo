@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="poliedro_pos_cash_closing_receipt.ClosePosPopup"
+       t-inherit="point_of_sale.ClosePosPopup"
+       t-inherit-mode="extension">
+        <xpath expr="//SaleDetailsButton/.." position="before">
+            <button t-if="hardwareProxy.printer"
+                    class="button icon btn btn-secondary poliedro-print-closing-button"
+                    t-att-class="{'btn-lg': !this.ui.isSmall, 'w-100': this.ui.isSmall}"
+                    t-att-disabled="state.poliedroClosingPrinting or !canConfirm()"
+                    t-on-click="printPoliedroCashClosing"
+                    title="Imprimir el arqueo contado en la impresora térmica">
+                <i class="fa fa-print me-2" role="img"/>
+                <t t-if="state.poliedroClosingPrinting">Imprimiendo...</t>
+                <t t-else="">Imprimir arqueo</t>
+            </button>
+        </xpath>
+    </t>
+
+    <t t-name="poliedro_pos_cash_closing_receipt.CashClosingReceipt">
+        <div class="pos-receipt poliedro-cash-closing-receipt">
+            <header class="poliedro-closing-header">
+                <div class="poliedro-closing-brand" t-esc="title"/>
+                <div class="poliedro-closing-document-title">ARQUEO DE CAJA</div>
+                <div t-if="company.vat" class="poliedro-closing-muted">
+                    NIT: <t t-esc="company.vat"/>
+                </div>
+            </header>
+
+            <section class="poliedro-closing-meta">
+                <div class="poliedro-closing-row">
+                    <span>Punto de venta</span>
+                    <strong t-esc="posName"/>
+                </div>
+                <div class="poliedro-closing-row">
+                    <span>Sesión</span>
+                    <strong t-esc="sessionName"/>
+                </div>
+                <div class="poliedro-closing-row">
+                    <span>Cajero</span>
+                    <strong t-esc="cashierName"/>
+                </div>
+                <div class="poliedro-closing-row">
+                    <span>Fecha</span>
+                    <strong t-esc="date"/>
+                </div>
+            </section>
+
+            <section class="poliedro-closing-section">
+                <div class="poliedro-closing-section-title">RESUMEN DE VENTAS</div>
+                <div class="poliedro-closing-row">
+                    <span>Órdenes procesadas</span>
+                    <strong t-esc="orders"/>
+                </div>
+                <div class="poliedro-closing-row poliedro-closing-prominent">
+                    <span>Total vendido</span>
+                    <strong t-esc="formatCurrency(salesTotal)"/>
+                </div>
+            </section>
+
+            <section t-if="cashControl" class="poliedro-closing-section">
+                <div class="poliedro-closing-section-title">CONTROL DE EFECTIVO</div>
+                <div class="poliedro-closing-row">
+                    <span>Fondo inicial</span>
+                    <strong t-esc="formatCurrency(cash.opening)"/>
+                </div>
+                <div class="poliedro-closing-row">
+                    <span>Ventas / pagos en efectivo</span>
+                    <strong t-esc="formatCurrency(cash.paymentAmount)"/>
+                </div>
+                <t t-if="moves.length">
+                    <div class="poliedro-closing-subtitle">Entradas y salidas</div>
+                    <div t-foreach="moves" t-as="move" t-key="move.id" class="poliedro-closing-row poliedro-closing-detail">
+                        <span t-esc="move.name"/>
+                        <strong t-esc="formatCurrency(move.amount)"/>
+                    </div>
+                    <div class="poliedro-closing-row poliedro-closing-detail-total">
+                        <span>Neto entradas / salidas</span>
+                        <strong t-esc="formatCurrency(movesTotal)"/>
+                    </div>
+                </t>
+                <div class="poliedro-closing-divider"/>
+                <div class="poliedro-closing-row">
+                    <span>Efectivo esperado</span>
+                    <strong t-esc="formatCurrency(cash.expected)"/>
+                </div>
+                <div class="poliedro-closing-row">
+                    <span>Efectivo contado</span>
+                    <strong t-esc="formatCurrency(cash.counted)"/>
+                </div>
+                <t t-if="denominationRows.length">
+                    <div class="poliedro-closing-subtitle">Desglose contado</div>
+                    <div class="poliedro-closing-denomination-header">
+                        <span>Cant.</span>
+                        <span>Denominación</span>
+                        <span>Subtotal</span>
+                    </div>
+                    <div t-foreach="denominationRows" t-as="denomination" t-key="denomination.value" class="poliedro-closing-denomination-row">
+                        <strong t-esc="denomination.quantity"/>
+                        <span t-esc="formatCurrency(denomination.value)"/>
+                        <strong t-esc="formatCurrency(denomination.subtotal)"/>
+                    </div>
+                </t>
+                <div class="poliedro-closing-row poliedro-closing-difference">
+                    <span>Diferencia de efectivo</span>
+                    <strong t-esc="formatCurrency(cash.difference)"/>
+                </div>
+            </section>
+
+            <section class="poliedro-closing-section">
+                <div class="poliedro-closing-section-title">MEDIOS DE PAGO</div>
+                <div class="poliedro-closing-payment-header">
+                    <span>Medio</span>
+                    <span>Esperado</span>
+                    <span>Contado</span>
+                    <span>Dif.</span>
+                </div>
+                <div t-foreach="paymentRows" t-as="payment" t-key="payment.id" class="poliedro-closing-payment-row">
+                    <strong t-esc="payment.name"/>
+                    <span t-esc="formatCurrency(payment.expected)"/>
+                    <span t-esc="formatCurrency(payment.counted)"/>
+                    <span t-esc="formatCurrency(payment.difference)"/>
+                </div>
+                <div class="poliedro-closing-payment-row poliedro-closing-payment-total">
+                    <strong>TOTALES</strong>
+                    <strong t-esc="formatCurrency(totals.expected)"/>
+                    <strong t-esc="formatCurrency(totals.counted)"/>
+                    <strong t-esc="formatCurrency(totals.difference)"/>
+                </div>
+            </section>
+
+            <section t-if="openingNotes or closingNotes" class="poliedro-closing-section">
+                <div class="poliedro-closing-section-title">OBSERVACIONES</div>
+                <div t-if="openingNotes" class="poliedro-closing-note">
+                    <strong>Al abrir:</strong>
+                    <span t-esc="openingNotes"/>
+                </div>
+                <div t-if="closingNotes" class="poliedro-closing-note">
+                    <strong>Al cerrar:</strong>
+                    <span t-esc="closingNotes"/>
+                </div>
+            </section>
+
+            <section class="poliedro-closing-signatures">
+                <div>
+                    <span class="poliedro-closing-signature-line"/>
+                    <span>Firma del cajero</span>
+                </div>
+                <div>
+                    <span class="poliedro-closing-signature-line"/>
+                    <span>Firma del responsable</span>
+                </div>
+            </section>
+
+            <footer class="poliedro-closing-footer">
+                <div t-if="footer" t-esc="footer"/>
+                <div>Generado por Poliedro Software</div>
+            </footer>
+        </div>
+    </t>
+</templates>
