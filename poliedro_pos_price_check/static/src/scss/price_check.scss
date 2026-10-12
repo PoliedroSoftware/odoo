@@ -1,0 +1,13 @@
+.poliedro-price-check-toggle { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.poliedro-price-check-toggle.is-active { color: #5b3d73; background: #f1eafb; border-color: #8b6ca5; }
+.poliedro-price-check-live { font-size: 11px; padding: 2px 7px; border-radius: 999px; color: #176b3a; background: #e7f7ed; }
+.poliedro-price-card { display: grid; gap: 14px; }
+.poliedro-price-card h2 { margin: 0; font-size: 24px; }
+.poliedro-price-card-status { color: #176b3a; font-weight: 700; }
+.poliedro-price-card-code { display: flex; gap: 18px; color: #6b7280; }
+.poliedro-price-card-main { padding: 18px; border-radius: 14px; background: #f5f1f8; display: grid; }
+.poliedro-price-card-main strong { color: #5b3d73; font-size: 38px; line-height: 1.1; }
+.poliedro-price-promotion { color: #176b3a; font-weight: 700; }
+.poliedro-price-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.poliedro-price-card-grid > div { border: 1px solid #e5e7eb; border-radius: 12px; padding: 12px; display: grid; gap: 3px; }
+.poliedro-price-card-grid small, .poliedro-price-card-grid span { color: #6b7280; }

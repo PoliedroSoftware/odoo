@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ <record id="view_poliedro_cash_move_reason_list" model="ir.ui.view"><field name="name">poliedro.pos.cash.move.reason.list</field><field name="model">poliedro.pos.cash.move.reason</field><field name="arch" type="xml"><list editable="bottom"><field name="sequence" widget="handle"/><field name="name"/><field name="code"/><field name="direction"/><field name="config_ids" widget="many2many_tags" optional="show"/><field name="company_id" groups="base.group_multi_company"/><field name="active"/></list></field></record>
+ <record id="action_poliedro_cash_move_reason" model="ir.actions.act_window"><field name="name">Motivos de efectivo</field><field name="res_model">poliedro.pos.cash.move.reason</field><field name="view_mode">list,form</field></record>
+ <menuitem id="menu_poliedro_cash_move_reason" name="Motivos de efectivo" parent="point_of_sale.menu_point_config_product" action="action_poliedro_cash_move_reason" sequence="96" groups="point_of_sale.group_pos_manager"/>
+ <record id="reason_opening_fund" model="poliedro.pos.cash.move.reason"><field name="name">Fondo inicial adicional</field><field name="code">FONDO_INICIAL</field><field name="direction">in</field></record>
+ <record id="reason_misc_income" model="poliedro.pos.cash.move.reason"><field name="name">Ingreso varios</field><field name="code">INGRESO_VARIOS</field><field name="direction">in</field></record>
+ <record id="reason_supplier" model="poliedro.pos.cash.move.reason"><field name="name">Pago a proveedor</field><field name="code">PAGO_PROVEEDOR</field><field name="direction">out</field></record>
+ <record id="reason_expense" model="poliedro.pos.cash.move.reason"><field name="name">Gasto menor</field><field name="code">GASTO_MENOR</field><field name="direction">out</field></record>
+ <record id="reason_cash_collection" model="poliedro.pos.cash.move.reason"><field name="name">Retiro por recaudo</field><field name="code">RETIRO_RECAUDO</field><field name="direction">out</field></record>
+</odoo>

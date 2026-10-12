@@ -1,0 +1,304 @@
+.poliedro-iot-health {
+    flex: 0 0 auto;
+}
+
+.poliedro-iot-health-chip {
+    display: inline-flex;
+    min-height: 34px;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 10px;
+    border: 1px solid #d9dde4;
+    border-radius: 10px;
+    background: #fff;
+    color: #30343b;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.poliedro-iot-health-chip:hover {
+    background: #f7f7f9;
+}
+
+.poliedro-iot-health-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #9ca3af;
+}
+
+.poliedro-iot-health-chip.is-success .poliedro-iot-health-dot {
+    background: #22a06b;
+}
+
+.poliedro-iot-health-chip.is-warning .poliedro-iot-health-dot,
+.poliedro-iot-health-chip.is-checking .poliedro-iot-health-dot {
+    background: #d97706;
+}
+
+.poliedro-iot-health-chip.is-danger .poliedro-iot-health-dot {
+    background: #dc2626;
+}
+
+.poliedro-iot-health-backdrop {
+    position: fixed;
+    z-index: 1090;
+    inset: 0;
+    border: 0;
+    background: rgba(17, 24, 39, 0.28);
+}
+
+.poliedro-iot-health-panel {
+    position: fixed;
+    z-index: 1091;
+    top: 0;
+    right: 0;
+    display: flex;
+    width: 94vw;
+    max-width: 430px;
+    height: 100vh;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 22px;
+    background: #f7f8fa;
+    box-shadow: -14px 0 36px rgba(17, 24, 39, 0.16);
+    color: #1f2937;
+    text-align: left;
+}
+
+.poliedro-iot-health-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.poliedro-iot-health-header small {
+    color: #7c3aed;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.poliedro-iot-health-header h2 {
+    margin: 3px 0 0;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.poliedro-iot-health-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding: 14px;
+    border: 1px solid #dfe3e8;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.poliedro-iot-health-summary-icon {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    place-items: center;
+    border-radius: 10px;
+    background: #eef0f3;
+    color: #59616e;
+}
+
+.poliedro-iot-health-summary.is-success .poliedro-iot-health-summary-icon {
+    background: #e7f7ef;
+    color: #157347;
+}
+
+.poliedro-iot-health-summary.is-warning .poliedro-iot-health-summary-icon,
+.poliedro-iot-health-summary.is-checking .poliedro-iot-health-summary-icon {
+    background: #fff4df;
+    color: #a65d00;
+}
+
+.poliedro-iot-health-summary.is-danger .poliedro-iot-health-summary-icon {
+    background: #fdebec;
+    color: #b42318;
+}
+
+.poliedro-iot-health-summary strong,
+.poliedro-iot-health-summary small {
+    display: block;
+}
+
+.poliedro-iot-health-summary small {
+    margin-top: 2px;
+    color: #667085;
+    font-size: 12px;
+}
+
+.poliedro-iot-health-devices {
+    overflow: hidden;
+    border: 1px solid #dfe3e8;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.poliedro-iot-device {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 11px;
+    min-height: 68px;
+    padding: 11px 13px;
+    border-bottom: 1px solid #eceef1;
+}
+
+.poliedro-iot-device:last-child {
+    border-bottom: 0;
+}
+
+.poliedro-iot-device-icon {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border-radius: 10px;
+    background: #f0ebf8;
+    color: #6f42a1;
+}
+
+.poliedro-iot-device-copy {
+    min-width: 0;
+}
+
+.poliedro-iot-device-copy strong,
+.poliedro-iot-device-copy small {
+    display: block;
+}
+
+.poliedro-iot-device-copy strong {
+    font-size: 13px;
+}
+
+.poliedro-iot-device-copy small {
+    overflow: hidden;
+    margin-top: 2px;
+    color: #667085;
+    font-size: 11px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.poliedro-iot-device-state,
+.poliedro-iot-device-action {
+    min-width: 70px;
+    padding: 6px 9px;
+    border: 1px solid #d9dde4;
+    border-radius: 9px;
+    background: #fff;
+    color: #475467;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.poliedro-iot-device-state.is-success {
+    border-color: #b9e5cf;
+    background: #edf9f3;
+    color: #157347;
+}
+
+.poliedro-iot-device-state.is-danger {
+    border-color: #f4c7ca;
+    background: #fff1f2;
+    color: #b42318;
+}
+
+.poliedro-iot-device-action:hover:not(:disabled) {
+    border-color: #8b5fb5;
+    color: #6f42a1;
+}
+
+.poliedro-iot-device-action:disabled {
+    cursor: not-allowed;
+    opacity: 0.48;
+}
+
+.poliedro-iot-health-activity {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    padding: 12px;
+    border: 1px solid #dfe3e8;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.poliedro-iot-health-activity-icon {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border-radius: 9px;
+    background: #eef0f3;
+    color: #59616e;
+}
+
+.poliedro-iot-health-activity-icon.is-danger {
+    background: #fdebec;
+    color: #b42318;
+}
+
+.poliedro-iot-health-activity small,
+.poliedro-iot-health-activity strong {
+    display: block;
+}
+
+.poliedro-iot-health-activity small,
+.poliedro-iot-health-activity time {
+    color: #667085;
+    font-size: 10px;
+}
+
+.poliedro-iot-health-activity strong {
+    overflow: hidden;
+    margin-top: 2px;
+    font-size: 11px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.poliedro-iot-health-footer {
+    margin-top: auto;
+    padding-top: 18px;
+}
+
+.poliedro-iot-health-footer p {
+    margin: 0 0 12px;
+    color: #667085;
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.poliedro-iot-health-footer .btn {
+    width: 100%;
+    min-height: 44px;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+@media (max-width: 1320px) {
+    .poliedro-iot-health-chip-label {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .poliedro-iot-health-panel {
+        padding: 18px;
+    }
+}

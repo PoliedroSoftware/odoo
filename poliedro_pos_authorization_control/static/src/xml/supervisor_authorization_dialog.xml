@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+ <t t-name="poliedro_pos_authorization_control.SupervisorAuthorizationDialog">
+  <Dialog title="props.title || 'Autorización requerida'" size="'md'">
+   <div class="poliedro-auth-dialog">
+    <div class="poliedro-auth-icon"><i class="fa fa-shield"/></div>
+    <div class="poliedro-auth-copy"><strong t-esc="props.operationLabel"/><span>Un supervisor debe aprobar esta operación.</span></div>
+    <label class="form-label" for="poliedro-supervisor-pin">PIN del supervisor</label>
+    <input id="poliedro-supervisor-pin" class="form-control form-control-lg text-center" type="password" inputmode="numeric" autocomplete="off" maxlength="10" t-model="state.pin" t-on-keydown="(ev) => ev.key === 'Enter' &amp;&amp; confirm()" autofocus="autofocus"/>
+    <t t-if="props.requireReason"><label class="form-label mt-3" for="poliedro-auth-reason">Motivo</label><textarea id="poliedro-auth-reason" class="form-control" rows="3" maxlength="500" t-model="state.reason" placeholder="Explique brevemente la razón"/></t>
+   </div>
+   <t t-set-slot="footer"><button class="btn btn-primary btn-lg" t-on-click="confirm" t-att-disabled="state.checking">Autorizar</button><button class="btn btn-secondary btn-lg" t-on-click="cancel">Cancelar</button></t>
+  </Dialog>
+ </t>
+</templates>

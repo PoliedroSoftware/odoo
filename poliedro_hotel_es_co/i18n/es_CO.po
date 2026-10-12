@@ -1,0 +1,2816 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hotel_management_odoo
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-11 22:52+0000\n"
+"PO-Revision-Date: 2026-10-11 22:52+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_CO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_fleet_booking_line__state
+#: model:ir.model.fields,help:hotel_management_odoo.field_food_booking_line__state
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_line__state
+#: model:ir.model.fields,help:hotel_management_odoo.field_service_booking_line__state
+msgid " Status of the Order"
+msgstr "Estado de la reserva"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.report,print_report_name:hotel_management_odoo.action_report_combined_bill
+msgid ""
+"('%s - %s' % ('Combined Bill' if object.bill_type == 'combined' else "
+"'Isolated Bill', object.booking_id.name))"
+msgstr ""
+"('%s - %s' % ('Cuenta conjunta' if object.bill_type == 'combined' else "
+"'Cuenta individual', object.booking_id.name))"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_detail_view_form
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.sale_order_detail_view_form
+msgid ""
+"<i class=\"fa fa-download mr-2\"/>\n"
+"                        Download PDF"
+msgstr ""
+"<i class=\"fa fa-download mr-2\"/>\n"
+"                        Descargar PDF"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_detail_view_form
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.sale_order_detail_view_form
+msgid ""
+"<i class=\"fa fa-download mr-2\"/>\n"
+"                        Download XLS"
+msgstr ""
+"<i class=\"fa fa-download mr-2\"/>\n"
+"                        Descargar Excel"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_combined_bill
+msgid "<strong>Check In Date:</strong><br/>"
+msgstr "<strong>Fecha de entrada:</strong><br/>"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_combined_bill
+msgid "<strong>Check out Date:</strong><br/>"
+msgstr "<strong>Fecha de salida:</strong><br/>"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_combined_bill
+msgid "<strong>Customer:</strong><br/>"
+msgstr "<strong>Cliente:</strong><br/>"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_combined_bill
+msgid "<strong>Manager:</strong><br/>"
+msgstr "<strong>Responsable:</strong><br/>"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_combined_bill
+msgid "<strong>Subtotal</strong>"
+msgstr "<strong>Subtotal</strong>"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__duration_visible
+msgid "A dummy field for Duration"
+msgstr "Campo técnico de duración"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__description
+msgid "About"
+msgstr "Descripción"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.maintenance_request_view_form
+msgid "Accept & Start"
+msgstr "Aceptar e iniciar"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__message_needaction
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__message_needaction
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__message_needaction
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__message_needaction
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__message_needaction
+msgid "Action Needed"
+msgstr "Requiere acción"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__activity_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__activity_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__activity_exception_decoration
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__activity_exception_decoration
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Indicador de excepción de actividad"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__activity_state
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__activity_state
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__activity_state
+msgid "Activity State"
+msgstr "Estado de la actividad"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__activity_type_icon
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__activity_type_icon
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Icono del tipo de actividad"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__remarks
+msgid "Add Remarks"
+msgstr "Agregar observaciones"
+
+#. module: hotel_management_odoo
+#: model:res.groups,name:hotel_management_odoo.hotel_group_admin
+#: model:res.groups.privilege,name:hotel_management_odoo.privilege_admin
+msgid "Admin"
+msgstr "Administrador"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Allotted KM"
+msgstr "Kilómetros asignados"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.product_template_inherit_form_view
+msgid "Amenities"
+msgstr "Comodidades"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.act_window,name:hotel_management_odoo.hotel_amenity_action
+#: model:ir.ui.menu,name:hotel_management_odoo.hotel_amenity_menu
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.hotel_amenity_view_form
+msgid "Amenity"
+msgstr "Comodidad"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_sale_order
+msgid "Amount Total"
+msgstr "Valor total"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_untaxed_fleet
+msgid "Amount Untaxed"
+msgstr "Valor antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.cleaning_request_view_form
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.maintenance_request_view_form
+msgid "Assign Support"
+msgstr "Asignar soporte"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.cleaning_request_view_form
+msgid "Assign To"
+msgstr "Asignar a"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.maintenance_request_view_form
+msgid "Assign To Team"
+msgstr "Asignar al equipo"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.maintenance_request_view_form
+msgid "Assign To User"
+msgstr "Asignar al usuario"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__cleaning_request__state__assign
+msgid "Assigned"
+msgstr "Asignado"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__assigned_id
+msgid "Assigned To"
+msgstr "Asignado a"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__assigned_user_id
+msgid "Assigned User"
+msgstr "Usuario asignado"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__message_attachment_count
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__message_attachment_count
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__message_attachment_count
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__message_attachment_count
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__message_attachment_count
+msgid "Attachment Count"
+msgstr "Cantidad de archivos adjuntos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_product__num_person
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_template__num_person
+msgid "Automatically chooses the No. of Persons"
+msgstr "Selecciona automáticamente la capacidad de personas"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_product__floor_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_template__floor_id
+msgid "Automatically selects the Floor"
+msgstr "Selecciona automáticamente el piso"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_product__room_type
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_template__room_type
+msgid "Automatically selects the Room Type"
+msgstr "Selecciona automáticamente el tipo de habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_product__user_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_template__user_id
+msgid "Automatically selects the manager"
+msgstr "Selecciona automáticamente al responsable"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_product__is_room_avail
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_template__is_room_avail
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__product_template__status__available
+msgid "Available"
+msgstr "Disponible"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/js/dashboard_action.js:0
+msgid "Available Room"
+msgstr "Habitación disponible"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+msgid "Available Rooms"
+msgstr "Habitaciones disponibles"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/js/dashboard_action.js:0
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+msgid "Available Vehicle"
+msgstr "Vehículo disponible"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.actions.act_window,help:hotel_management_odoo.room_booking_action
+msgid "Book your rooms here!"
+msgstr "¡Reserve aquí sus habitaciones!"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__booking_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__booking_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__booking_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__booking_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__booking_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__booking_id
+msgid "Booking"
+msgstr "Reserva"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_combined_bill
+msgid "Booking #"
+msgstr "Reserva n.º"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__booking_line_visible
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__booking_line_visible
+msgid "Booking Line Visible"
+msgstr "Línea de reserva visible"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_account_bank_statement_line__hotel_booking_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_account_move__hotel_booking_id
+msgid "Booking Reference"
+msgstr "Referencia de la reserva"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "COMPUTE BILL"
+msgstr "CALCULAR CUENTA"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_detail_view_form
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.sale_order_detail_view_form
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__maintenance_request__state__cancel
+msgid "Canceled"
+msgstr "Cancelado"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_sale_order_detail__state_cancel
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__room_booking__state__cancel
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Cashier"
+msgstr "Cajero"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__checkin_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__checkin_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_sale_order_detail__checkin
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_sale_order_detail__state_check_in
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__room_booking__state__check_in
+msgid "Check In"
+msgstr "Registro de entrada"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__checkout_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__checkout_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_sale_order_detail__checkout
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_sale_order_detail__state_check_out
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__room_booking__state__check_out
+msgid "Check Out"
+msgstr "Registro de salida"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__need_event
+msgid "Check if a Event to be added with the Booking"
+msgstr "Indica si se agrega un evento a la reserva"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__need_fleet
+msgid "Check if a Fleet to be added with the Booking"
+msgstr "Indica si se agrega un vehículo a la reserva"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__need_food
+msgid "Check if a Food to be added with the Booking"
+msgstr "Indica si se agregan alimentos a la reserva"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__need_service
+msgid "Check if a Service to be added with the Booking"
+msgstr "Indica si se agrega un servicio a la reserva"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_product__is_room_avail
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_template__is_room_avail
+msgid "Check if the room is available"
+msgstr "Verifica si la habitación está disponible"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/js/dashboard_action.js:0
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_room_booking
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_sale_order
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Check-In"
+msgstr "Entrada"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_room_booking
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_sale_order
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Check-Out"
+msgstr "Salida"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_detail__checkin
+msgid "Checkin"
+msgstr "Entrada"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_detail__checkout
+msgid "Checkout"
+msgstr "Salida"
+
+#. module: hotel_management_odoo
+#. odoo-python
+#: code:addons/hotel_management_odoo/models/room_booking_line.py:0
+msgid "Checkout must be greater or equal checkin date"
+msgstr "La salida debe ser posterior o igual a la fecha de entrada"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__room_maintenance_ids
+msgid "Choose Room Maintenance"
+msgstr "Seleccione las habitaciones para mantenimiento"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__support_team_ids
+msgid "Choose Support Team"
+msgstr "Seleccione el equipo de soporte"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_detail__room_id
+msgid "Choose The Room"
+msgstr "Seleccione la habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__vehicle_maintenance_id
+msgid "Choose Vehicle"
+msgstr "Seleccione el vehículo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_event_booking_line__booking_id
+msgid "Choose room booking reference"
+msgstr "Seleccione la referencia de la reserva"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_account_bank_statement_line__hotel_booking_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_account_move__hotel_booking_id
+msgid "Choose the BookingReference"
+msgstr "Seleccione la referencia de la reserva"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_detail__checkin
+#: model:ir.model.fields,help:hotel_management_odoo.field_sale_order_detail__checkin
+msgid "Choose the Checkin Date"
+msgstr "Seleccione la fecha de entrada"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_detail__checkout
+#: model:ir.model.fields,help:hotel_management_odoo.field_sale_order_detail__checkout
+msgid "Choose the Checkout Date"
+msgstr "Seleccione la fecha de salida"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__company_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_line__company_id
+msgid "Choose the Company"
+msgstr "Seleccione la compañía"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__domain_partner_ids
+msgid "Choose the Domain Partner"
+msgstr "Seleccione el usuario relacionado"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_event_booking_line__event_id
+msgid "Choose the Event"
+msgstr "Seleccione el evento"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_team__team_head_id
+msgid "Choose the Team Head"
+msgstr "Seleccione al líder del equipo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_event_booking_line__ticket_id
+msgid "Choose the Ticket Type"
+msgstr "Seleccione el tipo de entrada"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_account_move_line__product_type
+msgid "Choose the product type"
+msgstr "Seleccione el tipo de producto"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__room_id
+msgid "Choose the room"
+msgstr "Seleccione la habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__team_id
+msgid "Choose the team"
+msgstr "Seleccione el equipo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__cleaning_type
+msgid "Choose what is to be cleaned"
+msgstr "Seleccione qué se debe limpiar"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__cleaning_request__state__ongoing
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__maintenance_request__type__cleaning
+#: model:ir.ui.menu,name:hotel_management_odoo.hotel_config_menu_cleaning
+#: model:res.groups.privilege,name:hotel_management_odoo.privilege_cleaning
+msgid "Cleaning"
+msgstr "Aseo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__cleaning_maintenance
+msgid "Cleaning Maintenance"
+msgstr "Mantenimiento de aseo"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.act_window,name:hotel_management_odoo.cleaning_request_action
+#: model:ir.model,name:hotel_management_odoo.model_cleaning_request
+#: model:ir.ui.menu,name:hotel_management_odoo.cleaning_request_menu
+msgid "Cleaning Request"
+msgstr "Solicitud de aseo"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.act_window,name:hotel_management_odoo.cleaning_team_action
+#: model:ir.model,name:hotel_management_odoo.model_cleaning_team
+#: model:ir.ui.menu,name:hotel_management_odoo.cleaning_team_menu
+msgid "Cleaning Team"
+msgstr "Equipo de aseo"
+
+#. module: hotel_management_odoo
+#: model:res.groups,name:hotel_management_odoo.cleaning_team_group_head
+msgid "Cleaning Team Head"
+msgstr "Líder del equipo de aseo"
+
+#. module: hotel_management_odoo
+#: model:res.groups,name:hotel_management_odoo.cleaning_team_group_user
+msgid "Cleaning Team User"
+msgstr "Usuario del equipo de aseo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__cleaning_type
+msgid "Cleaning Type"
+msgstr "Tipo de aseo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__vehicle_id
+msgid "Cleaning request from vehicle"
+msgstr "Solicitud de aseo del vehículo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__hotel
+msgid "Cleaning request space in hotel"
+msgstr "Espacio del hotel que requiere aseo"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.report,name:hotel_management_odoo.action_report_combined_bill
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__compute_bill__bill_type__combined
+msgid "Combined Bill"
+msgstr "Cuenta conjunta"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__company_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.maintenance_request_view_form
+msgid "Complete"
+msgstr "Completar"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__cleaning_request__state__done
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.cleaning_request_view_form
+msgid "Completed"
+msgstr "Completado"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Compute Bill"
+msgstr "Calcular cuenta"
+
+#. module: hotel_management_odoo
+#: model:ir.model,name:hotel_management_odoo.model_compute_bill
+msgid "Compute Bill Wizard"
+msgstr "Asistente para calcular la cuenta"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_combined_bill
+msgid "Computed Bill Invoice"
+msgstr "Factura de la cuenta calculada"
+
+#. module: hotel_management_odoo
+#: model:ir.ui.menu,name:hotel_management_odoo.hotel_config_menu
+msgid "Configuration"
+msgstr "Configuración"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Create Invoice"
+msgstr "Crear factura"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__create_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_team__create_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__create_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__create_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__create_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__create_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__create_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_floor__create_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__create_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__create_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_detail__create_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__create_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_sale_order_detail__create_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__create_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_team__create_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__create_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__create_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__create_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__create_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__create_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_floor__create_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__create_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__create_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_detail__create_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__create_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_sale_order_detail__create_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__date_order
+msgid ""
+"Creation date of draft/sent orders, Confirmation date of confirmed orders"
+msgstr ""
+"Fecha de creación de reservas en borrador o enviadas; fecha de confirmación "
+"de reservas confirmadas"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__currency_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__currency_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__currency_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__currency_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__currency_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__currency_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__partner_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__partner_id
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__taxes_ids
+msgid "Customer Taxes"
+msgstr "Impuestos de venta"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_compute_bill__partner_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__partner_id
+msgid "Customers of hotel"
+msgstr "Clientes del hotel"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.client,name:hotel_management_odoo.hotel_dashboard_action
+#: model:ir.ui.menu,name:hotel_management_odoo.hotel_dashboard_menu
+msgid "Dashboard"
+msgstr "Tablero"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__date
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Date"
+msgstr "Fecha"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__checkin_date
+msgid "Date of Checkin"
+msgstr "Fecha de entrada"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__checkout_date
+msgid "Date of Checkout"
+msgstr "Fecha de salida"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__date
+msgid "Date of maintenance request"
+msgstr "Fecha de la solicitud de mantenimiento"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_fleet_booking_line__tax_ids
+msgid "Default taxes used when renting the fleetmodels."
+msgstr "Impuestos predeterminados para el alquiler de vehículos."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_event_booking_line__tax_ids
+msgid "Default taxes used when selling the eventtickets."
+msgstr "Impuestos predeterminados para la venta de entradas a eventos."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_food_booking_line__tax_ids
+msgid "Default taxes used when selling the food products."
+msgstr "Impuestos predeterminados para la venta de alimentos."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_line__tax_ids
+msgid "Default taxes used when selling the room."
+msgstr "Impuestos predeterminados para el alojamiento."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_service__taxes_ids
+msgid "Default taxes used when selling the service product."
+msgstr "Impuestos predeterminados para la venta del servicio."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_service_booking_line__tax_ids
+msgid "Default taxes used when selling the services."
+msgstr "Impuestos predeterminados para la venta de servicios."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__description
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__description
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__description
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__description
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__description
+msgid "Description about the cleaning"
+msgstr "Descripción del aseo solicitado"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_food_booking_line__description
+msgid "Description of Food Product"
+msgstr "Descripción del alimento"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_fleet_booking_line__description
+msgid "Description of Vehicle"
+msgstr "Descripción del vehículo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_service_booking_line__description
+msgid "Description of the Service"
+msgstr "Descripción del servicio"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_event_booking_line__description
+msgid "Detailed description of the event"
+msgstr "Descripción detallada del evento"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_account_move__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_team__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_vehicle_model__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_floor__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_team__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_template__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_detail__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_sale_order_detail__display_name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__domain_partner_ids
+msgid "Domain Partner"
+msgstr "Usuario relacionado"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_sale_order_detail__state_done
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__maintenance_request__state__done
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__room_booking__state__done
+msgid "Done"
+msgstr "Finalizado"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__product_template__room_type__dormitory
+msgid "Dormitory"
+msgstr "Compartida"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__product_template__room_type__double
+msgid "Double"
+msgstr "Doble"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_sale_order_detail__state_draft
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__cleaning_request__state__draft
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__maintenance_request__state__draft
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__room_booking__state__draft
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__duration_visible
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__uom_qty
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Duration"
+msgstr "Duración"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__duration
+msgid "Duration in Days"
+msgstr "Duración en días"
+
+#. module: hotel_management_odoo
+#: model:ir.model,name:hotel_management_odoo.model_account_move
+msgid "Electronic invoicing"
+msgstr "Facturación electrónica"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__event_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__event_line_ids
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__account_move_line__product_type__event
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Event"
+msgstr "Evento"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__event_line_ids
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Event Lines"
+msgstr "Líneas de eventos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_taxed_event
+msgid "Event Tax"
+msgstr "Impuesto de eventos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_untaxed_event
+msgid "Event Untaxed"
+msgstr "Eventos antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Events"
+msgstr "Eventos"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "FOLIO DETAILS"
+msgstr "DETALLE DE LA CUENTA"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__account_move_line__product_type__fleet
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Fleet"
+msgstr "Vehículos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__fleet_line_ids
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Fleet Lines"
+msgstr "Líneas de vehículos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_taxed_fleet
+msgid "Fleet Tax"
+msgstr "Impuesto de vehículos"
+
+#. module: hotel_management_odoo
+#: model:ir.model,name:hotel_management_odoo.model_hotel_floor
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_product__floor_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_template__floor_id
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.product_template_inherit_form_view
+msgid "Floor"
+msgstr "Piso"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.act_window,name:hotel_management_odoo.hotel_floor_action
+#: model:ir.ui.menu,name:hotel_management_odoo.hotel_floor_menu
+msgid "Floors"
+msgstr "Pisos"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Folio"
+msgstr "Cuenta del huésped"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__name
+msgid "Folio Number"
+msgstr "Número de cuenta"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__message_follower_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__message_follower_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__message_follower_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__message_follower_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__message_partner_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__message_partner_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__message_partner_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__message_partner_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (contactos)"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__activity_type_icon
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__activity_type_icon
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Icono de Font Awesome, por ejemplo fa-tasks"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__food_order_line_ids
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__account_move_line__product_type__food
+#: model:ir.ui.menu,name:hotel_management_odoo.food_menu
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Food"
+msgstr "Alimentos"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Food Details"
+msgstr "Detalle de alimentos"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/js/dashboard_action.js:0
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+msgid "Food Items"
+msgstr "Alimentos disponibles"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__food_line_ids
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Food Lines"
+msgstr "Líneas de alimentos"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/js/dashboard_action.js:0
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+msgid "Food Orders"
+msgstr "Pedidos de alimentos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_taxed_food
+msgid "Food Tax"
+msgstr "Impuesto de alimentos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_untaxed_food
+msgid "Food Untaxed"
+msgstr "Alimentos antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__food_order_line_ids
+msgid ""
+"Food details provided to Customer and it will included in the main invoice."
+msgstr ""
+"Alimentos solicitados por el cliente que se incluirán en la factura "
+"principal."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__domain_partner_ids
+msgid "For filtering Users"
+msgstr "Para filtrar usuarios"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_room_booking
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_sale_order
+msgid "Guest Name"
+msgstr "Nombre del huésped"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__has_message
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__has_message
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__has_message
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__has_message
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__has_message
+msgid "Has Message"
+msgstr "Tiene mensajes"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__has_pos_orders
+msgid "Has POS Orders"
+msgstr "Tiene pedidos de Punto de Venta"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__head_id
+msgid "Head"
+msgstr "Líder"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__head_id
+msgid "Head of cleaning team"
+msgstr "Líder del equipo de aseo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__team_head_id
+msgid "Head of the maintenance team"
+msgstr "Líder del equipo de mantenimiento"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__hotel
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__cleaning_request__cleaning_type__hotel
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__maintenance_request__type__hotel
+msgid "Hotel"
+msgstr "Hotel"
+
+#. module: hotel_management_odoo
+#: model:ir.module.category,description:hotel_management_odoo.module_category_hotel_management
+msgid "Hotel Access Groups"
+msgstr "Grupos de acceso del hotel"
+
+#. module: hotel_management_odoo
+#: model:ir.model,name:hotel_management_odoo.model_hotel_amenity
+msgid "Hotel Amenity"
+msgstr "Comodidad del hotel"
+
+#. module: hotel_management_odoo
+#: model:ir.model,name:hotel_management_odoo.model_event_booking_line
+msgid "Hotel Event Line"
+msgstr "Línea de evento del hotel"
+
+#. module: hotel_management_odoo
+#: model:ir.model,name:hotel_management_odoo.model_fleet_booking_line
+msgid "Hotel Fleet Line"
+msgstr "Línea de vehículo del hotel"
+
+#. module: hotel_management_odoo
+#: model:ir.model,name:hotel_management_odoo.model_room_booking_line
+msgid "Hotel Folio Line"
+msgstr "Línea de cuenta del huésped"
+
+#. module: hotel_management_odoo
+#: model:ir.model,name:hotel_management_odoo.model_food_booking_line
+msgid "Hotel Food Line"
+msgstr "Línea de alimentos del hotel"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__hotel_maintenance
+msgid "Hotel Maintenance"
+msgstr "Mantenimiento del hotel"
+
+#. module: hotel_management_odoo
+#: model:ir.module.category,name:hotel_management_odoo.module_category_hotel_management
+#: model:ir.ui.menu,name:hotel_management_odoo.hotel_management_menu_root
+msgid "Hotel Management"
+msgstr "Gestión hotelera"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__hotel_policy
+msgid "Hotel Policy"
+msgstr "Política de pago del hotel"
+
+#. module: hotel_management_odoo
+#: model:ir.model,name:hotel_management_odoo.model_room_booking
+msgid "Hotel Room Reservation"
+msgstr "Reserva de habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model,name:hotel_management_odoo.model_hotel_service
+msgid "Hotel Service"
+msgstr "Servicio del hotel"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__event_line_ids
+msgid "Hotel event reservation detail."
+msgstr "Detalle de la reserva de evento del hotel."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__vehicle_line_ids
+msgid "Hotel fleet reservation detail."
+msgstr "Detalle de la reserva de vehículo del hotel."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__hotel_policy
+msgid ""
+"Hotel policy for payment that either the guest has to pay at booking time, "
+"check-in or check-out time."
+msgstr "Define si el huésped paga al reservar, al ingresar o al salir."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__room_line_ids
+msgid "Hotel room reservation detail."
+msgstr "Detalle de la reserva de habitación."
+
+#. module: hotel_management_odoo
+#: model:ir.model,name:hotel_management_odoo.model_service_booking_line
+msgid "Hotel service Line"
+msgstr "Línea de servicio del hotel"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__service_line_ids
+msgid ""
+"Hotel services details provided toCustomer and it will included in the main "
+"Invoice."
+msgstr ""
+"Servicios prestados al cliente que se incluirán en la factura principal."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_account_move__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_account_move_line__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_team__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_vehicle_model__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_floor__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_team__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_template__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_detail__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_sale_order_detail__id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__activity_exception_icon
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__icon
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__activity_exception_icon
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__activity_exception_icon
+msgid "Icon"
+msgstr "Icono"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__activity_exception_icon
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__activity_exception_icon
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icono que indica una actividad con excepción."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__account_move
+msgid "Id of the invoice created"
+msgstr "Identificador de la factura creada"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_line__booking_line_visible
+msgid "If True, then Booking Line will be visible"
+msgstr "Si está activo, se mostrará la línea de reserva"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__message_needaction
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_amenity__message_needaction
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_service__message_needaction
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__message_needaction
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, los mensajes nuevos requieren su atención."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__message_has_error
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__message_has_sms_error
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_amenity__message_has_error
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_amenity__message_has_sms_error
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_service__message_has_error
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_service__message_has_sms_error
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__message_has_error
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__message_has_sms_error
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__message_has_error
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si está marcado, algunos mensajes tienen un error de entrega."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_service_booking_line__booking_line_visible
+msgid "If true, Booking line will be visible"
+msgstr "Si está activo, se mostrará la línea de reserva"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__pricelist_id
+msgid "If you change the pricelist, only newly added lines will be affected."
+msgstr "Si cambia la lista de precios, solo se afectarán las líneas nuevas."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_amenity__icon
+msgid "Image of the amenity"
+msgstr "Imagen de la comodidad"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__has_pos_orders
+msgid "Indicates if there are POS orders linked to this booking"
+msgstr "Indica si hay pedidos de Punto de Venta asociados a esta reserva"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_food_booking_line__food_id
+msgid "Indicates the Food Product"
+msgstr "Indica el alimento"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_line__booking_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_line__room_id
+msgid "Indicates the Room"
+msgstr "Indica la habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_service_booking_line__booking_id
+msgid "Indicates the Room Booking"
+msgstr "Indica la reserva de habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_service_booking_line__service_id
+msgid "Indicates the Service"
+msgstr "Indica el servicio"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_fleet_booking_line__fleet_id
+msgid "Indicates the Vehicle"
+msgstr "Indica el vehículo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__hotel_invoice_id
+msgid "Indicates the invoice"
+msgstr "Indica la factura"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.product_template_inherit_form_view
+msgid "Information"
+msgstr "Información"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__hotel_invoice_id
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__user_id
+msgid "Invoice Address"
+msgstr "Dirección de facturación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__invoice_button_visible
+msgid "Invoice Button Display"
+msgstr "Mostrar botón de facturación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__invoice_count
+msgid "Invoice Count"
+msgstr "Cantidad de facturas"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__account_move
+msgid "Invoice Id"
+msgstr "Identificador de factura"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__invoice_status
+msgid "Invoice Status"
+msgstr "Estado de facturación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__invoice_button_visible
+msgid "Invoice button will be visible if this button is True"
+msgstr "El botón de factura se mostrará si esta opción está activa"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__room_booking__invoice_status__invoiced
+msgid "Invoiced"
+msgstr "Facturado"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Invoices"
+msgstr "Facturas"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__is_checkin
+msgid "Is Checkin"
+msgstr "Está alojado"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__message_is_follower
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__message_is_follower
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__message_is_follower
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__message_is_follower
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__message_is_follower
+msgid "Is Follower"
+msgstr "Es seguidor"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__is_hotel
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_team__is_hotel
+msgid "Is Hotel Maintenance"
+msgstr "Es mantenimiento del hotel"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__compute_bill__bill_type__isolate
+msgid "Isolate Bill"
+msgstr "Cuenta individual"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_combined_bill
+msgid "Isolated Bill - Folio"
+msgstr "Cuenta individual - folio"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_combined_bill
+msgid "Isolated Bill - POS Orders"
+msgstr "Cuenta individual - pedidos de Punto de Venta"
+
+#. module: hotel_management_odoo
+#: model:ir.model,name:hotel_management_odoo.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__write_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_team__write_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__write_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__write_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__write_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__write_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__write_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_floor__write_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__write_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__write_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_detail__write_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__write_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_sale_order_detail__write_uid
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado por última vez por"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__write_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_team__write_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__write_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__write_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__write_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__write_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__write_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_floor__write_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__write_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__write_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_detail__write_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__write_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_sale_order_detail__write_date
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_team__user_id
+msgid "Leader of Team"
+msgstr "Líder del equipo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_product__room_amenities_ids
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_template__room_amenities_ids
+msgid "List of room amenities."
+msgstr "Lista de comodidades de la habitación."
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.cleaning_request_view_form
+msgid "Maintain Request"
+msgstr "Solicitud de mantenimiento"
+
+#. module: hotel_management_odoo
+#: model:ir.ui.menu,name:hotel_management_odoo.maintenance_menu
+#: model:res.groups.privilege,name:hotel_management_odoo.privilege_maintenance
+msgid "Maintenance"
+msgstr "Mantenimiento"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.act_window,name:hotel_management_odoo.maintenance_request_action
+#: model:ir.model,name:hotel_management_odoo.model_maintenance_request
+#: model:ir.ui.menu,name:hotel_management_odoo.maintenance_request_menu
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Maintenance Request"
+msgstr "Solicitud de mantenimiento"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__maintenance_request_sent
+msgid "Maintenance Request sentor Not"
+msgstr "Indica si ya se envió la solicitud de mantenimiento"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.act_window,name:hotel_management_odoo.maintenance_team_action
+#: model:ir.model,name:hotel_management_odoo.model_maintenance_team
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__team_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_team__name
+#: model:ir.ui.menu,name:hotel_management_odoo.maintenance_team_menu
+msgid "Maintenance Team"
+msgstr "Equipo de mantenimiento"
+
+#. module: hotel_management_odoo
+#: model:res.groups,name:hotel_management_odoo.maintenance_team_group_leader
+msgid "Maintenance Team Leader"
+msgstr "Líder del equipo de mantenimiento"
+
+#. module: hotel_management_odoo
+#: model:res.groups,name:hotel_management_odoo.maintenance_team_group_user
+msgid "Maintenance Team User"
+msgstr "Usuario del equipo de mantenimiento"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_floor__user_id
+msgid "Manager"
+msgstr "Responsable"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_floor__user_id
+msgid "Manager of the Floor"
+msgstr "Responsable del piso"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.act_window,name:hotel_management_odoo.fleet_vehicle_model_brand_action
+#: model:ir.ui.menu,name:hotel_management_odoo.fleet_vehicle_model_brand_menu
+msgid "Manufacturers"
+msgstr "Fabricantes"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_team__member_ids
+msgid "Member"
+msgstr "Integrante"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_team__member_ids
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.cleaning_team_view_form
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.maintenance_team_view_form
+msgid "Members"
+msgstr "Integrantes"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_team__member_ids
+msgid "Members of the Team"
+msgstr "Integrantes del equipo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__message_has_error
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__message_has_error
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__message_has_error
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__message_has_error
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de entrega del mensaje"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__message_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__message_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__message_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__message_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: hotel_management_odoo
+#: model:ir.model,name:hotel_management_odoo.model_fleet_vehicle_model
+msgid "Model of a vehicle"
+msgstr "Modelo de un vehículo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__my_activity_date_deadline
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__my_activity_date_deadline
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Fecha límite de mi actividad"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_floor__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__name
+msgid "Name of Folio"
+msgstr "Nombre de la cuenta"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_team__name
+msgid "Name of the Team"
+msgstr "Nombre del equipo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_amenity__name
+msgid "Name of the amenity"
+msgstr "Nombre de la comodidad"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_floor__name
+msgid "Name of the floor"
+msgstr "Nombre del piso"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_team__name
+msgid "Name of the maintenance team"
+msgstr "Nombre del equipo de mantenimiento"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_service__name
+msgid "Name of the service"
+msgstr "Nombre del servicio"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__need_event
+msgid "Need Event"
+msgstr "Requiere evento"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__need_food
+msgid "Need Food"
+msgstr "Requiere alimentos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__need_service
+msgid "Need Service"
+msgstr "Requiere servicio"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__need_fleet
+msgid "Need Vehicle"
+msgstr "Requiere vehículo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__activity_date_deadline
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__activity_date_deadline
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Fecha límite de la siguiente actividad"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__activity_summary
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__activity_summary
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen de la siguiente actividad"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__activity_type_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__activity_type_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__activity_type_id
+msgid "Next Activity Type"
+msgstr "Tipo de la siguiente actividad"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.actions.act_window,help:hotel_management_odoo.hotel_amenity_action
+msgid "No Amenity found ! Let's create one"
+msgstr "No se encontraron comodidades. Cree una para continuar."
+
+#. module: hotel_management_odoo
+#: model_terms:ir.actions.act_window,help:hotel_management_odoo.hotel_floor_action
+msgid "No Floors found ! Let's create one"
+msgstr "No se encontraron pisos. Cree uno para continuar."
+
+#. module: hotel_management_odoo
+#: model_terms:ir.actions.act_window,help:hotel_management_odoo.fleet_vehicle_model_brand_action
+msgid "No Manufacturers found ! Let's create one"
+msgstr "No se encontraron fabricantes. Cree uno para continuar."
+
+#. module: hotel_management_odoo
+#: model_terms:ir.actions.act_window,help:hotel_management_odoo.lunch_product_action
+msgid "No Products found ! Let's create one"
+msgstr "No se encontraron productos. Cree uno para continuar."
+
+#. module: hotel_management_odoo
+#: model_terms:ir.actions.act_window,help:hotel_management_odoo.hotel_service_action
+msgid "No Services found ! Let's create one"
+msgstr "No se encontraron servicios. Cree uno para continuar."
+
+#. module: hotel_management_odoo
+#: model_terms:ir.actions.act_window,help:hotel_management_odoo.fleet_vehicle_model_action
+msgid "No Vehicles found ! Let's create one"
+msgstr "No se encontraron vehículos. Cree uno para continuar."
+
+#. module: hotel_management_odoo
+#: model_terms:ir.actions.act_window,help:hotel_management_odoo.lunch_supplier_action
+msgid "No Vendors found ! Let's create one"
+msgstr "No se encontraron proveedores. Cree uno para continuar."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__room_booking__invoice_status__no_invoice
+msgid "Nothing To Invoice"
+msgstr "Nada por facturar"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_product__num_person
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_template__num_person
+msgid "Number Of Persons"
+msgstr "Capacidad de personas"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__message_needaction_counter
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__message_needaction_counter
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__message_needaction_counter
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__message_needaction_counter
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__duration
+msgid ""
+"Number of days which will automatically count from the check-in and check-"
+"out date."
+msgstr ""
+"Cantidad de días calculada automáticamente entre la entrada y la salida."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__message_has_error_counter
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__message_has_error_counter
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__message_has_error_counter
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__message_has_error_counter
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de errores"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__message_needaction_counter
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_amenity__message_needaction_counter
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_service__message_needaction_counter
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__message_needaction_counter
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Número de mensajes que requieren atención"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__message_has_error_counter
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_amenity__message_has_error_counter
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_service__message_has_error_counter
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__message_has_error_counter
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de entrega"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__product_template__status__occupied
+msgid "Occupied"
+msgstr "Ocupada"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__room_booking__hotel_policy__prepaid
+msgid "On Booking"
+msgstr "Al reservar"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__room_booking__hotel_policy__manual
+msgid "On Check In"
+msgstr "Al ingresar"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__room_booking__hotel_policy__picking
+msgid "On Checkout"
+msgstr "Al salir"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__maintenance_request__state__ongoing
+msgid "Ongoing"
+msgstr "En curso"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__date_order
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_combined_bill
+msgid "Order Date"
+msgstr "Fecha de la reserva"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_combined_bill
+msgid "Order No"
+msgstr "Número de pedido"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Order Ref"
+msgstr "Referencia del pedido"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__state
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__state
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__state
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__state
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__state
+msgid "Order Status"
+msgstr "Estado de la reserva"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Other Services"
+msgstr "Otros servicios"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "POS ORDERS"
+msgstr "PEDIDOS DE PUNTO DE VENTA"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__pos_order_ids
+msgid "POS Orders"
+msgstr "Pedidos de Punto de Venta"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__domain_partner_ids
+msgid "Partner"
+msgstr "Contacto"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/js/dashboard_action.js:0
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+msgid "Pending Events"
+msgstr "Eventos pendientes"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__maintenance_request__state__verify
+msgid "Pending For Verify"
+msgstr "Pendiente de verificación"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+msgid "Pending Payment"
+msgstr "Pago pendiente"
+
+#. module: hotel_management_odoo
+#. odoo-python
+#: code:addons/hotel_management_odoo/models/cleaning_request.py:0
+msgid "Please choose a Room."
+msgstr "Seleccione una habitación."
+
+#. module: hotel_management_odoo
+#. odoo-python
+#: code:addons/hotel_management_odoo/models/cleaning_request.py:0
+msgid "Please choose a Vehicle."
+msgstr "Seleccione un vehículo."
+
+#. module: hotel_management_odoo
+#. odoo-python
+#: code:addons/hotel_management_odoo/models/cleaning_request.py:0
+msgid "Please choose a support"
+msgstr "Seleccione el equipo de soporte."
+
+#. module: hotel_management_odoo
+#. odoo-python
+#: code:addons/hotel_management_odoo/models/cleaning_request.py:0
+msgid "Please enter the Hotel."
+msgstr "Ingrese el nombre del hotel."
+
+#. module: hotel_management_odoo
+#. odoo-python
+#: code:addons/hotel_management_odoo/models/cleaning_request.py:0
+msgid "Please enter the reason"
+msgstr "Ingrese el motivo."
+
+#. module: hotel_management_odoo
+#. odoo-python
+#: code:addons/hotel_management_odoo/models/cleaning_request.py:0
+msgid "Please select an Assigned To person before assigning."
+msgstr "Seleccione a la persona responsable antes de asignar."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__price_unit
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__price_unit
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__unit_price
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__price_unit
+msgid "Price"
+msgstr "Precio"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_service__unit_price
+msgid "Price of the service"
+msgstr "Precio del servicio"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_vehicle_model__price_per_km
+msgid "Price/KM"
+msgstr "Precio por kilómetro"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__pricelist_id
+msgid "Pricelist"
+msgstr "Lista de precios"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Print"
+msgstr "Imprimir"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__bill_type
+msgid "Print Bill"
+msgstr "Imprimir cuenta"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__food_id
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Product"
+msgstr "Producto"
+
+#. module: hotel_management_odoo
+#: model:ir.model,name:hotel_management_odoo.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_account_move_line__product_type
+msgid "Product Type"
+msgstr "Tipo de producto"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.act_window,name:hotel_management_odoo.lunch_product_action
+#: model:ir.ui.menu,name:hotel_management_odoo.lunch_product_menu
+msgid "Products"
+msgstr "Productos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__uom_qty
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__uom_qty
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Qty"
+msgstr "Cant."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__uom_qty
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__support_reason
+msgid "Reason for adding Support"
+msgstr "Motivo de la solicitud de soporte"
+
+#. module: hotel_management_odoo
+#: model:res.groups.privilege,name:hotel_management_odoo.privilege_reception
+msgid "Reception"
+msgstr "Recepción"
+
+#. module: hotel_management_odoo
+#: model:res.groups,name:hotel_management_odoo.hotel_group_reception
+msgid "Receptionist"
+msgstr "Recepcionista"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_combined_bill
+msgid "Reference No"
+msgstr "N.º de referencia"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_room_booking
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_sale_order
+msgid "Reference No."
+msgstr "N.º de referencia"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_vehicle_model__uom_id
+msgid "Reference Uom"
+msgstr "Unidad de medida de referencia"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__remarks
+msgid "Remarks"
+msgstr "Observaciones"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_product__list_price
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_template__list_price
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__price_unit
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.product_template_inherit_form_view
+msgid "Rent"
+msgstr "Tarifa de alojamiento"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_fleet_vehicle_model__price_per_km
+msgid "Rent for Vehicle"
+msgstr "Tarifa de alquiler del vehículo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__price_unit
+msgid "Rent/KM"
+msgstr "Tarifa por kilómetro"
+
+#. module: hotel_management_odoo
+#: model:ir.ui.menu,name:hotel_management_odoo.hotel_reporting_menu
+msgid "Reporting"
+msgstr "Informes"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.cleaning_request_view_form
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.maintenance_request_view_form
+msgid "Request Support"
+msgstr "Solicitar soporte"
+
+#. module: hotel_management_odoo
+#: model:ir.ui.menu,name:hotel_management_odoo.room_booking_menu
+msgid "Reservation"
+msgstr "Reserva"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Reserve"
+msgstr "Reservar"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_sale_order_detail__state_reserved
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__product_template__status__reserved
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__room_booking__state__reserved
+msgid "Reserved"
+msgstr "Reservada"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__activity_user_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__activity_user_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario responsable"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_taxed_room
+msgid "Rom Tax"
+msgstr "Impuesto de habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__room_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_product__is_room
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_template__is_room
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__room_line_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_detail__room_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__room_id
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__account_move_line__product_type__room
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__cleaning_request__cleaning_type__room
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__maintenance_request__type__room
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.product_template_inherit_form_view
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Room"
+msgstr "Habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_product__room_amenities_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_template__room_amenities_ids
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.product_template_inherit_form_view
+msgid "Room Amenities"
+msgstr "Comodidades de la habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.act_window,name:hotel_management_odoo.room_booking_action
+#: model:ir.ui.menu,name:hotel_management_odoo.room_booking_detail_menu
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_room_booking
+msgid "Room Booking"
+msgstr "Reserva de habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model,name:hotel_management_odoo.model_room_booking_detail
+#: model:ir.model,name:hotel_management_odoo.model_sale_order_detail
+msgid "Room Booking Details"
+msgstr "Detalles de la reserva"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.report,name:hotel_management_odoo.action_report_room_booking
+msgid "Room Booking Order"
+msgstr "Pedido de reserva de habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.act_window,name:hotel_management_odoo.room_booking_detail_action
+msgid "Room Booking Report"
+msgstr "Informe de reservas de habitaciones"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Room Details"
+msgstr "Detalles de la habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__room_line_ids
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Room Lines"
+msgstr "Líneas de habitaciones"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__room_maintenance_ids
+msgid "Room Maintenance"
+msgstr "Mantenimiento de habitación"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.product_template_inherit_form_view
+msgid "Room Manager"
+msgstr "Responsable de habitación"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_room_booking
+msgid "Room No."
+msgstr "N.º de habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_product__room_type
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_template__room_type
+msgid "Room Type"
+msgstr "Tipo de habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_untaxed_room
+msgid "Room Untaxed"
+msgstr "Habitación antes de impuestos"
+
+#. module: hotel_management_odoo
+#. odoo-python
+#: code:addons/hotel_management_odoo/models/product_template.py:0
+msgid "Room capacity must be more than 0"
+msgstr "La capacidad de la habitación debe ser mayor que cero."
+
+#. module: hotel_management_odoo
+#. odoo-python
+#: code:addons/hotel_management_odoo/models/product_template.py:0
+msgid "Room products cannot be storable. Please disable 'Track Inventory'."
+msgstr ""
+"Las habitaciones no pueden llevar control de inventario. Desactive "
+"«Controlar inventario»."
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/js/dashboard_action.js:0
+#: model:ir.actions.act_window,name:hotel_management_odoo.action_room_products
+#: model:ir.ui.menu,name:hotel_management_odoo.menu_product_template
+msgid "Rooms"
+msgstr "Habitaciones"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__message_has_sms_error
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__message_has_sms_error
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__message_has_sms_error
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__message_has_sms_error
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error en la entrega del SMS"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.report,name:hotel_management_odoo.action_report_sale_order
+#: model:ir.ui.menu,name:hotel_management_odoo.sale_order_detail_menu
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_sale_order
+msgid "Sale Order"
+msgstr "Pedido de venta"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.act_window,name:hotel_management_odoo.sale_order_detail_action
+msgid "Sale Order Report"
+msgstr "Informe de pedidos de venta"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__sequence
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__sequence
+msgid "Sequence for identifying the request"
+msgstr "Secuencia para identificar la solicitud"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__sequence
+msgid "Sequence number for identifying maintenance request"
+msgstr "Número de secuencia para identificar la solicitud de mantenimiento"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__name
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__service_line_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__service_id
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__account_move_line__product_type__service
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Service"
+msgstr "Servicio"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_compute_bill__service_line_ids
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Service Lines"
+msgstr "Líneas de servicios"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_taxed_service
+msgid "Service Tax"
+msgstr "Impuesto de servicios"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_untaxed_service
+msgid "Service Untaxed"
+msgstr "Servicios antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.act_window,name:hotel_management_odoo.hotel_service_action
+#: model:ir.ui.menu,name:hotel_management_odoo.hotel_service_menu
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Services"
+msgstr "Servicios"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Session"
+msgstr "Sesión"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Set as Done"
+msgstr "Marcar como finalizado"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__user_id
+msgid "Sets the User automatically"
+msgstr "Asigna automáticamente al usuario"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_fleet_booking_line__booking_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_food_booking_line__booking_id
+msgid "Shows the room Booking"
+msgstr "Muestra la reserva de habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__product_template__room_type__single
+msgid "Single"
+msgstr "Sencilla"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_room_booking
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_sale_order
+msgid "Sl No."
+msgstr "N.º"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_amenity__description
+msgid "Specify the amenity description"
+msgstr "Indique la descripción de la comodidad"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.cleaning_request_view_form
+msgid "Start"
+msgstr "Iniciar"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__state
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__state
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__state
+msgid "State"
+msgstr "Estado"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_event_booking_line__state
+msgid "State of Room Booking"
+msgstr "Estado de la reserva de habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__state
+msgid "State of cleaning request"
+msgstr "Estado de la solicitud de aseo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__state
+msgid "State of maintenance request"
+msgstr "Estado de la solicitud de mantenimiento"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__state
+msgid "State of the Booking"
+msgstr "Estado de la reserva"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.sale_order_detail_view_form
+msgid "States"
+msgstr "Estados"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_product__status
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_template__status
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Status"
+msgstr "Estado"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__activity_state
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__activity_state
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Estado según las actividades\n"
+"Vencida: la fecha límite ya pasó\n"
+"Hoy: la actividad vence hoy\n"
+"Planificada: actividad futura."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_product__status
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_template__status
+msgid "Status of The Room"
+msgstr "Estado de la habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__invoice_status
+msgid "Status of the Invoice"
+msgstr "Estado de la factura"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__price_subtotal
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__price_subtotal
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__price_subtotal
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__price_subtotal
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__price_subtotal
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__support_reason
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__support_reason
+msgid "Support"
+msgstr "Soporte"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__support_reason
+msgid "Support Reason"
+msgstr "Motivo del soporte"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__support_team_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__support_team_ids
+msgid "Support Team"
+msgstr "Equipo de soporte"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__support_team_ids
+msgid "Support team members"
+msgstr "Integrantes del equipo de soporte"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_event_booking_line__price_tax
+#: model:ir.model.fields,help:hotel_management_odoo.field_food_booking_line__price_tax
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_line__price_tax
+#: model:ir.model.fields,help:hotel_management_odoo.field_service_booking_line__price_tax
+msgid "Tax Amount"
+msgstr "Valor del impuesto"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_taxed_event
+msgid "Tax for Event"
+msgstr "Impuesto de eventos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_taxed_fleet
+msgid "Tax for Fleet"
+msgstr "Impuesto de vehículos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_taxed_food
+msgid "Tax for Food"
+msgstr "Impuesto de alimentos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_taxed_room
+msgid "Tax for Room"
+msgstr "Impuesto de habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_taxed_service
+msgid "Tax for Service"
+msgstr "Impuesto de servicios"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__tax_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__tax_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__tax_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_tax
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__tax_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__tax_ids
+msgid "Taxes"
+msgstr "Impuestos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__team_id
+msgid "Team"
+msgstr "Equipo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_team__team_head_id
+msgid "Team Head"
+msgstr "Líder del equipo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__team_head_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_team__user_id
+msgid "Team Leader"
+msgstr "Líder del equipo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_team__member_ids
+msgid "Team Members"
+msgstr "Integrantes del equipo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_team__name
+msgid "Team Name"
+msgstr "Nombre del equipo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__team_id
+msgid "Team for which this request is assigned"
+msgstr "Equipo asignado a esta solicitud"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_event_booking_line__currency_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_fleet_booking_line__currency_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_food_booking_line__currency_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_line__currency_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_service_booking_line__currency_id
+msgid "The currency used"
+msgstr "La moneda utilizada"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__invoice_count
+msgid "The number of invoices created"
+msgstr "Cantidad de facturas creadas"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_food_booking_line__price_unit
+msgid "The price of the selected food item."
+msgstr "Precio del alimento seleccionado."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_service_booking_line__price_unit
+msgid "The price of the selected service."
+msgstr "Precio del servicio seleccionado."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_event_booking_line__uom_qty
+#: model:ir.model.fields,help:hotel_management_odoo.field_fleet_booking_line__uom_qty
+#: model:ir.model.fields,help:hotel_management_odoo.field_food_booking_line__uom_qty
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_line__uom_qty
+#: model:ir.model.fields,help:hotel_management_odoo.field_service_booking_line__uom_qty
+msgid "The quantity converted into the UoM used by the product"
+msgstr "Cantidad convertida a la unidad de medida del producto"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_product__list_price
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_template__list_price
+msgid "The rent of the room."
+msgstr "Tarifa de alojamiento de la habitación."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_line__price_unit
+msgid "The rent price of the selected room."
+msgstr "Tarifa de alojamiento de la habitación seleccionada."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_fleet_booking_line__price_unit
+msgid "The rent/km of the selected fleet."
+msgstr "Tarifa por kilómetro del vehículo seleccionado."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_event_booking_line__price_unit
+msgid "The selling price of the selected ticket."
+msgstr "Precio de venta de la entrada seleccionada."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__assigned_id
+msgid "The team member to whom the request isAssigned To"
+msgstr "Integrante del equipo responsable de esta solicitud"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_total
+msgid "The total Amount including Tax"
+msgstr "Valor total con impuestos incluidos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__type
+msgid "The type for which the request is creating"
+msgstr "Tipo de elemento para el que se crea la solicitud"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_untaxed
+msgid "This indicates the total untaxed amount"
+msgstr "Indica el valor total antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__cleaning_maintenance
+msgid "This is the Cleaning Maintenance"
+msgstr "Descripción del mantenimiento de aseo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_compute_bill__currency_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__currency_id
+msgid "This is the Currency used"
+msgstr "Indica la moneda utilizada"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__hotel_maintenance
+msgid "This is the Hotel Maintenance"
+msgstr "Descripción del mantenimiento del hotel"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_total_event
+msgid "This is the Total Amount for Event"
+msgstr "Valor total de eventos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_total_fleet
+msgid "This is the Total Amount for Fleet"
+msgstr "Valor total de vehículos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_total_food
+msgid "This is the Total Amount for Food"
+msgstr "Valor total de alimentos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_total_room
+msgid "This is the Total Amount for Room"
+msgstr "Valor total de habitaciones"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_total_service
+msgid "This is the Total Amount for Service"
+msgstr "Valor total de servicios"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_event_booking_line__uom_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_fleet_booking_line__uom_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_food_booking_line__uom_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_line__uom_id
+#: model:ir.model.fields,help:hotel_management_odoo.field_service_booking_line__uom_id
+msgid "This will set the unit of measure used"
+msgstr "Establece la unidad de medida utilizada"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__ticket_id
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Ticket"
+msgstr "Entrada"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__room_booking__invoice_status__to_invoice
+msgid "To Invoice"
+msgstr "Por facturar"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+msgid "Today's Check Out"
+msgstr "Salidas de hoy"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/js/dashboard_action.js:0
+msgid "Today's Check-Out"
+msgstr "Salidas de hoy"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/js/dashboard_action.js:0
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+msgid "Today's Events"
+msgstr "Eventos de hoy"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+msgid "Today's Revenue"
+msgstr "Ingresos de hoy"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__price_total
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__price_total
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__price_total
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_total
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__price_total
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__price_total
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.view_compute_bill_form
+msgid "Total"
+msgstr "Total"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_total_event
+msgid "Total Amount for Event"
+msgstr "Valor total de eventos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_total_fleet
+msgid "Total Amount for Fleet"
+msgstr "Valor total de vehículos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_total_food
+msgid "Total Amount for Food"
+msgstr "Valor total de alimentos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_total_room
+msgid "Total Amount for Room"
+msgstr "Valor total de habitaciones"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_total_service
+msgid "Total Amount for Service"
+msgstr "Valor total de servicios"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/js/dashboard_action.js:0
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+msgid "Total Events"
+msgstr "Total de eventos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__uom_qty
+msgid "Total KM"
+msgstr "Kilómetros totales"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.report_combined_bill
+msgid "Total Price"
+msgstr "Precio total"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_event_booking_line__price_subtotal
+#: model:ir.model.fields,help:hotel_management_odoo.field_food_booking_line__price_subtotal
+#: model:ir.model.fields,help:hotel_management_odoo.field_service_booking_line__price_subtotal
+msgid "Total Price Excluding Tax"
+msgstr "Precio total antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_event_booking_line__price_total
+#: model:ir.model.fields,help:hotel_management_odoo.field_fleet_booking_line__price_total
+#: model:ir.model.fields,help:hotel_management_odoo.field_food_booking_line__price_total
+#: model:ir.model.fields,help:hotel_management_odoo.field_service_booking_line__price_total
+msgid "Total Price Including Tax"
+msgstr "Precio total con impuestos incluidos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_line__price_subtotal
+msgid "Total Price excluding Tax"
+msgstr "Precio total antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_line__price_total
+msgid "Total Price including Tax"
+msgstr "Precio total con impuestos incluidos"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/js/dashboard_action.js:0
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+msgid "Total Reservations"
+msgstr "Total de reservas"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+msgid "Total Revenue"
+msgstr "Ingresos totales"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+msgid "Total Room"
+msgstr "Total de habitaciones"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+msgid "Total Staff"
+msgstr "Total de personal"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/js/dashboard_action.js:0
+msgid "Total Staffs"
+msgstr "Total de personal"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__price_tax
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__price_tax
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__price_tax
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__price_tax
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__price_tax
+msgid "Total Tax"
+msgstr "Impuesto total"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_tax
+msgid "Total Tax Amount"
+msgstr "Valor total de impuestos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__amount_untaxed
+msgid "Total Untaxed Amount"
+msgstr "Valor total antes de impuestos"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/xml/dashboard_templates.xml:0
+msgid "Total Vehicle"
+msgstr "Total de vehículos"
+
+#. module: hotel_management_odoo
+#. odoo-javascript
+#: code:addons/hotel_management_odoo/static/src/js/dashboard_action.js:0
+msgid "Total Vehicles"
+msgstr "Total de vehículos"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Total amount"
+msgstr "Valor total"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_fleet_booking_line__price_subtotal
+msgid "Total price excluding tax"
+msgstr "Precio total antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_fleet_booking_line__price_tax
+msgid "Total tax amount"
+msgstr "Valor total de impuestos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__activity_exception_decoration
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__activity_exception_decoration
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Tipo de actividad con excepción en el registro."
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_fleet_vehicle_model__uom_id
+msgid "UOM of the product"
+msgstr "Unidad de medida del producto"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_event_booking_line__uom_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__uom_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_food_booking_line__uom_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking_line__uom_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_service_booking_line__uom_id
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_untaxed_event
+msgid "Untaxed Amount for Event"
+msgstr "Valor de eventos antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_untaxed_food
+msgid "Untaxed Amount for Food"
+msgstr "Valor de alimentos antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_untaxed_room
+msgid "Untaxed Amount for Room"
+msgstr "Valor de habitaciones antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_untaxed_service
+msgid "Untaxed Amount for Service"
+msgstr "Valor de servicios antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Untaxed amount"
+msgstr "Valor antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Untaxed amount for Event"
+msgstr "Valor de eventos antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__amount_untaxed_fleet
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Untaxed amount for Fleet"
+msgstr "Valor de vehículos antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Untaxed amount for Food"
+msgstr "Valor de alimentos antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Untaxed amount for Room"
+msgstr "Valor de habitaciones antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Untaxed amount for Service"
+msgstr "Valor de servicios antes de impuestos"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_product__user_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_product_template__user_id
+msgid "User"
+msgstr "Usuario"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__assigned_user_id
+msgid "User to whom the request is assigned"
+msgstr "Usuario responsable de la solicitud"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__vehicle_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_fleet_booking_line__fleet_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__vehicle_maintenance_id
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__vehicle_line_ids
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__cleaning_request__cleaning_type__vehicle
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__maintenance_request__type__vehicle
+#: model:ir.ui.menu,name:hotel_management_odoo.fleet_vehicle_menu
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.room_booking_view_form
+msgid "Vehicle"
+msgstr "Vehículo"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.act_window,name:hotel_management_odoo.fleet_vehicle_model_action
+#: model:ir.ui.menu,name:hotel_management_odoo.fleet_vehicle_model_menu
+msgid "Vehicles"
+msgstr "Vehículos"
+
+#. module: hotel_management_odoo
+#: model:ir.actions.act_window,name:hotel_management_odoo.lunch_supplier_action
+#: model:ir.ui.menu,name:hotel_management_odoo.lunch_supplier_menu
+msgid "Vendors"
+msgstr "Proveedores"
+
+#. module: hotel_management_odoo
+#: model_terms:ir.ui.view,arch_db:hotel_management_odoo.maintenance_request_view_form
+msgid "Verify"
+msgstr "Verificar"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__cleaning_request__state__support
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__maintenance_request__state__support
+msgid "Waiting For Support"
+msgstr "En espera de soporte"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__maintenance_request__state__team_leader_approve
+msgid "Waiting For User Assign"
+msgstr "En espera de asignación de usuario"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields.selection,name:hotel_management_odoo.selection__maintenance_request__state__pending
+msgid "Waiting For User To Accept"
+msgstr "En espera de aceptación del usuario"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_cleaning_request__website_message_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_amenity__website_message_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_hotel_service__website_message_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_maintenance_request__website_message_ids
+#: model:ir.model.fields,field_description:hotel_management_odoo.field_room_booking__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_cleaning_request__website_message_ids
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_amenity__website_message_ids
+#: model:ir.model.fields,help:hotel_management_odoo.field_hotel_service__website_message_ids
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__website_message_ids
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicaciones del sitio web"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_line__checkin_date
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking_line__checkout_date
+msgid "You can choose the date, Otherwise sets to current Date"
+msgstr "Puede seleccionar la fecha; de lo contrario, se usará la fecha actual"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_maintenance_request__is_hotel
+msgid "is hotel"
+msgstr "Indica si corresponde al hotel"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_product__is_room
+#: model:ir.model.fields,help:hotel_management_odoo.field_product_template__is_room
+msgid "is room"
+msgstr "Indica si corresponde a una habitación"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__maintenance_request_sent
+msgid "sets to True if the maintenance request send once"
+msgstr "Se activa cuando la solicitud de mantenimiento ya fue enviada"
+
+#. module: hotel_management_odoo
+#: model:ir.model.fields,help:hotel_management_odoo.field_room_booking__is_checkin
+msgid "sets to True if the room is occupied"
+msgstr "Se activa cuando la habitación está ocupada"

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="poliedro_pos_iot_health.IoTHealth">
+        <div t-if="enabled" class="poliedro-iot-health">
+            <button class="poliedro-iot-health-chip"
+                    type="button"
+                    t-att-class="'is-' + overallState"
+                    t-att-aria-expanded="state.open ? 'true' : 'false'"
+                    aria-label="Estado de equipos IoT"
+                    t-on-click="toggle">
+                <span class="poliedro-iot-health-dot"/>
+                <span class="poliedro-iot-health-chip-label" t-out="overallLabel"/>
+                <i class="fa fa-angle-down" aria-hidden="true"/>
+            </button>
+
+            <t t-if="state.open">
+                <button class="poliedro-iot-health-backdrop"
+                        type="button"
+                        aria-label="Cerrar monitor IoT"
+                        t-on-click="close"></button>
+                <aside class="poliedro-iot-health-panel" aria-label="Monitor de equipos IoT">
+                    <header class="poliedro-iot-health-header">
+                        <div>
+                            <small>Estado en vivo</small>
+                            <h2>Equipos del punto de venta</h2>
+                        </div>
+                        <button class="btn btn-light"
+                                type="button"
+                                aria-label="Cerrar"
+                                title="Cerrar"
+                                t-on-click="close">
+                            <i class="fa fa-times" aria-hidden="true"/>
+                        </button>
+                    </header>
+
+                    <div class="poliedro-iot-health-summary" t-att-class="'is-' + overallState">
+                        <span class="poliedro-iot-health-summary-icon">
+                            <i t-if="overallState === 'success'" class="fa fa-check" aria-hidden="true"/>
+                            <i t-elif="overallState === 'checking'" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"/>
+                            <i t-else="" class="fa fa-exclamation" aria-hidden="true"/>
+                        </span>
+                        <div>
+                            <strong t-out="overallLabel"/>
+                            <small>Actualizacion automatica cada 5 segundos</small>
+                        </div>
+                    </div>
+
+                    <section class="poliedro-iot-health-devices">
+                        <article class="poliedro-iot-device">
+                            <span class="poliedro-iot-device-icon"><i class="fa fa-sitemap" aria-hidden="true"/></span>
+                            <div class="poliedro-iot-device-copy">
+                                <strong>Servicio IoT</strong>
+                                <small t-if="proxyConnected">Comunicacion local disponible</small>
+                                <small t-else="">No responde en la red local</small>
+                            </div>
+                            <span class="poliedro-iot-device-state" t-att-class="proxyConnected ? 'is-success' : 'is-danger'">
+                                <t t-if="proxyConnected">Conectado</t>
+                                <t t-else="">Sin conexion</t>
+                            </span>
+                        </article>
+
+                        <article t-if="printerEnabled" class="poliedro-iot-device">
+                            <span class="poliedro-iot-device-icon"><i class="fa fa-print" aria-hidden="true"/></span>
+                            <div class="poliedro-iot-device-copy">
+                                <strong>Impresora termica</strong>
+                                <small t-if="printerConnected">Lista para recibir ordenes</small>
+                                <small t-else="">No detectada por el IoT</small>
+                            </div>
+                            <button class="poliedro-iot-device-action"
+                                    type="button"
+                                    t-att-disabled="state.busy or !printerConnected"
+                                    t-on-click="testPrinter">
+                                <i t-if="state.busy === 'printer'" class="fa fa-circle-o-notch fa-spin"/>
+                                <t t-else="">Probar</t>
+                            </button>
+                        </article>
+
+                        <article t-if="scaleEnabled" class="poliedro-iot-device">
+                            <span class="poliedro-iot-device-icon"><i class="fa fa-balance-scale" aria-hidden="true"/></span>
+                            <div class="poliedro-iot-device-copy">
+                                <strong>Bascula</strong>
+                                <small t-if="formattedScaleWeight">Lectura: <b t-out="formattedScaleWeight"/></small>
+                                <small t-elif="scaleConnected">Lista para pesar</small>
+                                <small t-else="">No detectada por el IoT</small>
+                            </div>
+                            <button class="poliedro-iot-device-action"
+                                    type="button"
+                                    t-att-disabled="state.busy or !scaleConnected"
+                                    t-on-click="testScale">
+                                <i t-if="state.busy === 'scale'" class="fa fa-circle-o-notch fa-spin"/>
+                                <t t-else="">Leer</t>
+                            </button>
+                        </article>
+
+                        <article t-if="pos.config.iface_cashdrawer" class="poliedro-iot-device">
+                            <span class="poliedro-iot-device-icon"><i class="fa fa-archive" aria-hidden="true"/></span>
+                            <div class="poliedro-iot-device-copy">
+                                <strong>Cajon monedero</strong>
+                                <small t-if="drawerConnected">Disponible mediante la impresora</small>
+                                <small t-else="">Requiere la impresora conectada</small>
+                            </div>
+                            <button class="poliedro-iot-device-action"
+                                    type="button"
+                                    t-att-disabled="state.busy or !drawerConnected"
+                                    t-on-click="testDrawer">
+                                <i t-if="state.busy === 'drawer'" class="fa fa-circle-o-notch fa-spin"/>
+                                <t t-else="">Abrir</t>
+                            </button>
+                        </article>
+                    </section>
+
+                    <section class="poliedro-iot-health-activity">
+                        <span class="poliedro-iot-health-activity-icon"
+                              t-att-class="state.lastActionSuccessful === false ? 'is-danger' : 'is-neutral'">
+                            <i class="fa fa-exchange" aria-hidden="true"/>
+                        </span>
+                        <div>
+                            <small>Ultima orden IoT</small>
+                            <strong t-out="lastActionLabel"/>
+                        </div>
+                        <time t-if="lastActionTime" t-out="lastActionTime"/>
+                    </section>
+
+                    <footer class="poliedro-iot-health-footer">
+                        <p>
+                            <i class="fa fa-info-circle" aria-hidden="true"/>
+                            Una orden aceptada confirma la comunicacion con el IoT. Verifique fisicamente papel, tapa y conexion USB si el equipo no responde.
+                        </p>
+                        <button class="btn btn-primary"
+                                type="button"
+                                t-att-disabled="state.busy"
+                                t-on-click="reconnect">
+                            <i t-if="state.busy === 'reconnect'" class="fa fa-circle-o-notch fa-spin me-1"/>
+                            <i t-else="" class="fa fa-refresh me-1" aria-hidden="true"/>
+                            Reconectar equipos
+                        </button>
+                    </footer>
+                </aside>
+            </t>
+        </div>
+    </t>
+
+    <t t-name="poliedro_pos_iot_health.Navbar"
+       t-inherit="point_of_sale.Navbar"
+       t-inherit-mode="extension">
+        <xpath expr="//div[contains(@class, 'poliedro-scanner-navbar-sale')]/button[contains(@class, 'poliedro-layout-toggle')]" position="before">
+            <PoliedroIoTHealth/>
+        </xpath>
+    </t>
+
+</templates>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><record id="view_stock_scrap_form_poliedro_expiration" model="ir.ui.view"><field name="name">stock.scrap.form.poliedro.expiration</field><field name="model">stock.scrap</field><field name="inherit_id" ref="stock.stock_scrap_form_view"/><field name="arch" type="xml"><xpath expr="//field[@name='origin']" position="after"><field name="poliedro_expiration_action"/><field name="poliedro_expiration_note" invisible="not poliedro_expiration_action" required="poliedro_expiration_action"/></xpath></field></record></odoo>

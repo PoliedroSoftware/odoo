@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+ <t t-name="poliedro_pos_cash_move_reason.CashMovePopup" t-inherit="point_of_sale.CashMovePopup" t-inherit-mode="extension">
+  <xpath expr="//div[contains(@class, 'form-floating')]" position="replace">
+   <div class="poliedro-cash-reason">
+    <label for="poliedro-cash-reason">Motivo obligatorio</label>
+    <select id="poliedro-cash-reason" class="form-select form-select-lg" t-on-change="onPoliedroReasonChange"><option value="">Seleccione un motivo…</option><t t-foreach="state.poliedroReasons" t-as="reason" t-key="reason.id"><option t-att-value="reason.id"><t t-esc="reason.name"/></option></t></select>
+    <label class="mt-2" for="poliedro-cash-detail">Detalle adicional</label>
+    <textarea id="poliedro-cash-detail" class="form-control" rows="2" maxlength="240" t-model="state.poliedroDetail" t-on-input="updatePoliedroReason" placeholder="Opcional"/>
+   </div>
+  </xpath>
+ </t>
+</templates>

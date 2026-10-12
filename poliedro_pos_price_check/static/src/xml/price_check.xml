@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+ <t t-name="poliedro_pos_price_check.ProductScreen" t-inherit="poliedro_pos_scanner_layout.ProductScreen" t-inherit-mode="extension">
+  <xpath expr="//div[contains(@class, 'poliedro-scanner-native-actions')]" position="after">
+   <button class="poliedro-price-check-toggle btn btn-light btn-lg" t-att-class="{'is-active': state.poliedroPriceCheckMode}" type="button" t-on-click="togglePoliedroPriceCheck"><i class="fa fa-search"/><span>Consultar precio</span><span t-if="state.poliedroPriceCheckMode" class="poliedro-price-check-live">Activo</span></button>
+  </xpath>
+ </t>
+ <t t-name="poliedro_pos_price_check.PriceCheckDialog">
+  <Dialog title="'Consulta de precio'" size="'md'">
+   <article class="poliedro-price-card">
+    <div class="poliedro-price-card-status"><i class="fa fa-check-circle"/> Producto encontrado</div>
+    <h2 t-esc="props.productName"/>
+    <div class="poliedro-price-card-code"><span t-if="props.barcode"><i class="fa fa-barcode"/> <t t-esc="props.barcode"/></span><span t-if="props.defaultCode">Ref. <t t-esc="props.defaultCode"/></span></div>
+    <div class="poliedro-price-card-main"><small>Precio de venta</small><strong t-esc="props.price"/><span t-if="props.promotion" class="poliedro-price-promotion" t-esc="props.promotion"/></div>
+    <div class="poliedro-price-card-grid"><div><small>Impuesto</small><strong t-esc="props.taxName"/><span t-esc="props.taxAmount"/></div><div><small>Existencia disponible</small><strong><t t-esc="props.freeQuantity"/> <t t-esc="props.uom"/></strong><span>En inventario: <t t-esc="props.availableQuantity"/></span></div></div>
+   </article>
+   <t t-set-slot="footer"><button class="btn btn-primary btn-lg" t-on-click="add"><i class="fa fa-plus me-2"/>Agregar a la venta</button><button class="btn btn-secondary btn-lg" t-on-click="close">Cerrar</button></t>
+  </Dialog>
+ </t>
+</templates>

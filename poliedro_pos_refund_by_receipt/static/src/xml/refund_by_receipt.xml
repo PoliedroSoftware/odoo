@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+ <t t-name="poliedro_pos_refund_by_receipt.ProductScreen" t-inherit="poliedro_pos_scanner_layout.ProductScreen" t-inherit-mode="extension">
+  <xpath expr="//div[contains(@class, 'poliedro-scanner-native-actions')]" position="after"><button class="poliedro-refund-receipt btn btn-light btn-lg" type="button" t-on-click="openPoliedroRefundByReceipt"><i class="fa fa-undo"/><span>Devolver recibo</span></button></xpath>
+ </t>
+ <t t-name="poliedro_pos_refund_by_receipt.ReceiptLookupDialog">
+  <Dialog title="'Buscar venta para devolución'" size="'md'">
+   <div class="poliedro-refund-dialog"><div class="poliedro-refund-icon"><i class="fa fa-qrcode"/></div><h3>Escanee el QR o digite el recibo</h3><p>Después podrá elegir exactamente cuáles artículos y cantidades devolver.</p><input class="form-control form-control-lg" type="text" autocomplete="off" autofocus="autofocus" t-model="state.reference" t-on-keydown="(event) => event.key === 'Enter' &amp;&amp; confirm()" placeholder="Ej. Local POS - 000123"/></div>
+   <t t-set-slot="footer"><button class="btn btn-primary btn-lg" t-on-click="confirm"><i class="fa fa-search me-2"/>Buscar venta</button><button class="btn btn-secondary btn-lg" t-on-click="cancel">Cancelar</button></t>
+  </Dialog>
+ </t>
+</templates>

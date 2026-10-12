@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ <record id="action_poliedro_pos_management_dashboard" model="ir.actions.client"><field name="name">Tablero gerencial</field><field name="tag">poliedro_pos_management_dashboard</field></record>
+ <menuitem id="menu_poliedro_pos_management_dashboard" name="Tablero gerencial" parent="point_of_sale.menu_point_rep" action="action_poliedro_pos_management_dashboard" sequence="1" groups="point_of_sale.group_pos_manager"/>
+</odoo>
