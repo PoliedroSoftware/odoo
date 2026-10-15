@@ -1,0 +1,23 @@
+name: Temporary DigitalOcean SSH access
+description: Allow only this GitHub-hosted runner on TCP 22 and remove its rule after the job.
+inputs:
+  token:
+    description: DigitalOcean token with firewall:read and firewall:update only
+    required: true
+  firewall-id:
+    description: Existing firewall attached exclusively to the target droplet
+    required: true
+  droplet-id:
+    description: Expected droplet ID
+    required: true
+  host:
+    description: Target public IPv4 address
+    required: true
+outputs:
+  runner-ip:
+    description: The IPv4 address temporarily authorized for this job
+runs:
+  using: node24
+  main: index.cjs
+  post: cleanup.cjs
+  post-if: always()
