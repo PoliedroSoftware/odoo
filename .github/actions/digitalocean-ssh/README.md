@@ -49,6 +49,8 @@ y no se elimina. Nunca abre `0.0.0.0/0` ni una subred del proveedor de runners.
    La pipeline transversal incorpora `connection_test_only=true`: prueba
    firewall, clave SSH y respuesta pública de Odoo, omitiendo la carga de
    módulos y cualquier actualización de esquema o reinicio del servicio.
+   Un push que solo cambie la automatización también utiliza ese modo seguro;
+   los cambios en addons o en el script de despliegue conservan el despliegue.
 
 No se crean, redimensionan ni eliminan droplets. Ambos endpoints de reglas
 (agregar y retirar) utilizan el permiso `firewall:update`.

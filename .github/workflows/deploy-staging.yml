@@ -119,6 +119,32 @@ jobs:
       - name: Checkout addons
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+        with:
+          fetch-depth: 2
+
+      - name: Select deployment or connection-only mode
+        id: mode
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          CONNECTION_TEST_ONLY: ${{ inputs.connection_test_only }}
+        run: |
+          set -euo pipefail
+          deploy_code=false
+          if [[ "$EVENT_NAME" == workflow_dispatch && "$CONNECTION_TEST_ONLY" != true ]]; then
+            deploy_code=true
+          elif [[ "$EVENT_NAME" == push ]]; then
+            # A workflow-only PR must not update modules or restart Odoo.
+            git rev-parse --verify HEAD^ >/dev/null
+            if git diff --quiet HEAD^ HEAD -- ':(glob)poliedro_*/**' '.github/scripts/deploy-poliedro-staging.sh'; then
+              echo "Automation-only change: testing connectivity without deploying addons."
+            else
+              status=$?
+              [[ "$status" == 1 ]] || exit "$status"
+              deploy_code=true
+            fi
+          fi
+          echo "deploy_code=$deploy_code" >> "$GITHUB_OUTPUT"
+
       - name: Authorize this runner temporarily on SSH
         uses: ./.github/actions/digitalocean-ssh
         with:
@@ -142,7 +168,7 @@ jobs:
             "$DO_USER@$DO_HOST" 'test -d /opt/poliedro-odoo/src/custom-addons && test -d /opt/poliedro-odoo/incoming'
 
       - name: Package Poliedro addons
-        if: inputs.connection_test_only != true
+        if: steps.mode.outputs.deploy_code == 'true'
         run: |
           set -euo pipefail
           mapfile -t modules < <(find . -mindepth 2 -maxdepth 2 -name __manifest__.py -print | sed 's#^\./##; s#/__manifest__.py$##' | sort)
@@ -151,7 +177,7 @@ jobs:
           echo "modules=$(IFS=,; echo "${modules[*]}")" >> "$GITHUB_ENV"
 
       - name: Upload deployment bundles
-        if: inputs.connection_test_only != true
+        if: steps.mode.outputs.deploy_code == 'true'
         run: |
           set -euo pipefail
           archive="poliedro-${GITHUB_SHA}.tar.gz"
@@ -160,7 +186,7 @@ jobs:
           echo "ADDONS_ARCHIVE=$archive" >> "$GITHUB_ENV"
 
       - name: Backup, deploy and verify Odoo
-        if: inputs.connection_test_only != true
+        if: steps.mode.outputs.deploy_code == 'true'
         run: |
           set -euo pipefail
           ssh -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
