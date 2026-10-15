@@ -47,7 +47,7 @@ rollback() {
   trap - ERR EXIT
   set +e
   if (( deployment_started )); then
-    "${compose[@]}" stop odoo
+    "${compose[@]}" stop odoo </dev/null
     for name in "${changed[@]}"; do
       target="$addons/$name"
       [[ ! -e "$target" ]] || mv "$target" "$backup/failed/$name"
@@ -61,22 +61,23 @@ rollback() {
         tar -xzf "$backup/filestore.tar.gz" -C "$filestore"
       fi
     fi
-    "${compose[@]}" up -d odoo
+    "${compose[@]}" up -d odoo </dev/null
   fi
   exit "$status"
 }
 trap rollback ERR EXIT
 
 cp -a "$base/compose.yml" "$backup/compose.yml"
-"${compose[@]}" stop odoo
+"${compose[@]}" stop odoo </dev/null
 deployment_started=1
-"${compose[@]}" exec -T db pg_dump -U odoo -Fc --no-owner --no-acl odoo_dev > "$backup/odoo_dev.dump"
+"${compose[@]}" exec -T db pg_dump -U odoo -Fc --no-owner --no-acl odoo_dev </dev/null > "$backup/odoo_dev.dump"
 [[ -s "$backup/odoo_dev.dump" ]] || { echo "Backup vacío." >&2; exit 1; }
+"${compose[@]}" exec -T db pg_restore --list < "$backup/odoo_dev.dump" >/dev/null
 db_backup=1
 if [[ -d "$base/data/odoo/filestore/odoo_dev" ]]; then
   tar -czf "$backup/filestore.tar.gz" -C "$base/data/odoo/filestore" odoo_dev
 fi
-installed="$("${compose[@]}" exec -T db psql -U odoo -d odoo_dev -Atc "SELECT name FROM ir_module_module WHERE state='installed' ORDER BY name")"
+installed="$("${compose[@]}" exec -T db psql -U odoo -d odoo_dev -Atc "SELECT name FROM ir_module_module WHERE state='installed' ORDER BY name" </dev/null)"
 mapfile -t installed_custom < <(comm -12 <(printf '%s\n' "${modules[@]}" | sort -u) <(printf '%s\n' "$installed" | sort -u))
 
 for name in "${modules[@]}"; do
@@ -90,10 +91,10 @@ updates="$(printf '%s\n' "${installed_custom[@]}" "${requested[@]}" | sed '/^$/d
 odoo_args=(-d odoo_dev)
 [[ -z "$install_modules" ]] || odoo_args+=(-i "$install_modules")
 [[ -z "$updates" ]] || odoo_args+=(-u "$updates")
-if ((${#odoo_args[@]} > 1)); then "${compose[@]}" run --rm odoo "${odoo_args[@]}" --stop-after-init; fi
-"${compose[@]}" up -d odoo
+if ((${#odoo_args[@]} > 1)); then "${compose[@]}" run --rm -T odoo "${odoo_args[@]}" --stop-after-init </dev/null; fi
+"${compose[@]}" up -d odoo </dev/null
 for attempt in $(seq 1 45); do
-  if "${compose[@]}" exec -T odoo python3 -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8069/web/login', timeout=3)" >/dev/null 2>&1; then
+  if "${compose[@]}" exec -T odoo python3 -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8069/web/login', timeout=3)" </dev/null >/dev/null 2>&1; then
     deployment_started=0
     trap - ERR EXIT
     mv "$incoming" "$backup/source-addons.tar.gz"
@@ -102,6 +103,6 @@ for attempt in $(seq 1 45); do
   fi
   sleep 2
 done
-"${compose[@]}" logs --tail=100 odoo >&2
+"${compose[@]}" logs --tail=100 odoo </dev/null >&2
 echo "Odoo no pasó la verificación de salud." >&2
 false

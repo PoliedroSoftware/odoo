@@ -50,6 +50,9 @@ jobs:
       - name: Test temporary firewall authorization
         run: node --test .github/actions/digitalocean-ssh/test/*.test.cjs
 
+      - name: Validate deployment shell syntax
+        run: bash -n .github/scripts/deploy-poliedro-staging.sh
+
       - name: Validate modules and deployment inputs
         id: validate
         env:
