@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Extend the native template used by both regular and DIAN invoices; retain its anchors. -->
+    <template id="report_invoice_document_poliedro" inherit_id="account.report_invoice_document">
+        <xpath expr="//t[@t-set='layout_document_title']" position="replace">
+            <t t-set="layout_document_title" t-value="''"/>
+        </xpath>
+        <xpath expr="//div[hasclass('page')]" position="attributes">
+            <attribute name="class" add="poliedro-invoice poliedro-report-page" separator=" "/>
+            <attribute name="t-attf-class">page mb-4 poliedro-invoice poliedro-report-page {{ 'poliedro-invoice-sale' if o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('row') and (.//div[@name='address_not_same_as_shipping'] or .//div[@name='address_same_as_shipping'] or .//div[@name='no_shipping'])]" position="attributes">
+            <attribute name="t-attf-class">row {{ 'poliedro-hide-for-custom' if o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('page')]" position="inside">
+            <t t-if="o.move_type in ('out_invoice', 'out_refund')">
+                <t t-call="poliedro_invoice_report.invoice_document_body"/>
+            </t>
+        </xpath>
+    </template>
+</odoo>

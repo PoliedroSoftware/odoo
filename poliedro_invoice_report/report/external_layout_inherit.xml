@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <template id="external_layout_striped_invoice_poliedro" inherit_id="web.external_layout_striped">
+    <xpath expr="//div[contains(@t-attf-class, 'header') ]" position="attributes">
+      <attribute name="t-attf-class">o_company_#{company.id}_layout header {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class, 'article') ]" position="attributes">
+      <attribute name="t-attf-class">o_company_#{company.id}_layout article o_report_layout_striped o_table_striped o_snail_mail {{'o_report_layout_background' if company.layout_background != 'Blank' else ''}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class, 'footer') ]" position="attributes">
+      <attribute name="t-attf-class">footer o_company_#{company.id}_layout {{report_type != 'pdf' and 'mt-auto'}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+  </template>
+  <template id="external_layout_boxed_invoice_poliedro" inherit_id="web.external_layout_boxed">
+    <xpath expr="//div[contains(@t-attf-class, 'header') ]" position="attributes">
+      <attribute name="t-attf-class">header o_company_#{company.id}_layout {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class, 'article') ]" position="attributes">
+      <attribute name="t-attf-class">article o_report_layout_boxed o_table_boxed o_company_#{company.id}_layout o_snail_mail {{'o_report_layout_background' if company.layout_background != 'Blank' else ''}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class, 'footer') ]" position="attributes">
+      <attribute name="t-attf-class">footer o_company_#{company.id}_layout {{report_type != 'pdf' and 'mt-auto'}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+  </template>
+  <template id="external_layout_bold_invoice_poliedro" inherit_id="web.external_layout_bold">
+    <xpath expr="//div[contains(@t-attf-class, 'header') ]" position="attributes">
+      <attribute name="t-attf-class">header o_company_#{company.id}_layout {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class, 'article') ]" position="attributes">
+      <attribute name="t-attf-class">article o_report_layout_bold o_table_bold o_company_#{company.id}_layout o_snail_mail {{'o_report_layout_background' if company.layout_background != 'Blank' else ''}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class, 'footer') ]" position="attributes">
+      <attribute name="t-attf-class">footer o_company_#{company.id}_layout {{report_type != 'pdf' and 'mt-auto'}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+  </template>
+  <template id="external_layout_standard_invoice_poliedro" inherit_id="web.external_layout_standard">
+    <xpath expr="//div[contains(@t-attf-class, 'header') ]" position="attributes">
+      <attribute name="t-attf-class">header o_company_#{company.id}_layout {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class, 'article') ]" position="attributes">
+      <attribute name="t-attf-class">article o_report_layout_standard o_table_standard o_company_#{company.id}_layout o_snail_mail {{'o_report_layout_background' if company.layout_background != 'Blank' else ''}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class, 'footer') ]" position="attributes">
+      <attribute name="t-attf-class">footer o_company_#{company.id}_layout {{report_type != 'pdf' and 'mt-auto'}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+  </template>
+  <template id="external_layout_folder_invoice_poliedro" inherit_id="web.external_layout_folder">
+    <xpath expr="//div[contains(@t-attf-class, 'header') ]" position="attributes">
+      <attribute name="t-attf-class">header o_company_#{company.id}_layout {{report_type != 'pdf' and 'h-0'}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class, 'article') ]" position="attributes">
+      <attribute name="t-attf-class">article o_report_layout_folder o_table_striped o_company_#{company.id}_layout {{'o_report_layout_background' if company.layout_background != 'Blank' else ''}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class, 'footer') ]" position="attributes">
+      <attribute name="t-attf-class">footer o_company_#{company.id}_layout {{report_type != 'pdf' and 'mt-auto'}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+  </template>
+  <template id="external_layout_wave_invoice_poliedro" inherit_id="web.external_layout_wave">
+    <xpath expr="//div[contains(@t-attf-class, 'header') ]" position="attributes">
+      <attribute name="t-attf-class">header o_company_#{company.id}_layout {{report_type != 'pdf' and 'h-0'}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class, 'article') ]" position="attributes">
+      <attribute name="t-attf-class">article o_report_layout_wave o_table_striped o_company_#{company.id}_layout {{'o_report_layout_background' if company.layout_background != 'Blank' else ''}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class, 'footer') ]" position="attributes">
+      <attribute name="t-attf-class">footer o_company_#{company.id}_layout {{report_type != 'pdf' and 'position-relative mt-auto mx-n5'}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+  </template>
+  <template id="external_layout_bubble_invoice_poliedro" inherit_id="web.external_layout_bubble">
+    <xpath expr="//div[contains(@t-attf-class, 'header') ]" position="attributes">
+      <attribute name="t-attf-class">header o_company_#{company.id}_layout {{report_type == 'pdf' and 'pt-5'}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class, 'article') ]" position="attributes">
+      <attribute name="t-attf-class">article o_report_layout_bubble o_table_boxed-rounded o_company_#{company.id}_layout {{'o_report_layout_background' if company.layout_background != 'Blank' else ''}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class, 'footer') ]" position="attributes">
+      <attribute name="t-attf-class">footer o_company_#{company.id}_layout {{report_type != 'pdf' and 'position-relative mt-auto mx-n5'}} {{ 'poliedro-invoice-layout-hidden' if o and o._name == 'account.move' and o.move_type in ('out_invoice', 'out_refund') else '' }}</attribute>
+    </xpath>
+  </template>
+</odoo>
