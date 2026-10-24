@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <template id="invoice_document_body">
+    <div class="poliedro-invoice poliedro-invoice-content">
+                <t t-set="company" t-value="o.company_id"/>
+
+                <section class="poliedro-hero">
+                    <table class="poliedro-hero-layout"><tbody><tr>
+                        <td class="poliedro-hero-brand">
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="poliedro-logo" alt="Logo"/>
+                            <div class="poliedro-brand-copy"><div class="poliedro-company-name" t-field="company.name"/><div class="poliedro-tagline" t-if="company.invoice_tagline" t-field="company.invoice_tagline"/></div>
+                        </td>
+                        <td class="poliedro-hero-values" t-if="company.invoice_value_1 or company.invoice_value_2 or company.invoice_value_3">
+                            <div class="poliedro-value" t-if="company.invoice_value_1"><i class="fa fa-tint" aria-hidden="true"/><span t-field="company.invoice_value_1"/></div>
+                            <div class="poliedro-value" t-if="company.invoice_value_2"><i class="fa fa-leaf" aria-hidden="true"/><span t-field="company.invoice_value_2"/></div>
+                            <div class="poliedro-value" t-if="company.invoice_value_3"><i class="fa fa-users" aria-hidden="true"/><span t-field="company.invoice_value_3"/></div>
+                        </td>
+                        <td class="poliedro-hero-image"><img t-if="company.invoice_header_banner_image" t-att-src="image_data_uri(company.invoice_header_banner_image)" alt="" class="poliedro-banner"/><div t-else="" class="poliedro-values-decoration" aria-hidden="true"/></td>
+                    </tr></tbody></table><div class="poliedro-hero-accent"/>
+                </section>
+
+                <section class="poliedro-title-block">
+                    <div class="poliedro-title-line">
+                        <h1 t-if="o.move_type == 'out_refund'"><i class="fa fa-file-text-o"/> Nota crédito electrónica</h1>
+                        <h1 t-else=""><i class="fa fa-file-text-o"/> Factura Electrónica de Venta</h1>
+                        <span class="poliedro-invoice-number" t-if="o.name and o.name != '/'" t-field="o.name"/>
+                        <span class="poliedro-invoice-number" t-else="">Borrador</span>
+                    </div>
+                    <div class="poliedro-validation" t-if="o.l10n_co_dian_state == 'invoice_accepted'">
+                        <span class="poliedro-check">✓</span> Documento electrónico validado por la DIAN
+                    </div>
+                    <div class="poliedro-validation poliedro-validation-muted" t-elif="o.state == 'draft'">
+                        Documento en borrador; aún no es un documento legal
+                    </div>
+                    <div class="poliedro-validation poliedro-validation-muted" t-else="">
+                        Documento electrónico
+                    </div>
+                </section>
+
+                <table class="poliedro-parties table-borderless">
+                    <colgroup><col style="width: 50%"/><col style="width: 50%"/></colgroup>
+                    <tbody><tr>
+                    <td class="poliedro-card">
+                        <div class="poliedro-card-heading"><i class="fa fa-building" aria-hidden="true"/> EMISOR</div>
+                        <div class="poliedro-card-content">
+                            <strong t-field="company.name"/>
+                            <div t-field="company.partner_id" t-options="{'widget': 'contact', 'fields': ['address'], 'no_marker': True}"/>
+                            <div t-if="company.vat"><strong>NIT:</strong> <span t-field="company.vat"/></div>
+                            <div t-if="company.email" t-field="company.email"/>
+                            <div t-if="company.phone" t-field="company.phone"/>
+                        </div>
+                    </td>
+                    <td class="poliedro-card">
+                        <div class="poliedro-card-heading poliedro-card-heading-client"><i class="fa fa-user" aria-hidden="true"/> CLIENTE</div>
+                        <div class="poliedro-card-content">
+                            <strong t-field="o.partner_id.name"/>
+                            <div t-field="o.partner_id" t-options="{'widget': 'contact', 'fields': ['address'], 'no_marker': True}"/>
+                            <div t-if="o.partner_id.vat"><strong>NIT / Identificación:</strong> <span t-field="o.partner_id.vat"/></div>
+                            <div t-if="o.partner_id.email" t-field="o.partner_id.email"/>
+                        </div>
+                    </td>
+                    </tr></tbody>
+                </table>
+
+                <div id="informations" class="poliedro-quick-facts">
+                    <div class="poliedro-fact" t-if="o.invoice_date" name="invoice_date">
+                        <i class="fa fa-calendar" aria-hidden="true"/><span class="poliedro-fact-label">Fecha de factura</span>
+                        <strong t-field="o.invoice_date"/>
+                    </div>
+                    <div class="poliedro-fact" t-if="o.invoice_date_due and o.move_type == 'out_invoice'" name="due_date">
+                        <i class="fa fa-calendar-check-o" aria-hidden="true"/><span class="poliedro-fact-label">Fecha límite</span>
+                        <strong t-field="o.invoice_date_due"/>
+                    </div>
+                    <div class="poliedro-fact" name="payment_method">
+                        <i class="fa fa-credit-card" aria-hidden="true"/><span class="poliedro-fact-label">Método de pago</span>
+                        <strong t-if="o.l10n_co_edi_payment_option_id" t-field="o.l10n_co_edi_payment_option_id.name"/>
+                        <strong t-elif="o.invoice_payment_term_id" t-field="o.invoice_payment_term_id.name"/>
+                        <strong t-else="">No informado</strong>
+                    </div>
+                    <div class="poliedro-fact" name="customer_code">
+                        <i class="fa fa-users" aria-hidden="true"/><span class="poliedro-fact-label">Código de cliente</span>
+                        <strong t-if="o.partner_id.ref" t-field="o.partner_id.ref"/><strong t-else="">Sin código asignado</strong>
+                    </div>
+                    <div class="poliedro-fact" t-if="o.ref" name="reference">
+                        <span class="poliedro-fact-label">Referencia</span>
+                        <strong t-field="o.ref"/>
+                    </div>
+                </div>
+
+                <table class="poliedro-lines">
+                    <thead>
+                        <tr>
+                            <th class="poliedro-line-number">#</th>
+                            <th>Descripción</th>
+                            <th class="text-end">Cantidad</th>
+                            <th class="text-end">Precio unitario</th>
+                            <th>Impuestos</th>
+                            <th class="text-end">Importe</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="poliedro_line_number" t-value="0"/>
+                        <t t-foreach="o.invoice_line_ids" t-as="line">
+                            <t t-if="line.display_type == 'line_section'">
+                                <tr class="poliedro-line-section"><td colspan="6"><strong t-field="line.name"/></td></tr>
+                            </t>
+                            <t t-elif="line.display_type == 'line_subsection'">
+                                <tr class="poliedro-line-subsection"><td colspan="6"><strong t-field="line.name"/></td></tr>
+                            </t>
+                            <t t-elif="line.display_type == 'line_note'">
+                                <tr class="poliedro-line-note"><td colspan="6"><span t-field="line.name"/></td></tr>
+                            </t>
+                            <t t-else="">
+                                <t t-set="poliedro_line_number" t-value="poliedro_line_number + 1"/>
+                                <tr>
+                                    <td class="poliedro-line-number" t-out="poliedro_line_number"/>
+                                    <td class="poliedro-description"><span t-field="line.name" t-options="{'widget': 'text'}"/></td>
+                                    <td class="text-end"><span t-field="line.quantity"/><span t-if="line.product_uom_id"> <span t-field="line.product_uom_id" groups="uom.group_uom"/></span></td>
+                                    <td class="text-end"><span t-field="line.price_unit"/></td>
+                                    <td class="poliedro-taxes"><span t-out="', '.join(line.tax_ids.mapped('name'))"/></td>
+                                    <td class="text-end"><span t-field="line.price_subtotal"/></td>
+                                </tr>
+                            </t>
+                        </t>
+                    </tbody>
+                </table>
+
+                <table t-attf-class="poliedro-summary-table {{'poliedro-summary-no-note' if not (o.payment_reference or o.ref or o.narration) else ''}}"><colgroup t-if="not (o.payment_reference or o.ref or o.narration)"><col style="width: 0%"/><col style="width: 100%"/></colgroup><colgroup t-else=""><col style="width: 50%"/><col style="width: 50%"/></colgroup><tbody><tr><td class="poliedro-summary-note"><div class="poliedro-payment-note" t-if="o.payment_reference or o.ref or o.narration">
+                        <div class="poliedro-note-heading"><i class="fa fa-commenting" aria-hidden="true"/> Comunicación / observaciones</div>
+                        <div t-if="o.payment_reference"><strong>Comunicación del pago:</strong> <span t-field="o.payment_reference"/></div>
+                        <div t-if="o.ref and o.ref != o.payment_reference"><strong>Referencia:</strong> <span t-field="o.ref"/></div>
+                        <div t-if="o.narration" t-field="o.narration"/>
+                    </div>
+                    </td><td class="poliedro-summary-totals"><div class="poliedro-totals"><table><tbody>
+                        <tr><td>Subtotal</td><td class="text-end"><span t-field="o.amount_untaxed" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td></tr>
+                        <tr><td>Impuestos</td><td class="text-end"><span t-field="o.amount_tax" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td></tr>
+                        <tr class="poliedro-grand-total"><td><strong>Total</strong></td><td class="text-end"><strong t-field="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td></tr>
+                        <tr t-if="o.state == 'posted'"><td>Pagado</td><td class="text-end"><span t-out="o.amount_total - o.amount_residual" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td></tr>
+                        <tr class="poliedro-balance"><td><strong>Cantidad por pagar</strong></td><td class="text-end"><strong t-field="o.amount_residual" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td></tr>
+                    </tbody></table></div>
+                </td></tr></tbody></table><!-- Keep the native payment term anchor; DIAN and payment status share the reference layout. -->
+                <section class="poliedro-dian-heading" t-if="o.l10n_co_dian_attachment_id">
+                    <strong><i class="fa fa-file-text-o" aria-hidden="true"/> Factura electrónica</strong>
+                    <span>Validación DIAN y datos de generación</span>
+                </section>
+                <div t-if="o.l10n_co_dian_attachment_id" class="poliedro-dian-data">
+  <t t-set="dian_values" t-value="o._l10n_co_dian_get_extra_invoice_report_values()"/>
+  <div class="poliedro-dian-grid">
+    <div class="poliedro-dian-qr"><img t-att-src="dian_values.get('barcode_src')" alt="QR DIAN"/><span>Escanee para validar este documento</span></div>
+    <div class="poliedro-dian-details">
+      <strong><i class="fa fa-file-text-o" aria-hidden="true"/> INFORMACIÓN DIAN</strong>
+      <div t-if="o.journal_id.l10n_co_edi_dian_authorization_number">Resolución: <span t-field="o.journal_id.l10n_co_edi_dian_authorization_number"/></div>
+      <div t-if="o.journal_id.l10n_co_edi_dian_authorization_date or o.journal_id.l10n_co_edi_dian_authorization_end_date">Vigencia: <span t-field="o.journal_id.l10n_co_edi_dian_authorization_date"/> – <span t-field="o.journal_id.l10n_co_edi_dian_authorization_end_date"/></div>
+      <div>Número de secuencia: <span t-out="o.journal_id.code + str(o.journal_id.l10n_co_edi_min_range_number)"/> a <span t-out="o.journal_id.code + str(o.journal_id.l10n_co_edi_max_range_number)"/></div>
+      <div>Gran contribuyente: <span t-if="o.company_id.partner_id.l10n_co_edi_large_taxpayer">Sí</span><span t-else="">No</span></div>
+      <div t-if="o.company_id.partner_id.l10n_co_edi_obligation_type_ids">Responsabilidad tributaria: <span t-out="', '.join(o.company_id.partner_id.l10n_co_edi_obligation_type_ids.mapped('description'))"/></div>
+      <div>Régimen fiscal: <span t-out="o.company_id.partner_id._l10n_co_edi_get_fiscal_regimen_name()"/></div>
+      <div t-if="o.company_id.l10n_co_edi_header_actividad_economica">Actividad económica: <span t-field="o.company_id.l10n_co_edi_header_actividad_economica"/></div>
+    </div>
+    <div class="poliedro-dian-state"><section t-attf-class="poliedro-payment-status {{'is-paid' if o.payment_state == 'paid' else 'is-cancelled' if o.state == 'cancel' else 'is-draft' if o.state == 'draft' else 'is-open'}}">
+      <div class="poliedro-status-mark" aria-hidden="true"><i t-if="o.payment_state == 'paid'" class="fa fa-check"/><i t-elif="o.state == 'cancel'" class="fa fa-times"/><i t-else="" class="fa fa-clock-o"/></div>
+      <div class="poliedro-status-copy"><span>ESTADO DE LA FACTURA</span><strong t-if="o.state == 'cancel'">CANCELADA</strong><strong t-elif="o.state == 'draft'">BORRADOR</strong><strong t-elif="o.payment_state == 'paid'">PAGADA</strong><strong t-elif="o.payment_state == 'partial'">PARCIALMENTE PAGADA</strong><strong t-elif="o.payment_state == 'in_payment'">EN PROCESO DE PAGO</strong><strong t-else="">PENDIENTE DE PAGO</strong></div>
+    </section></div>
+  </div>
+  <div class="poliedro-cufe"><strong><i class="fa fa-file-code-o" aria-hidden="true"/> <span t-out="o.l10n_co_dian_identifier_type.upper()"/>:</strong> <span t-out="dian_values.get('identifier')"/></div>
+  <div class="poliedro-technical"><span>Fecha de firma: <t t-out="dian_values.get('signing_datetime')"/></span><span t-if="o.l10n_co_dian_post_time">Fecha de emisión: <span t-field="o.l10n_co_dian_post_time"/></span><span>NIT: <span t-field="o.company_id.vat"/></span></div>
+</div><section t-if="not o.l10n_co_dian_attachment_id" t-attf-class="poliedro-payment-status poliedro-payment-status-draft {{'is-cancelled' if o.state == 'cancel' else 'is-draft' if o.state == 'draft' else 'is-open'}}">
+                    <div class="poliedro-status-mark" aria-hidden="true"><i t-if="o.state == 'cancel'" class="fa fa-times"/><i t-elif="o.state == 'draft'" class="fa fa-pencil"/><i t-else="" class="fa fa-clock-o"/></div>
+                    <div class="poliedro-status-copy"><span>ESTADO DE LA FACTURA</span><strong t-if="o.state == 'cancel'">CANCELADA</strong><strong t-elif="o.state == 'draft'">BORRADOR</strong><strong t-elif="o.payment_state == 'paid'">PAGADA</strong><strong t-elif="o.payment_state == 'partial'">PARCIALMENTE PAGADA</strong><strong t-elif="o.payment_state == 'in_payment'">EN PROCESO DE PAGO</strong><strong t-else="">PENDIENTE DE PAGO</strong></div>
+                </section><section class="poliedro-footer">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="" class="poliedro-footer-logo"/>
+                    <div class="poliedro-footer-details">
+                        <strong><span t-field="company.name"/> <t t-if="company.vat">· NIT <span t-field="company.vat"/></t></strong>
+                        <div t-field="company.partner_id" t-options="{'widget': 'contact', 'fields': ['address'], 'no_marker': True}"/>
+                        <span t-if="company.phone" t-field="company.phone"/>
+                        <span t-if="company.email" t-field="company.email"/>
+                    </div>
+                    <div class="poliedro-footer-phrase" t-if="company.invoice_footer_phrase" t-field="company.invoice_footer_phrase"/>
+                </section>
+                <!-- Do not repeat the title in web.external_layout; the visible title is above. -->
+                </div>
+  </template>
+</odoo>

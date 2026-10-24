@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Compact top margin only when the native invoice action prints outgoing invoices. -->
+    <template id="report_invoice_poliedro_sale_margin" inherit_id="account.report_invoice">
+        <xpath expr="//t[@t-call='web.html_container']" position="before">
+            <t t-if="docs and all(move.move_type in ('out_invoice', 'out_refund') for move in docs)">
+                <t t-set="data_report_margin_top" t-value="12"/>
+                <t t-set="data_report_header_spacing" t-value="0"/>
+            </t>
+        </xpath>
+    </template>
+</odoo>

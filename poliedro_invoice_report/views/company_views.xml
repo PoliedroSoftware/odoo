@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_company_form_invoice_branding" model="ir.ui.view">
+        <field name="name">res.company.form.invoice.branding</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group string="Diseño de factura PDF" name="poliedro_invoice_branding">
+                    <field name="invoice_tagline" placeholder="Mensaje breve de marca"/>
+                    <field name="invoice_value_1" placeholder="Combustible de calidad"/>
+                    <field name="invoice_value_2" placeholder="Confianza en cada kilómetro"/>
+                    <field name="invoice_value_3" placeholder="Comprometidos con el desarrollo de la región"/>
+                    <field name="invoice_footer_phrase" placeholder="Frase opcional para el pie"/>
+                    <field name="invoice_header_banner_image" widget="image" options="{'size': [900, 260]}"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,143 @@
+ .poliedro-invoice {
+    --pl-green: #064a38;
+    --pl-green-2: #08734f;
+    --pl-gold: #c89a36;
+    --pl-ink: #172b2c;
+    --pl-muted: #637372;
+    --pl-line: #dce5e3;
+    --pl-pale: #eef5f3;
+    color: var(--pl-ink);
+    font-family: "Lato", "Arial", sans-serif;
+    font-size: 9pt;
+    line-height: 1.32;
+
+    .poliedro-hero {
+        height: 138px;
+        position: relative;
+        overflow: hidden;
+        background: #062f25;
+        border-radius: 0 0 15px 15px;
+        color: #fff;
+        margin: 0 -8mm 9px;
+        padding: 8px 10px 13px;
+    }
+    .poliedro-hero-layout { border-collapse: collapse; height: 100%; table-layout: fixed; width: 100%; }
+    .poliedro-hero-layout td { border: 0 !important; padding: 0 9px; vertical-align: middle; }
+    .poliedro-hero-brand { width: 37%; }
+    .poliedro-logo { background: rgba(255,255,255,.96); border-radius: 8px; height: 76px; object-fit: contain; padding: 4px; width: 76px; }
+    .poliedro-brand-copy { display: inline-block; margin-left: 7px; max-width: 72%; vertical-align: middle; }
+    .poliedro-company-name { color: #fff; font-size: 14pt; font-weight: 800; line-height: 1.12; }
+    .poliedro-tagline { color: #e8cf86; font-size: 7pt; letter-spacing: 1.2px; margin-top: 5px; text-transform: uppercase; }
+    .poliedro-hero-values { border-left: 1px solid rgba(224,187,92,.8) !important; width: 24%; }
+    .poliedro-value { color: #fff; font-size: 7.4pt; font-weight: 700; letter-spacing: .7px; line-height: 1.2; margin: 4px 0; text-transform: uppercase; }
+    .poliedro-value i { color: #d5ad52; display: inline-block; font-size: 13pt; margin-right: 9px; text-align: center; vertical-align: middle; width: 20px; }
+    .poliedro-hero-image { padding-right: 0 !important; width: 39%; }
+    .poliedro-banner { border-radius: 8px; height: 124px; object-fit: cover; width: 100%; }
+    .poliedro-values-decoration { background: radial-gradient(ellipse at 80% 110%, rgba(200,154,54,.38), transparent 55%); height: 92px; }
+    .poliedro-hero-accent { background: linear-gradient(90deg, #d0a43e 0 18%, #148250 18% 72%, #d0a43e 72%); bottom: 0; height: 5px; left: 0; position: absolute; width: 100%; }
+
+    .poliedro-title-block { margin: 2px 0 10px; }
+    .poliedro-title-line { align-items: baseline; display: flex; flex-wrap: wrap; gap: 8px; }
+    .poliedro-title-line h1 { color: #073b30; font-size: 23pt; font-weight: 800; line-height: 1.05; margin: 0; }
+    .poliedro-title-line h1 i { font-size: 19pt; margin-right: 4px; }
+    .poliedro-invoice-number { color: #c89a36 !important; font-size: 21pt; font-weight: 800; margin-left: 6px; }
+    .poliedro-validation { color: #164e40; font-size: 9.5pt; margin-top: 5px; }
+    .poliedro-validation-muted { color: #75571c; }
+    .poliedro-check { background: #08734f; border-radius: 50%; display: inline-block; height: 8px; margin: 0 7px 1px 1px; width: 8px; }
+
+    // Use a real table and explicit widths for wkhtmltopdf's older layout engine.
+    .poliedro-parties { border-collapse: separate; border-spacing: 10px 0; display: table !important; margin: 6px 0 7px; table-layout: fixed; width: 100% !important; page-break-inside: avoid; }
+    .poliedro-card { background: #fbfcfc; border: 1px solid var(--pl-line); border-radius: 10px; display: table-cell; overflow: hidden; padding: 0; vertical-align: top; width: 50% !important; }
+    .poliedro-card-heading { background: #07523e; color: #fff; font-size: 10pt; font-weight: 800; letter-spacing: .5px; padding: 7px 12px; }
+    .poliedro-card-heading i { font-size: 11pt; margin-right: 8px; }
+    .poliedro-card-heading-client { background: #e8eeee; color: #163833; }
+    .poliedro-card-content { font-size: 8.5pt; line-height: 1.32; min-height: 68px; padding: 7px 10px; overflow-wrap: break-word; word-wrap: break-word; }
+    .poliedro-card-content > strong { display: block; font-size: 10.5pt; margin-bottom: 3px; }
+    .poliedro-card-content address { margin: 0; }
+
+    .poliedro-quick-facts { background: var(--pl-pale); border-radius: 9px; display: table; table-layout: fixed; width: 100%; margin: 0 0 8px; padding: 8px 4px; page-break-inside: avoid; }
+    .poliedro-fact { border-right: 1px solid #bdcfca; display: table-cell; vertical-align: top; min-width: 0; overflow-wrap: break-word; word-wrap: break-word; padding: 0 9px; }
+    .poliedro-fact:last-child { border-right: 0; }
+    .poliedro-fact > i { color: #07523e; float: left; font-size: 15pt; margin: 5px 8px 0 0; }
+    .poliedro-fact-label { color: var(--pl-muted); display: block; font-size: 7.5pt; margin-bottom: 3px; }
+    .poliedro-fact strong { color: #172b2c; font-size: 9.4pt; }
+
+    .poliedro-lines { border-collapse: collapse; font-size: 8.5pt; margin: 0 0 8px; table-layout: fixed; width: 100%; }
+    .poliedro-lines thead { display: table-header-group; }
+    .poliedro-lines th { background: #064a38; border: 1px solid #477568; color: #fff; font-weight: 700; padding: 6px 7px; }
+    .poliedro-lines td { border: 1px solid #e0e7e5; overflow-wrap: anywhere; padding: 4px; vertical-align: top; }
+    .poliedro-lines tbody tr:nth-child(even) { background: #f6f9f8; }
+    .poliedro-lines tr { page-break-inside: avoid; }
+    .poliedro-lines th:nth-child(1), .poliedro-lines td:nth-child(1) { width: 5%; }
+    .poliedro-lines th:nth-child(2), .poliedro-lines td:nth-child(2) { width: 39%; }
+    .poliedro-lines th:nth-child(3), .poliedro-lines td:nth-child(3) { width: 13%; }
+    .poliedro-lines th:nth-child(4), .poliedro-lines td:nth-child(4) { width: 15%; }
+    .poliedro-lines th:nth-child(5), .poliedro-lines td:nth-child(5) { width: 12%; }
+    .poliedro-lines th:nth-child(6), .poliedro-lines td:nth-child(6) { width: 16%; }
+    .poliedro-line-number { text-align: center; }
+    .poliedro-line-section { background: #eaf1ef !important; font-weight: 700; }
+    .poliedro-line-subsection { background: #f2f6f5 !important; font-weight: 700; }
+    .poliedro-line-note { color: var(--pl-muted); font-style: italic; }
+
+    .poliedro-summary-table { border-collapse: separate; border-spacing: 10px 0; display: table !important; margin: 5px 0 7px; table-layout: fixed; width: 100% !important; }
+    .poliedro-summary-table > tbody > tr > td { vertical-align: top; width: 50% !important; }
+    .poliedro-summary-no-note > tbody > tr > td:first-child { display: none !important; width: 0 !important; }
+    .poliedro-summary-no-note > tbody > tr > td:last-child { width: 100% !important; }
+    .poliedro-payment-note { background: var(--pl-pale); border-radius: 9px; min-height: 42px; overflow-wrap: anywhere; padding: 8px; }
+    .poliedro-note-heading { color: #07523e; font-weight: 700; margin-bottom: 5px; }
+    .poliedro-note-heading i { font-size: 13pt; margin-right: 6px; }
+    .poliedro-totals { border: 1px solid var(--pl-line); border-radius: 9px; display: block !important; overflow: hidden; vertical-align: top; width: 100% !important; }
+    .poliedro-totals table { border-collapse: collapse; margin: 0; width: 100%; }
+    .poliedro-totals td { border-bottom: 1px solid var(--pl-line); padding: 5px 10px; }
+    .poliedro-totals tr:last-child td { border-bottom: 0; }
+    .poliedro-grand-total td { background: #064a38; color: #fff; font-size: 13pt; padding: 7px 10px; }
+    .poliedro-balance { font-weight: 700; }
+
+    .poliedro-payment-status { align-items: center; border-radius: 9px; color: #fff; display: flex; gap: 8px; min-height: 96px; padding: 8px; page-break-inside: avoid; }
+    .poliedro-status-mark { background: #fff; border-radius: 50%; color: #08734f; display: inline-block; flex: 0 0 34px; font-size: 14pt; height: 34px; line-height: 34px; text-align: center; }
+    .poliedro-status-copy { display: block; min-width: 0; }
+    .poliedro-status-copy span { display: block; font-size: 6.5pt; letter-spacing: .7px; }
+    .poliedro-status-copy strong { display: block; font-size: 12pt; line-height: 1.05; overflow-wrap: anywhere; }
+    .is-paid { background: #08734f; }
+    .is-open { background: #b67b18; }
+    .is-draft, .is-cancelled { background: #687573; }
+    .is-draft .poliedro-status-mark, .is-cancelled .poliedro-status-mark { color: #687573; }
+    .poliedro-payment-status-draft { margin: 6px 0; min-height: 42px; padding: 6px 12px; }
+    .poliedro-payment-status-draft .poliedro-status-copy strong { font-size: 17pt; }
+
+    .poliedro-dian-heading { color: #07523e; display: block; font-size: 9pt; margin-top: 6px; }
+    .poliedro-dian-heading span { color: var(--pl-muted); display: block; font-size: 8.5pt; }
+    .poliedro-dian-data { background: #fbfdfc; border: 1px solid var(--pl-line); border-radius: 9px; font-size: 7.4pt !important; margin: 4px 0 5px; padding: 5px; page-break-inside: avoid; }
+    .poliedro-dian-grid { border-collapse: separate; border-spacing: 7px 0; display: table; table-layout: fixed; width: 100%; }
+    .poliedro-dian-qr { display: table-cell; text-align: center; vertical-align: middle; width: 144px; }
+    .poliedro-dian-qr span { color: var(--pl-muted); display: block; font-size: 6.5pt; margin-top: 4px; }
+    .poliedro-dian-data img { height: 128px; max-width: 128px; object-fit: contain; width: 128px; }
+    .poliedro-dian-details { display: table-cell; line-height: 1.32; overflow-wrap: anywhere; vertical-align: middle; }
+    .poliedro-dian-details > strong { color: #07523e; display: block; font-size: 9pt; margin-bottom: 4px; }
+    .poliedro-dian-state { display: table-cell; padding-left: 5px; vertical-align: middle; width: 23%; }
+    .poliedro-cufe { border-top: 1px solid var(--pl-line); font-size: 8pt; margin-top: 5px; overflow-wrap: anywhere; padding-top: 5px; }
+    .poliedro-technical { display: block; margin-top: 3px; }
+    .poliedro-technical span { display: inline-block; margin-right: 10px; overflow-wrap: anywhere; }
+
+    .poliedro-footer { align-items: center; border-top: 1px solid #8caaa2; display: flex; gap: 8px; margin-top: 5px; padding-top: 4px; page-break-inside: avoid; font-size: 7.5pt; }
+    .poliedro-footer-logo { max-height: 38px; max-width: 65px; object-fit: contain; }
+    .poliedro-footer-details { border-left: 1px solid #91aaa4; display: flex; flex: 1; flex-direction: column; gap: 1px; padding-left: 7px; }
+    .poliedro-footer-phrase { color: #07523e; font-style: italic; max-width: 28%; text-align: right; }
+    .poliedro-address-placeholder { display: none; }
+    h1, h2, h3 { color: #064a38; }
+    a { color: #07523e; }
+}
+
+.poliedro-hide-for-custom { display: none !important; }
+.poliedro-report-page.poliedro-invoice-sale > * { display: none !important; }
+.poliedro-report-page.poliedro-invoice-sale > .poliedro-invoice-content { display: block !important; }
+.header.poliedro-invoice-layout-hidden, .footer.poliedro-invoice-layout-hidden { display: none !important; }
+.article.poliedro-invoice-layout-hidden .address, .article.poliedro-invoice-layout-hidden > h2 { display: none !important; }
+
+@media screen and (max-width: 768px) {
+    .poliedro-invoice {
+        .poliedro-hero { margin-left: -4mm; margin-right: -4mm; }
+        .poliedro-summary-table { display: block; }
+        .poliedro-payment-note, .poliedro-totals { margin-bottom: 8px; width: 100%; }
+    }
+}
