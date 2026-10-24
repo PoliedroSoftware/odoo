@@ -1,8 +1,11 @@
 # Poliedro Payroll Report
 
-Versión 19.0.1.2.1. Desprendible nativo de Odoo 19 Enterprise en A4 horizontal.
+Versión 19.0.1.2.2. Desprendible nativo de Odoo 19 Enterprise en A4 horizontal.
 Modifica exclusivamente la presentación mediante herencia en `custom-addons`.
 Requiere `hr_payroll`; no incorpora código Enterprise ni de proveedores.
+
+Cuando hay más de dos filas de conceptos, el pie reduce su espacio superior
+para conservar en una página los recibos habituales con bonificación y aviso de borrador.
 
 ## Actualización del addon existente
 

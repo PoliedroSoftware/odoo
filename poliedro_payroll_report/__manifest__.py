@@ -1,7 +1,7 @@
 {
     "name": "Poliedro Payroll Report",
     "summary": "Mejora visual del desprendible nativo de nómina de Odoo",
-    "version": "19.0.1.2.1",
+    "version": "19.0.1.2.2",
     "category": "Human Resources/Payroll",
     "author": "Poliedro Software",
     "license": "LGPL-3",

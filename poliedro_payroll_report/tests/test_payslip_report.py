@@ -249,13 +249,20 @@ class TestPoliedroPayslipPrintRoute(HttpCase):
         # Odoo normally returns HTML instead of PDF in test mode. Exercise the real engine.
         session.context['force_report_rendering'] = True
         http.root.session_store.save(session)
-        response = self.url_open('/print/payslips?list_ids=%s' % slip.id)
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue(response.content.startswith(b'%PDF'))
-        reader = PdfFileReader(BytesIO(response.content))
-        self.assertEqual(reader.getNumPages(), 1)
-        self.assertAlmostEqual(float(reader.pages[0].mediabox.width), 842, delta=2)
-        self.assertAlmostEqual(float(reader.pages[0].mediabox.height), 595, delta=2)
-        text = ' '.join(page.extract_text() or '' for page in reader.pages)
-        self.assertIn('NETO A PAGAR', text)
-        self.assertIn(slip.employee_id.name, text)
+        # Include the older receipt as well: it may have a bonus plus the draft warning.
+        slips = self.env['hr.payslip'].search([
+            ('company_id', '=', slip.company_id.id), ('line_ids', '!=', False),
+        ], order='id', limit=2)
+        for receipt in slips:
+            response = self.url_open('/print/payslips?list_ids=%s' % receipt.id)
+            self.assertEqual(response.status_code, 200)
+            self.assertTrue(response.content.startswith(b'%PDF'))
+            reader = PdfFileReader(BytesIO(response.content))
+            self.assertEqual(reader.getNumPages(), 1)
+            self.assertAlmostEqual(float(reader.pages[0].mediabox.width), 842, delta=2)
+            self.assertAlmostEqual(float(reader.pages[0].mediabox.height), 595, delta=2)
+            text = ' '.join(page.extract_text() or '' for page in reader.pages)
+            self.assertIn('NETO A PAGAR', text)
+            self.assertIn(receipt.employee_id.name, text)
+            if receipt.company_id.poliedro_payroll_footer_phrase:
+                self.assertIn(receipt.company_id.poliedro_payroll_footer_phrase, text)

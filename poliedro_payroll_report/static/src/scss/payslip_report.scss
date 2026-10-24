@@ -67,6 +67,8 @@
     .ppr-totals-compact strong { font-size: 17pt; }
     .ppr-totals-small strong { font-size: 13pt; }
     .poliedro-payroll-footer { margin-top: 7.05mm; padding-top: 3.3mm; border-top: .18mm solid #DDE7E0; color: #587069; font-size: 8pt; page-break-inside: avoid; }
+    // Keep the footer with a third concept (e.g. a bonus), including draft warnings.
+    .poliedro-payroll-footer.ppr-footer-compact { margin-top: 2mm; padding-top: 1mm; }
     .ppr-footer-contact { width: 55%; }
     .ppr-footer-phrase { width: 45%; color: #073D2E; font-family: "PPR Lato", sans-serif; font-weight: 400; font-style: italic; font-size: 9pt; text-align: right; }
 }

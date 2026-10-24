@@ -124,7 +124,7 @@
                     <td><div class="ppr-total-card ppr-total-net" t-att-style="'background-color: %s' % report_color"><div class="ppr-net-content"><div>NETO A PAGAR</div><strong t-out="report_data['net_total']" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></div></div></td>
                 </tr></tbody></table>
 
-                <div class="poliedro-payroll-footer">
+                <div t-attf-class="poliedro-payroll-footer {{ 'ppr-footer-compact' if len(report_data['detail_rows']) &gt; 2 else '' }}">
                     <table><tbody><tr>
                         <td class="ppr-footer-contact"><span t-field="company.name"/><span t-if="company.vat"> · NIT: <span t-field="company.vat"/></span></td>
                         <td class="ppr-footer-phrase"><span t-if="company.poliedro_payroll_footer_phrase" t-field="company.poliedro_payroll_footer_phrase"/></td>
