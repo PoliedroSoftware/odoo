@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_company_form_poliedro_payroll_report" model="ir.ui.view">
+        <field name="name">res.company.form.poliedro.payroll.report</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='color']" position="after">
+                <field name="poliedro_payroll_report_color" widget="color_picker"/>
+                <field name="poliedro_payroll_banner" widget="image" groups="base.group_system"/>
+                <field name="poliedro_payroll_header_background" widget="image" groups="base.group_system"/>
+                <field name="poliedro_payroll_tagline" groups="base.group_system"/>
+                <field name="poliedro_payroll_footer_phrase" groups="base.group_system"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

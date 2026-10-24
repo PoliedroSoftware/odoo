@@ -1,0 +1,72 @@
+// Unmodified Google Fonts Lato distribution (SIL OFL); served locally, no CDN.
+@font-face { font-family: "PPR Lato"; src: url('/poliedro_payroll_report/static/src/fonts/lato/Lato-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; }
+@font-face { font-family: "PPR Lato"; src: url('/poliedro_payroll_report/static/src/fonts/lato/Lato-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; }
+@font-face { font-family: "PPR Lato"; src: url('/poliedro_payroll_report/static/src/fonts/lato/Lato-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; }
+@font-face { font-family: "PPR Lato"; src: url('/poliedro_payroll_report/static/src/fonts/lato/Lato-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; }
+.poliedro-payroll-report {
+    font-family: "PPR Lato", sans-serif;
+    margin-left: -$container-padding-x; margin-right: -$container-padding-x;
+    font-size: 10.1pt; line-height: 1.25; color: #182A26;
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; border: 0; font-size: inherit; }
+    td, th { vertical-align: top; overflow-wrap: break-word; word-wrap: break-word; border: 0; padding: 0; }
+    tbody, thead, tfoot, tr { border: 0 none; }
+    strong, th, h1 { font-family: "PPR Lato", sans-serif; font-weight: 700; }
+    th { text-align: left; }
+    h1, h2, p { margin: 0; }
+    .fa { margin-right: 3mm; }
+    .ppr-hero { position: relative; min-height: 50.4mm; box-sizing: border-box; padding: 6.35mm 5.64mm 5mm; margin-bottom: 5.3mm; border-radius: 4mm; color: #fff; background-position: center; background-size: cover; background-repeat: no-repeat; page-break-inside: avoid; }
+    .ppr-brand { padding-right: 7mm; }
+    .ppr-logo-cell { width: 37.1mm; }
+    .ppr-logo-card { width: 31.8mm; height: 31mm; border-radius: 3mm; background: #fff; text-align: center; line-height: 31mm; }
+    .ppr-logo-card img { max-width: 28.2mm; max-height: 27.5mm; width: auto; height: auto; vertical-align: middle; }
+    .ppr-company-name { display: block; font-size: 16.5pt; line-height: 1.15; }
+    .ppr-company-vat { color: #EEF5F0; font-size: 10.2pt; margin-top: 2.3mm; }
+    h1 { color: #fff; font-size: 18pt; line-height: 1.2; margin-top: 3.2mm; }
+    h1 span { color: #E2B957; }
+    .ppr-tagline { color: #E2B957; font-family: "PPR Lato", sans-serif; font-weight: 700; font-size: 8pt; margin: 4mm 0 0 .7mm; }
+    .ppr-employee { padding-left: 7mm; border-left: .3mm solid #587069; }
+    .ppr-employee-name { display: block; color: #fff; font-size: 12.8pt; line-height: 1.15; margin-bottom: 2.8mm; }
+    .ppr-employee-details td { padding: 0 0 2.1mm; font-size: 9.6pt; line-height: 1.25; color: #EEF5F0; }
+    .ppr-employee-details td:last-child { color: #fff; font-size: 10.2pt; }
+    .ppr-hero-accent { position: absolute; bottom: 1.4mm; left: 0; width: 100%; height: 1.05mm; background: #C99E42; }
+    .ppr-warning { background: #FFF4DB; color: #6E5522; border-left: 1mm solid #C99E42; border-radius: 2mm; padding: 2.6mm 3mm; min-height: 10.6mm; box-sizing: border-box; margin-bottom: 4.94mm; font-size: 10.5pt; page-break-inside: avoid; }
+    .ppr-warning-mark { display: inline-block; background: #C99E42; color: #fff; border-radius: 50%; width: 5mm; height: 5mm; line-height: 5mm; text-align: center; margin-right: 3mm; font-family: "PPR Lato", sans-serif; font-weight: 700; }
+    .ppr-grid { margin-bottom: 5.64mm; }
+    .ppr-grid thead { display: table-header-group; }
+    .ppr-grid tr { page-break-inside: avoid; }
+    .ppr-grid td, .ppr-grid th { border: .18mm solid #DDE7E0; padding: 2.45mm 5mm; }
+    .ppr-grid th { background: #EEF5F0; color: #587069; font-size: 9.4pt; line-height: 1.25; padding-top: 2.1mm; padding-bottom: 2.1mm; }
+    .ppr-grid .ppr-heading { color: #fff; border: 0; border-radius: 2.5mm 2.5mm 0 0; text-align: left; font-size: 10.8pt; padding: 2.35mm 4.5mm; line-height: 1.25; }
+    .ppr-heading .fa { font-size: 12.5pt; }
+    // Qt WebKit table-cell heights exclude padding, including with border-box.
+    .ppr-work tbody td { height: 5.33mm; }
+    .ppr-details tbody td { height: 5.93mm; }
+    .ppr-grid .ppr-heading { height: 5.355mm; }
+    .ppr-grid thead tr:last-child th { height: 4.617mm; }
+    .ppr-warning { margin-bottom: 5.38mm; }
+    .ppr-work { margin-bottom: 6mm; }
+    .ppr-grid tbody tr:nth-child(even) td { background: #F8FAF9; }
+    .ppr-grid small { display: block; font-size: 8pt; color: #587069; }
+    .ppr-center { text-align: center; }
+    .ppr-right { text-align: right; }
+    .ppr-grid tbody .ppr-right { font-family: "PPR Lato", sans-serif; font-weight: 700; font-size: 11pt; }
+    .ppr-right .oe_currency_value { white-space: nowrap; }
+    .ppr-gap, .ppr-grid .ppr-gap, .ppr-grid tbody tr:nth-child(even) .ppr-gap { padding: 0; border: 0; background: #fff; }
+    .ppr-empty { color: #587069; font-size: 8.5pt; }
+    .ppr-details { margin-bottom: 6mm; }
+    .ppr-details td { padding-top: 2.5mm; padding-bottom: 2.5mm; }
+    .ppr-details th.ppr-center { padding-left: 1mm; padding-right: 1mm; }
+    .ppr-totals { page-break-inside: avoid; }
+    .ppr-total-card { min-height: 26.8mm; box-sizing: border-box; padding: 4.8mm 7.4mm; border-radius: 3mm; }
+    .ppr-total-card div { font-family: "PPR Lato", sans-serif; font-weight: 700; font-size: 9.3pt; text-align: left; }
+    .ppr-total-card strong { display: block; font-family: "PPR Lato", sans-serif; font-weight: 800; font-size: 23pt; line-height: 1.12; white-space: nowrap; text-align: left; margin-top: 3.4mm; }
+    .ppr-total-earnings { background: #EEF5F0; color: #073D2E; }
+    .ppr-total-deductions { background: #FFF4DB; color: #6A5121; }
+    .ppr-total-net { color: #fff; padding-left: 4.2mm; padding-right: 4.2mm; }
+    .ppr-net-content { border-left: 1.05mm solid #C99E42; padding-left: 3.2mm; }
+    .ppr-totals-compact strong { font-size: 17pt; }
+    .ppr-totals-small strong { font-size: 13pt; }
+    .poliedro-payroll-footer { margin-top: 7.05mm; padding-top: 3.3mm; border-top: .18mm solid #DDE7E0; color: #587069; font-size: 8pt; page-break-inside: avoid; }
+    .ppr-footer-contact { width: 55%; }
+    .ppr-footer-phrase { width: 45%; color: #073D2E; font-family: "PPR Lato", sans-serif; font-weight: 400; font-style: italic; font-size: 9pt; text-align: right; }
+}

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Update the existing format and native action; do not create a second report. -->
+    <record id="paperformat_poliedro_payslip_landscape" model="report.paperformat">
+        <field name="name">A4 horizontal - desprendible Poliedro</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="page_width">0</field><field name="page_height">0</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">7.8</field><field name="margin_bottom">8</field>
+        <field name="margin_left">8.5</field><field name="margin_right">8.5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field><field name="dpi">90</field>
+        <field name="disable_shrinking" eval="True"/>
+    </record>
+    <record id="hr_payroll.action_report_payslip" model="ir.actions.report">
+        <field name="paperformat_id" ref="paperformat_poliedro_payslip_landscape"/>
+    </record>
+
+    <template id="payroll_address">
+        <div t-if="company.street" t-field="company.street"/>
+        <div t-if="company.street2" t-field="company.street2"/>
+        <div><span t-out="', '.join(filter(None, [company.city, company.state_id.name, company.country_id.name]))"/></div>
+    </template>
+
+    <template id="report_payslip_poliedro_inherit" inherit_id="hr_payroll.report_payslip">
+        <xpath expr="//t[@t-call='web.external_layout']" position="attributes">
+            <attribute name="t-call">web.basic_layout</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('page')]" position="replace">
+            <div class="page poliedro-payroll-report">
+                <t t-set="company" t-value="o.company_id"/>
+                <t t-set="report_data" t-value="o._get_poliedro_payroll_report_data()"/>
+                <t t-set="invalid_warning" t-value="o._is_invalid()"/>
+                <t t-set="report_color" t-value="company._get_poliedro_payroll_report_color()"/>
+                <t t-set="worked_days" t-value="o.worked_days_line_ids.filtered(lambda item: item.code != 'OUT')"/>
+                <section class="ppr-hero" t-att-style="'background-color: %s;' % report_color + ('background-image: url(%s);' % image_data_uri(company.poliedro_payroll_header_background) if company.poliedro_payroll_header_background else '')">
+                    <table class="ppr-hero-layout"><colgroup><col style="width:50%"/><col style="width:50%"/></colgroup><tbody><tr>
+                        <td class="ppr-brand">
+                            <table class="ppr-brand-layout"><tbody><tr>
+                                <td t-if="company.logo" class="ppr-logo-cell"><div class="ppr-logo-card"><img t-att-src="image_data_uri(company.logo)" alt="Logo de la empresa"/></div></td>
+                                <td class="ppr-brand-copy">
+                                    <strong class="ppr-company-name" t-field="company.name"/>
+                                    <div class="ppr-company-vat" t-if="company.vat">NIT: <span t-field="company.vat"/></div>
+                                    <h1>DESPRENDIBLE<br/><span>DE NÓMINA</span></h1>
+                                </td>
+                            </tr></tbody></table>
+                            <div t-if="company.poliedro_payroll_tagline" class="ppr-tagline" t-field="company.poliedro_payroll_tagline"/>
+                        </td>
+                        <td class="ppr-employee">
+                            <strong class="ppr-employee-name" t-field="o.employee_id.name"/>
+                            <table class="ppr-employee-details"><colgroup><col style="width:34%"/><col style="width:66%"/></colgroup><tbody>
+                                <tr t-if="o.version_id.identification_id"><td>Documento:</td><td><strong t-field="o.version_id.identification_id"/></td></tr>
+                                <tr><td>Período:</td><td><strong><span t-field="o.date_from"/> - <span t-field="o.date_to"/></strong></td></tr>
+                                <tr t-if="o.compute_date"><td>Fecha de liquidación:</td><td><strong t-field="o.compute_date"/></td></tr>
+                                <tr><td>Fecha de impresión:</td><td><strong t-out="report_data['printed_at_display']"/></td></tr>
+                            </tbody></table>
+                        </td>
+                    </tr></tbody></table>
+                    <div class="ppr-hero-accent"/>
+                </section>
+
+                <div t-if="invalid_warning" class="ppr-warning"><span class="ppr-warning-mark" aria-hidden="true">!</span><span t-out="invalid_warning"/></div>
+
+                <table class="ppr-work ppr-grid">
+                    <colgroup><col style="width:60%"/><col style="width:20%"/><col style="width:20%"/></colgroup>
+                    <thead>
+                        <tr><th colspan="3" class="ppr-heading" t-att-style="'background-color: %s' % report_color"><i class="fa fa-calendar"/> DÍAS TRABAJADOS Y NOVEDADES</th></tr>
+                        <tr><th>Concepto</th><th class="ppr-right">Días</th><th class="ppr-right">Horas</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="worked_days" t-as="worked_day">
+                            <td><span t-field="worked_day.name"/></td>
+                            <td class="ppr-right"><span t-out="round(worked_day.number_of_days, 2)"/></td>
+                            <td class="ppr-right"><span t-out="round(worked_day.number_of_hours, 2)"/></td>
+                        </tr>
+                        <tr t-if="not worked_days"><td colspan="3" class="ppr-empty">Sin días o novedades registrados</td></tr>
+                    </tbody>
+                </table>
+
+                <!-- One row per pair: wkhtmltopdf can paginate without an enclosing unbreakable row. -->
+                <table class="ppr-details ppr-grid">
+                    <colgroup><col style="width:25%"/><col style="width:8.8%"/><col style="width:15.8%"/><col style="width:1.5%"/><col style="width:31.9%"/><col style="width:17%"/></colgroup>
+                    <thead>
+                        <tr>
+                            <th colspan="3" class="ppr-heading" t-att-style="'background-color: %s' % report_color"><i class="fa fa-plus-circle"/> DEVENGADOS</th>
+                            <th class="ppr-gap"/>
+                            <th colspan="2" class="ppr-heading" t-att-style="'background-color: %s' % report_color"><i class="fa fa-minus-circle"/> DEDUCCIONES</th>
+                        </tr>
+                        <tr><th>Concepto</th><th class="ppr-center">Días / Cant.</th><th class="ppr-right">Valor</th><th class="ppr-gap"/><th>Concepto</th><th class="ppr-right">Valor</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="report_data['detail_rows']" t-as="pair">
+                            <t t-set="earning" t-value="pair['earning']"/><t t-set="deduction" t-value="pair['deduction']"/>
+                            <td><span t-out="pair['earning_name']"/><small t-if="earning and pair['earning_short_note'] and earning.salary_rule_id.note" t-field="earning.salary_rule_id.note"/><small t-if="pair['earning_note_text']" t-out="pair['earning_note_text']"/></td>
+                            <td class="ppr-center"><t t-if="earning"><span t-if="earning.quantity != 1" t-out="round(earning.quantity, 2)"/><span t-else="">-</span></t></td>
+                            <td class="ppr-right"><span t-if="earning" t-out="earning.total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
+                            <td class="ppr-gap"/>
+                            <td><span t-out="pair['deduction_name']"/><small t-if="deduction and pair['deduction_short_note'] and deduction.salary_rule_id.note" t-field="deduction.salary_rule_id.note"/><small t-if="pair['deduction_note_text']" t-out="pair['deduction_note_text']"/></td>
+                            <td class="ppr-right"><span t-if="deduction" t-out="-deduction.total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
+                        </tr>
+                        <tr t-if="not report_data['earnings'] or not report_data['deductions']">
+                            <td colspan="3" class="ppr-empty"><span t-if="not report_data['earnings']">Sin conceptos devengados</span></td><td class="ppr-gap"/>
+                            <td colspan="2" class="ppr-empty"><span t-if="not report_data['deductions']">Sin deducciones</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <t t-set="largest_total" t-value="max(abs(report_data[key]) for key in ('earnings_total', 'deductions_total', 'net_total'))"/>
+                <table t-attf-class="ppr-totals {{ 'ppr-totals-small' if largest_total &gt;= 10000000000000 else 'ppr-totals-compact' if largest_total &gt;= 1000000000 else '' }}">
+                    <colgroup><col style="width:32.5%"/><col style="width:1.25%"/><col style="width:32.5%"/><col style="width:1.25%"/><col style="width:32.5%"/></colgroup><tbody><tr>
+                    <td><div class="ppr-total-card ppr-total-earnings"><div>TOTAL DEVENGADOS</div><strong t-out="report_data['earnings_total']" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></div></td>
+                    <td class="ppr-gap"/>
+                    <td><div class="ppr-total-card ppr-total-deductions"><div>TOTAL DEDUCCIONES</div><strong t-out="report_data['deductions_total']" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></div></td>
+                    <td class="ppr-gap"/>
+                    <td><div class="ppr-total-card ppr-total-net" t-att-style="'background-color: %s' % report_color"><div class="ppr-net-content"><div>NETO A PAGAR</div><strong t-out="report_data['net_total']" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></div></div></td>
+                </tr></tbody></table>
+
+                <div class="poliedro-payroll-footer">
+                    <table><tbody><tr>
+                        <td class="ppr-footer-contact"><span t-field="company.name"/><span t-if="company.vat"> · NIT: <span t-field="company.vat"/></span></td>
+                        <td class="ppr-footer-phrase"><span t-if="company.poliedro_payroll_footer_phrase" t-field="company.poliedro_payroll_footer_phrase"/></td>
+                    </tr></tbody></table>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>
