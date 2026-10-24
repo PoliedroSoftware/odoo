@@ -1,6 +1,6 @@
 # Poliedro Payroll Report
 
-Versión 19.0.1.2.0. Desprendible nativo de Odoo 19 Enterprise en A4 horizontal.
+Versión 19.0.1.2.1. Desprendible nativo de Odoo 19 Enterprise en A4 horizontal.
 Modifica exclusivamente la presentación mediante herencia en `custom-addons`.
 Requiere `hr_payroll`; no incorpora código Enterprise ni de proveedores.
 
@@ -42,6 +42,10 @@ Cada recibo utiliza su propia compañía, no la compañía activa de la sesión.
 El papel es A4 horizontal, márgenes laterales 8.5 mm, superior 7.8 mm e inferior
 8 mm, DPI 90. No es el papel predeterminado global. `disable_shrinking` evita que
 Qt reduzca las medidas físicas; Odoo ajusta internamente a 96 DPI en Windows.
+Una herencia exclusiva de `hr_payroll.report_payslip_lang` fija el DPI efectivo
+a 96 también en Linux mediante `data_report_dpi`. Conserva el registro de papel
+en 90 DPI y evita el zoom 96/90 que ampliaba el contenido en Linux y enviaba el
+pie a una segunda página. No modifica layouts globales ni otros informes.
 Las dimensiones usan flujo normal y tablas compatibles con wkhtmltopdf.
 Los encabezados de detalle se repiten en las continuaciones; cada recibo del lote
 comienza en otra página. El pie es breve y aparece al terminar cada recibo.

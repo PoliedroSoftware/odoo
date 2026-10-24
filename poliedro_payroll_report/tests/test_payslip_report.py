@@ -176,6 +176,13 @@ class TestPoliedroPayslipReport(TransactionCase):
         with self.assertRaises(AccessError):
             self.env['hr.payslip'].with_user(user).search([])
 
+    def test_render_uses_same_effective_dpi_on_linux_and_windows(self):
+        report = self.env.ref('hr_payroll.action_report_payslip')
+        rendered = self._html(self._slip([('Salario ficticio', 'BASIC', 1000)]))
+        args = report._prepare_html(rendered)[4]
+        self.assertEqual(args['data-report-dpi'], '96')
+        self.assertEqual(report.paperformat_id.dpi, 90)
+
     def test_integrated_header_and_optional_background(self):
         self.company = self.env['res.company'].new({
             'name': 'EMPRESA FICTICIA CON FONDO',
