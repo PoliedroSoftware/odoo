@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_company_form_co_invoice_rounding" model="ir.ui.view">
+        <field name="name">res.company.form.co.invoice.rounding</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Colombian Invoice Rounding" name="co_invoice_rounding" groups="account.group_account_manager">
+                    <group>
+                        <group string="Sales invoices in COP">
+                            <field name="co_invoice_rounding_enabled"/>
+                            <field name="co_invoice_cash_rounding_id" invisible="not co_invoice_rounding_enabled"/>
+                        </group>
+                        <group string="Accounting behavior">
+                            <div class="text-muted" colspan="2">
+                                Odoo keeps product lines and tax calculations unchanged. A separate untaxed
+                                accounting line rounds the invoice total to the nearest peso. The Colombian
+                                DIAN UBL export reports the difference in PayableRoundingAmount.
+                            </div>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
