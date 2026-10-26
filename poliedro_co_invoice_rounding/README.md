@@ -47,3 +47,8 @@ documentos.
 Para una actualización posterior se usa `-u` en la base destino después de
 desplegar el addon. Producción y QA requieren respaldo previo, despliegue del
 código y lectura de vuelta de módulo/configuración.
+
+
+## Precisi?n de cantidades
+
+Odoo 19 controla la precisi?n de cantidades mediante la precisi?n global **Product Unit**. Para admitir valores como `1,501` galones, debe estar en al menos 3 d?gitos. Aumentarla solo cambia la precisi?n permitida y mostrada; no reescribe cantidades existentes. Esta configuraci?n afecta la presentaci?n de las unidades de medida de toda la base, por lo que se debe revisar antes de cambiarla. El addon no altera esa precisi?n autom?ticamente.

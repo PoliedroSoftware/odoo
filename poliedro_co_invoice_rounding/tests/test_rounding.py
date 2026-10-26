@@ -192,6 +192,12 @@ class TestColombianInvoiceRounding(TransactionCase):
         self.assertEqual(gallons.invoice_line_ids.price_subtotal, 21450.0)
         self.assertEqual(gallons.amount_total, 21450.0)
 
+        three_decimal_gallons = self._create_invoice(21464.3, quantity=1.501)
+        self.assertEqual(three_decimal_gallons.invoice_line_ids.quantity, 1.501)
+        self.assertEqual(three_decimal_gallons.invoice_line_ids.price_unit, 14300.0)
+        self.assertEqual(three_decimal_gallons.invoice_line_ids.price_subtotal, 21464.3)
+        self.assertEqual(three_decimal_gallons.amount_total, 21464.0)
+
         other_company = self.env['res.company'].search([
             ('id', '!=', self.company.id), ('currency_id.name', '=', 'COP'),
         ], limit=1)
