@@ -1,0 +1,52 @@
+.o_dian_batch_progress {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 250px;
+    color: white;
+
+    &__toggle {
+        display: flex;
+        align-items: center;
+        color: inherit !important;
+        font-size: 12px;
+        white-space: nowrap;
+        padding-inline: 10px;
+    }
+
+    &__track {
+        display: inline-block;
+        width: 78px;
+        height: 7px;
+        overflow: hidden;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    &__fill {
+        display: block;
+        height: 100%;
+        background: #78d5a8;
+        transition: width 0.3s ease;
+    }
+
+    &__popover {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        z-index: 1050;
+        width: 310px;
+        padding: 14px;
+        color: var(--body-color, #212529);
+        background: var(--body-bg, #fff);
+        border: 1px solid var(--border-color, #dee2e6);
+        border-radius: 6px;
+    }
+
+    &__summary {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px 8px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="poliedro_dian_batch_progress.Progress">
+        <div t-if="state.data" class="o_dian_batch_progress" role="status">
+            <button class="btn btn-link text-reset text-decoration-none o_dian_batch_progress__toggle"
+                    t-on-click="() => state.open = !state.open"
+                    t-att-title="state.data.company + ': envío de facturas DIAN'">
+                <span t-if="state.data.is_active" class="fa fa-paper-plane me-1" aria-hidden="true"/>
+                <span t-else="" class="fa fa-check-circle me-1 text-success" aria-hidden="true"/>
+                <span>DIAN</span>
+                <span class="ms-1"><t t-esc="state.data.completed"/>/<t t-esc="state.data.total"/></span>
+                <span class="o_dian_batch_progress__track ms-2">
+                    <span class="o_dian_batch_progress__fill" t-att-style="'width: ' + state.data.percent + '%'"/>
+                </span>
+                <span class="ms-1"><t t-esc="state.data.percent"/>%</span>
+            </button>
+            <div t-if="state.open" class="o_dian_batch_progress__popover shadow">
+                <div class="fw-bold mb-2">Envío de facturas a DIAN</div>
+                <div class="small text-muted mb-2"><t t-esc="state.data.company"/></div>
+                <div class="o_dian_batch_progress__summary">
+                    <span>Total: <t t-esc="state.data.total"/></span>
+                    <span class="text-success">Aceptadas: <t t-esc="state.data.accepted"/></span>
+                    <span>En cola: <t t-esc="state.data.queued"/></span>
+                    <span>Respuesta pendiente: <t t-esc="state.data.pending"/></span>
+                    <span t-att-class="state.data.failed ? 'text-danger' : ''">Fallidas/rechazadas: <t t-esc="state.data.failed"/></span>
+                </div>
+                <div t-if="state.data.errors.length" class="mt-2 small text-danger">
+                    <div class="fw-bold">Motivos reportados</div>
+                    <div t-foreach="state.data.errors" t-as="error" t-key="error.name" class="text-truncate">
+                        <t t-esc="error.name"/>: <t t-esc="error.reason"/>
+                    </div>
+                </div>
+                <div class="small text-muted mt-2">Se procesa una factura por minuto.</div>
+            </div>
+        </div>
+    </t>
+</templates>

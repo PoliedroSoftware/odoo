@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="account.ir_cron_account_move_send" model="ir.cron">
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="code">model._cron_account_move_send(job_count=1)</field>
+    </record>
+</odoo>
